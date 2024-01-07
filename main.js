@@ -2,18 +2,43 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import One from "/Users/sahithbodla/Documents/CodingProjects/personal-website/images/one.png";
-import Zero from "/Users/sahithbodla/Documents/CodingProjects/personal-website/images/zero.png";
-import Title from "/Users/sahithbodla/Documents/CodingProjects/personal-website/images/title.png";
-import Background from "/Users/sahithbodla/Documents/CodingProjects/personal-website/images/panel.png";
+import One from "./images/one.png";
+import Zero from "./images/zero.png";
+import SceneBackground from "./images/matrix_bg.jpg";
+
+import Title from "./images/title.png";
+import Start from "./images/start.png";
+import ObservationTitle from "./images/observation.png";
+
+import PanelBackground from "./images/panel.png";
+
+import Panel1Title from "./images/panel1title.png";
+
+import Panel2Title from "./images/panel2title.png";
+
+import Panel3Title from "./images/panel3title.png";
+
+import Panel4Title from "./images/panel4title.png";
+
+import Panel5Title from "./images/panel5title.png";
+import Illinois from "./images/illinois.png";
+import IllinoisCaption from "./images/illinoiscaption.png";
+import BISV from "./images/bisv.png";
+import BISVCaption from "./images/bisvcaption.png";
+
+import Panel6Title from "./images/panel6title.png";
+import Panel6Caption from "./images/panel6caption.png";
+import Gmail from "./images/gmail.png";
+import Linkedin from "./images/linkedin.png";
+import Github from "./images/github.png";
 
 /////////////////////////////
 ///// ENVIRONMENT SETUP /////
 /////////////////////////////
 
 const scene = new THREE.Scene();
-const sceneBackground = new THREE.TextureLoader().load("images/matrix_bg.jpg");
-scene.background = sceneBackground;
+const scenePanelBackground = new THREE.TextureLoader().load(SceneBackground);
+scene.background = scenePanelBackground;
 
 const camera = new THREE.PerspectiveCamera(
   85,
@@ -30,11 +55,14 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
+// const axes = new THREE.AxesHelper(500);
+// scene.add(axes);
+
 ////////////////////
 ///// GREETING /////
 ////////////////////
 
-const backgroundTexture = new THREE.TextureLoader().load(Background);
+const backgroundTexture = new THREE.TextureLoader().load(PanelBackground);
 
 const circle = new THREE.CylinderGeometry(350, 350, 20, 250);
 const circleMesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -44,16 +72,14 @@ const platformLines = new THREE.LineSegments(
   platformEdges,
   new THREE.LineBasicMaterial({ color: "#008B8B" })
 );
-scene.add(platform, platformLines);
 
 const titleTexture = new THREE.TextureLoader().load(Title);
-const titleGeo = new THREE.PlaneGeometry(300, 300);
+const titleGeo = new THREE.CircleGeometry(350, 100);
 const titleMesh = new THREE.MeshLambertMaterial({ map: titleTexture });
 titleMesh.alphaHash = 1;
 const title = new THREE.Mesh(titleGeo, titleMesh);
 title.position.set(0, 20, 0);
 title.rotation.x = -Math.PI / 2;
-scene.add(title);
 
 const titleSpotLight = new THREE.SpotLight(
   0xffffff,
@@ -64,7 +90,22 @@ const titleSpotLight = new THREE.SpotLight(
   0.4
 );
 titleSpotLight.position.set(0, 450, 0);
-scene.add(titleSpotLight);
+
+const startTexture = new THREE.TextureLoader().load(Start);
+const startGeo = new THREE.PlaneGeometry(125, 125);
+const startMesh = new THREE.MeshLambertMaterial({map: startTexture});
+startMesh.alphaHash = 1;
+const start = new THREE.Mesh(startGeo, startMesh);
+start.position.set(0, 20, -300);
+start.rotation.x = -Math.PI / 2;
+
+const observationTitleTexture = new THREE.TextureLoader().load(ObservationTitle);
+const observationTitleGeo = new THREE.PlaneGeometry(250, 105);
+const observationTitleMesh = new THREE.MeshLambertMaterial({map: observationTitleTexture});
+observationTitleMesh.alphaHash = 1;
+const observationTitle = new THREE.Mesh(observationTitleGeo, observationTitleMesh);
+observationTitle.position.set(0, 20, 280);
+observationTitle.rotation.x = -Math.PI / 2;
 
 //////////////////
 ///// PANELS /////
@@ -74,10 +115,10 @@ const bottomLight = new THREE.PointLight(0xffffff, 1000, 0, 1);
 bottomLight.position.set(0, -60, 0);
 scene.add(bottomLight);
 
-const startGeo = new THREE.OctahedronGeometry(15, 0);
-const startMesh = new THREE.MeshLambertMaterial({ color: "cyan" });
-const start = new THREE.Mesh(startGeo, startMesh);
-start.position.set(0, 150, -500);
+const startingIconGeo = new THREE.OctahedronGeometry(15, 0);
+const startingIconMesh = new THREE.MeshLambertMaterial({ color: "cyan" });
+const startingIcon = new THREE.Mesh(startingIconGeo, startingIconMesh);
+startingIcon.position.set(0, 150, -500);
 
 const panel1Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel1Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -89,6 +130,17 @@ const panel1Lines = new THREE.LineSegments(
   new THREE.LineBasicMaterial({ color: "#008B8B" })
 );
 panel1Lines.position.set(0, 0, -500);
+
+const panel1titleTexture = new THREE.TextureLoader().load(Panel1Title);
+const panel1titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel1titleMesh = new THREE.MeshLambertMaterial({map: panel1titleTexture});
+panel1titleMesh.alphaHash = 1;
+const panel1title = new THREE.Mesh(panel1titleGeo, panel1titleMesh);
+panel1title.position.set(0, 60, -506);
+panel1title.rotateY(Math.PI);
+
+const panel1content = new THREE.Group();
+panel1content.add(panel1title);
 
 const panel2Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel2Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -103,6 +155,17 @@ const panel2Lines = new THREE.LineSegments(
 panel2Lines.position.set(-433, 0, -250);
 panel2Lines.rotateY(Math.PI / 3);
 
+const panel2titleTexture = new THREE.TextureLoader().load(Panel2Title);
+const panel2titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel2titleMesh = new THREE.MeshLambertMaterial({map: panel2titleTexture});
+panel2titleMesh.alphaHash = 1;
+const panel2title = new THREE.Mesh(panel2titleGeo, panel2titleMesh);
+panel2title.position.set(-438, 60, -255);
+panel2title.rotateY(-2 * Math.PI / 3);
+
+const panel2content = new THREE.Group();
+panel2content.add(panel2title);
+
 const panel3Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel3Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
 const panel3 = new THREE.Mesh(panel3Geo, panel3Mesh);
@@ -116,6 +179,17 @@ const panel3Lines = new THREE.LineSegments(
 panel3Lines.position.set(-433, 0, 250);
 panel3Lines.rotateY((2 * Math.PI) / 3);
 
+const panel3titleTexture = new THREE.TextureLoader().load(Panel3Title);
+const panel3titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel3titleMesh = new THREE.MeshLambertMaterial({map: panel3titleTexture});
+panel3titleMesh.alphaHash = 1;
+const panel3title = new THREE.Mesh(panel3titleGeo, panel3titleMesh);
+panel3title.position.set(-438, 60, 255);
+panel3title.rotateY(-1 * Math.PI / 3);
+
+const panel3content = new THREE.Group();
+panel3content.add(panel3title);
+
 const panel4Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel4Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
 const panel4 = new THREE.Mesh(panel4Geo, panel4Mesh);
@@ -126,6 +200,16 @@ const panel4Lines = new THREE.LineSegments(
   new THREE.LineBasicMaterial({ color: "#008B8B" })
 );
 panel4Lines.position.set(0, 0, 500);
+
+const panel4titleTexture = new THREE.TextureLoader().load(Panel4Title);
+const panel4titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel4titleMesh = new THREE.MeshLambertMaterial({map: panel4titleTexture});
+panel4titleMesh.alphaHash = 1;
+const panel4title = new THREE.Mesh(panel4titleGeo, panel4titleMesh);
+panel4title.position.set(0, 60, 506);
+
+const panel4content = new THREE.Group();
+panel4content.add(panel4title);
 
 const panel5Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel5Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -140,6 +224,56 @@ const panel5Lines = new THREE.LineSegments(
 panel5Lines.position.set(433, 0, 250);
 panel5Lines.rotateY(Math.PI / 3);
 
+const panel5titleTexture = new THREE.TextureLoader().load(Panel5Title);
+const panel5titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel5titleMesh = new THREE.MeshLambertMaterial({map: panel5titleTexture});
+panel5titleMesh.alphaHash = 1;
+const panel5title = new THREE.Mesh(panel5titleGeo, panel5titleMesh);
+panel5title.position.set(438, 60, 255);
+panel5title.rotateY(Math.PI / 3);
+scene.add(panel5title);
+
+const illinoisTexture = new THREE.TextureLoader().load(Illinois);
+const illinoisGeo = new THREE.PlaneGeometry(57, 83);
+const illinoisMesh = new THREE.MeshLambertMaterial({map: illinoisTexture});
+illinoisMesh.alphaHash = 1;
+const illinois = new THREE.Mesh(illinoisGeo, illinoisMesh);
+illinois.position.set(410, -10, 310);
+illinois.rotateY(Math.PI / 3);
+illinois.userData = { URL: "https://cs.illinois.edu/" }
+scene.add(illinois);
+
+const illinoisCaptionTexture = new THREE.TextureLoader().load(IllinoisCaption);
+const illinoisCaptionGeo = new THREE.PlaneGeometry(147, 41);
+const illinoisCaptionMesh = new THREE.MeshLambertMaterial({map: illinoisCaptionTexture});
+illinoisCaptionMesh.alphaHash = 1;
+const illinoisCaption = new THREE.Mesh(illinoisCaptionGeo, illinoisCaptionMesh);
+illinoisCaption.position.set(410, -75, 310);
+illinoisCaption.rotateY(Math.PI / 3);
+scene.add(illinoisCaption);
+
+const bisvTexture = new THREE.TextureLoader().load(BISV);
+const bisvGeo = new THREE.CircleGeometry(41.5, 120);
+const bisvMesh = new THREE.MeshLambertMaterial({map: bisvTexture});
+bisvMesh.alphaHash = 1;
+const bisv = new THREE.Mesh(bisvGeo, bisvMesh);
+bisv.position.set(470, -10, 205);
+bisv.rotateY(Math.PI / 3);
+bisv.userData = { URL: "https://siliconvalley.basisindependent.com/"};
+scene.add(bisv);
+
+const bisvCaptionTexture = new THREE.TextureLoader().load(BISVCaption);
+const bisvCaptionGeo = new THREE.PlaneGeometry(147, 41);
+const bisvCaptionMesh = new THREE.MeshLambertMaterial({map: bisvCaptionTexture});
+bisvCaptionMesh.alphaHash = 1;
+const bisvCaption = new THREE.Mesh(bisvCaptionGeo, bisvCaptionMesh);
+bisvCaption.position.set(470, -70, 205);
+bisvCaption.rotateY(Math.PI / 3);
+scene.add(bisvCaption);
+
+const panel5Content = new THREE.Group();
+panel5Content.add(panel5title, illinois, illinoisCaption, bisv, bisvCaption);
+
 const panel6Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel6Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
 const panel6 = new THREE.Mesh(panel6Geo, panel6Mesh);
@@ -153,18 +287,96 @@ const panel6Lines = new THREE.LineSegments(
 panel6Lines.position.set(433, 0, -250);
 panel6Lines.rotateY((2 * Math.PI) / 3);
 
+const panel6titleTexture = new THREE.TextureLoader().load(Panel6Title);
+const panel6titleGeo = new THREE.PlaneGeometry(235, 65);
+const panel6titleMesh = new THREE.MeshLambertMaterial({
+  map: panel6titleTexture,
+});
+panel6titleMesh.alphaHash = 1;
+const panel6title = new THREE.Mesh(panel6titleGeo, panel6titleMesh);
+panel6title.position.set(438, 60, -255);
+panel6title.rotateY((2 * Math.PI) / 3);
+
+const panel6captionTexture = new THREE.TextureLoader().load(Panel6Caption);
+const panel6captionGeo = new THREE.PlaneGeometry(235, 65);
+const panel6captionMesh = new THREE.MeshLambertMaterial({
+  map: panel6captionTexture,
+});
+panel6captionMesh.alphaHash = 1;
+const panel6caption = new THREE.Mesh(panel6captionGeo, panel6captionMesh);
+panel6caption.position.set(438, -60, -255);
+panel6caption.rotateY((2 * Math.PI) / 3);
+
+const gmailTexture = new THREE.TextureLoader().load(Gmail);
+const gmailGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const gmailMesh = new THREE.MeshLambertMaterial({ map: gmailTexture });
+gmailMesh.alphaHash = 1;
+const gmail = new THREE.Mesh(gmailGeo, gmailMesh);
+gmail.position.set(435, 5, -255);
+gmail.rotateY((7 * Math.PI) / 6);
+gmail.rotateZ(Math.PI / 2);
+gmail.userData = { URL: "mailto:bodlasahith@gmail.com" };
+const gmailEdges = new THREE.EdgesGeometry(gmailGeo);
+const gmailLines = new THREE.LineSegments(
+  gmailEdges,
+  new THREE.LineBasicMaterial({ color: "#008B8B" })
+);
+gmailLines.position.set(435, 5, -255);
+gmailLines.rotateY((7 * Math.PI) / 6);
+gmailLines.rotateZ(Math.PI / 2);
+
+const linkedinTexture = new THREE.TextureLoader().load(Linkedin);
+const linkedinGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const linkedinMesh = new THREE.MeshLambertMaterial({ map: linkedinTexture });
+linkedinMesh.alphaHash = 1;
+const linkedin = new THREE.Mesh(linkedinGeo, linkedinMesh);
+linkedin.position.set(470, 5, -195);
+linkedin.rotateY((7 * Math.PI) / 6);
+linkedin.rotateZ(Math.PI / 2);
+linkedin.userData = {
+  URL: "https://www.linkedin.com/in/sahith-bodla-a9791120b/",
+};
+const linkedinEdges = new THREE.EdgesGeometry(linkedinGeo);
+const linkedinLines = new THREE.LineSegments(
+  linkedinEdges,
+  new THREE.LineBasicMaterial({ color: "#008B8B" })
+);
+linkedinLines.position.set(470, 5, -195);
+linkedinLines.rotateY((7 * Math.PI) / 6);
+linkedinLines.rotateZ(Math.PI / 2);
+
+const githubTexture = new THREE.TextureLoader().load(Github);
+const githubGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const githubMesh = new THREE.MeshLambertMaterial({ map: githubTexture });
+githubMesh.alphaHash = 1;
+const github = new THREE.Mesh(githubGeo, githubMesh);
+github.position.set(400, 5, -315);
+github.rotateY((7 * Math.PI) / 6);
+github.rotateZ(Math.PI / 2);
+github.userData = { URL: "https://github.com/bodlasahith" };
+const githubEdges = new THREE.EdgesGeometry(githubGeo);
+const githubLines = new THREE.LineSegments(
+  githubEdges,
+  new THREE.LineBasicMaterial({ color: "#008B8B" })
+);
+githubLines.position.set(400, 5, -315);
+githubLines.rotateY((7 * Math.PI) / 6);
+githubLines.rotateZ(Math.PI / 2);
+
+const panel6content = new THREE.Group();
+panel6content.add(panel6title, gmail, gmailLines, linkedin, linkedinLines, github, githubLines, panel6caption);
+
 const panels = new THREE.Group();
 panels.add(panel1, panel2, panel3, panel4, panel5, panel6);
 scene.add(panels);
-scene.add(
-  start,
-  panel1Lines,
-  panel2Lines,
-  panel3Lines,
-  panel4Lines,
-  panel5Lines,
-  panel6Lines
-);
+
+const panelLines = new THREE.Group();
+panelLines.add(startingIcon, panel1Lines, panel2Lines, panel3Lines, panel4Lines, panel5Lines, panel6Lines);
+scene.add(panelLines);
+
+const panelscontent = new THREE.Group();
+panelscontent.add(panel1content, panel2content, panel3content, panel4content, panel5Content, panel6content);
+scene.add(panelscontent);
 
 const panelSpotLight = new THREE.SpotLight(
   0xffffff,
@@ -175,16 +387,20 @@ const panelSpotLight = new THREE.SpotLight(
   0.5
 );
 panelSpotLight.position.set(0, 0, -800);
-
 const targetObject = new THREE.Object3D();
 targetObject.position.set(0, 0, 0);
-
 panelSpotLight.target = targetObject;
-scene.add(panelSpotLight);
 
 const panelLight = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
 panelLight.position.set(0, -100, -510);
-scene.add(panelLight);
+
+const panelLights = new THREE.Group();
+panelLights.add(panelLight, panelSpotLight);
+scene.add(panelLights);
+
+////////////////////////
+///// CLICK EVENTS /////
+////////////////////////
 
 const panelSpotLightPositions = [
   new THREE.Vector3(0, 0, -800),
@@ -224,7 +440,7 @@ function onPanelsClick(event) {
   raycaster.setFromCamera(mouse, camera);
 
   const intersects = raycaster.intersectObjects(
-    [...panels.children, start, observation],
+    [...panels.children, startingIcon, observation, platform, illinois, bisv, linkedin, gmail, github],
     true
   );
 
@@ -234,13 +450,23 @@ function onPanelsClick(event) {
     if (clickedObject === observation) {
       isObservationMode = !isObservationMode;
       toggleAmbientLight();
-    } else if (clickedObject === start) {
+    } else if (clickedObject === startingIcon) {
       if (!clickEnabled) return;
 
       panelLight.position.copy(panelLightPositions[0]);
       panelSpotLight.position.copy(panelSpotLightPositions[0]);
 
-      startCameraAnimation(cameraPositions[0]);
+      startingIconCameraAnimation(cameraPositions[0]);
+    } else if (clickedObject === platform) {
+      if (!clickEnabled) return;
+
+      startingIconCameraAnimation(new THREE.Vector3(0, 750, 0));
+    } else if (clickedObject == linkedin || 
+              clickedObject == gmail || 
+              clickedObject == github ||
+              clickedObject == illinois ||
+              clickedObject == bisv) {
+      window.open(clickedObject.userData.URL);
     } else {
       if (!clickEnabled) return;
 
@@ -250,7 +476,7 @@ function onPanelsClick(event) {
       panelLight.position.copy(panelLightPositions[clickedPanelIndex]);
       panelSpotLight.position.copy(panelSpotLightPositions[clickedPanelIndex]);
 
-      startCameraAnimation(clickedPanelPosition);
+      startingIconCameraAnimation(clickedPanelPosition);
     }
   }
 }
@@ -260,7 +486,7 @@ let isAnimatingCamera = false;
 let targetPosition = new THREE.Vector3();
 let clickEnabled = true;
 
-function startCameraAnimation(target) {
+function startingIconCameraAnimation(target) {
   if (!isAnimatingCamera) {
     isAnimatingCamera = true;
     clickEnabled = false;
@@ -326,8 +552,12 @@ Array(1000).fill().forEach(addNumber);
 const observationGeo = new THREE.OctahedronGeometry(15, 0);
 const observationMesh = new THREE.MeshLambertMaterial({ color: "deepSkyBlue" });
 const observation = new THREE.Mesh(observationGeo, observationMesh);
-observation.position.set(30, 50, 15);
+observation.position.set(23, 50, 28);
 scene.add(observation);
+
+const intro = new THREE.Group();
+intro.add(title, start, observationTitle, platform, platformLines, observation, titleSpotLight);
+scene.add(intro);
 
 let isObservationMode = false;
 let orbitRadius = 750;
@@ -352,8 +582,56 @@ function animate() {
     camera.lookAt(0, 0, 0);
   }
 
-  start.rotateY(0.01);
-  start.position.y = 150 + Math.sin(Date.now() * 0.001) * 5;
+  if (isObservationMode) {
+    panels.rotation.x += 0.005;
+    panels.rotation.y += 0.005;
+    panels.rotation.z += 0.005;
+
+    panelLines.rotation.x += 0.005;
+    panelLines.rotation.y += 0.005;
+    panelLines.rotation.z += 0.005;
+
+    intro.rotation.x -= 0.005;
+    intro.rotation.y -= 0.005;
+    intro.rotation.z -= 0.005;
+
+    panelscontent.rotation.x += 0.005;
+    panelscontent.rotation.y += 0.005;
+    panelscontent.rotation.z += 0.005;
+
+    panelLights.rotation.x += 0.005;
+    panelLights.rotation.y += 0.005;
+    panelLights.rotation.z += 0.005;
+
+    controls.update();
+    renderer.render(scene, camera);
+  } else {
+    panels.rotation.x = 0;
+    panels.rotation.y = 0;
+    panels.rotation.z = 0;
+
+    panelLines.rotation.x = 0;
+    panelLines.rotation.y = 0;
+    panelLines.rotation.z = 0;
+
+    intro.rotation.x = 0;
+    intro.rotation.y = 0;
+    intro.rotation.z = 0;
+
+    panelscontent.rotation.x = 0;
+    panelscontent.rotation.y = 0;
+    panelscontent.rotation.z = 0;
+
+    panelLights.rotation.x = 0;
+    panelLights.rotation.y = 0;
+    panelLights.rotation.z = 0;
+
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
+  startingIcon.rotateY(0.01);
+  startingIcon.position.y = 150 + Math.sin(Date.now() * 0.001) * 5;
   observation.rotateY(-0.01);
   observation.position.y = 50 + Math.sin(Date.now() * 0.001) * 5;
 
