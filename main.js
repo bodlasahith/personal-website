@@ -13,8 +13,17 @@ import ObservationTitle from "./images/observation.png";
 import PanelBackground from "./images/panel.png";
 
 import Panel1Title from "./images/panel1title.png";
+import Panel1Caption from "./images/panel1caption.png";
+import Sahith from "./images/sahith.png";
+import SahithBitmoji from "./images/sahithbitmoji.png";
+import SahithCaption from "./images/sahithcaption.png";
 
 import Panel2Title from "./images/panel2title.png";
+import Panel2Caption from "./images/panel2caption.png";
+import OneSpace from "./images/onespace.png";
+import Download from "./images/download.png";
+import DownloadCaption from "./images/downloadcaption.png";
+import Resume from "./resume.pdf";
 
 import Panel3Title from "./images/panel3title.png";
 
@@ -23,8 +32,7 @@ import Panel4Title from "./images/panel4title.png";
 import Panel5Title from "./images/panel5title.png";
 import Illinois from "./images/illinois.png";
 import IllinoisCaption from "./images/illinoiscaption.png";
-import BISV from "./images/bisv.png";
-import BISVCaption from "./images/bisvcaption.png";
+import Coursework from "./images/coursework.png";
 
 import Panel6Title from "./images/panel6title.png";
 import Panel6Caption from "./images/panel6caption.png";
@@ -55,8 +63,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
-// const axes = new THREE.AxesHelper(500);
-// scene.add(axes);
+const axes = new THREE.AxesHelper(500);
+scene.add(axes);
 
 ////////////////////
 ///// GREETING /////
@@ -139,8 +147,40 @@ const panel1title = new THREE.Mesh(panel1titleGeo, panel1titleMesh);
 panel1title.position.set(0, 60, -506);
 panel1title.rotateY(Math.PI);
 
+const panel1captionTexture = new THREE.TextureLoader().load(Panel1Caption);
+const panel1captionGeo = new THREE.PlaneGeometry(160, 100);
+const panel1captionMesh = new THREE.MeshLambertMaterial({map: panel1captionTexture});
+panel1captionMesh.alphaHash = 1;
+const panel1caption = new THREE.Mesh(panel1captionGeo, panel1captionMesh);
+panel1caption.position.set(50, -20, -506);
+panel1caption.rotateY(Math.PI);
+
+const sahithTexture = new THREE.TextureLoader().load(Sahith);
+const sahith = new THREE.Mesh(
+  new THREE.CircleGeometry(45, 50),
+  new THREE.MeshLambertMaterial({ map: sahithTexture })
+);
+sahith.position.set(-80, -15, -506);
+sahith.rotateY(Math.PI);
+
+const sahithBitmojiTexture = new THREE.TextureLoader().load(SahithBitmoji);
+const sahithBitmojiGeo = new THREE.CircleGeometry(45, 50);
+const sahithBitmojiMesh = new THREE.MeshLambertMaterial({map: sahithBitmojiTexture});
+sahithBitmojiMesh.alphaHash = 1;
+const sahithBitmoji = new THREE.Mesh(sahithBitmojiGeo, sahithBitmojiMesh);
+sahithBitmoji.position.set(-80, -15, -505.5);
+sahithBitmoji.rotateY(Math.PI);
+
+const sahithCaptionTexture = new THREE.TextureLoader().load(SahithCaption);
+const sahithCaptionGeo = new THREE.PlaneGeometry(90, 57);
+const sahithCaptionMesh = new THREE.MeshLambertMaterial({map: sahithCaptionTexture});
+sahithCaptionMesh.alphaHash = 1;
+const sahithCaption = new THREE.Mesh(sahithCaptionGeo, sahithCaptionMesh);
+sahithCaption.position.set(-80, -75, -505.5);
+sahithCaption.rotateY(Math.PI);
+
 const panel1content = new THREE.Group();
-panel1content.add(panel1title);
+panel1content.add(panel1title, sahith, sahithBitmoji, panel1caption, sahithCaption);
 
 const panel2Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel2Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -163,8 +203,41 @@ const panel2title = new THREE.Mesh(panel2titleGeo, panel2titleMesh);
 panel2title.position.set(-438, 60, -255);
 panel2title.rotateY(-2 * Math.PI / 3);
 
+const panel2captionTexture = new THREE.TextureLoader().load(Panel2Caption);
+const panel2captionGeo = new THREE.PlaneGeometry(170, 100);
+const panel2captionMesh = new THREE.MeshLambertMaterial({map: panel2captionTexture});
+panel2captionMesh.alphaHash = 1;
+const panel2caption = new THREE.Mesh(panel2captionGeo, panel2captionMesh);
+panel2caption.position.set(-420, -10, -285);
+panel2caption.rotateY(-2 * Math.PI / 3);
+
+const downloadIconTexture = new THREE.TextureLoader().load(Download);
+const downloadIconGeo = new THREE.CircleGeometry(30, 50);
+const downloadIconMesh = new THREE.MeshLambertMaterial({map: downloadIconTexture});
+downloadIconMesh.alphaHash = 1;
+const downloadIcon = new THREE.Mesh(downloadIconGeo, downloadIconMesh);
+downloadIcon.position.set(-480, -15, -185);
+downloadIcon.rotateY(-2 * Math.PI / 3);
+
+const onespaceTexture = new THREE.TextureLoader().load(OneSpace);
+const onespaceGeo = new THREE.PlaneGeometry(15, 15);
+const onespaceMesh = new THREE.MeshLambertMaterial({map: onespaceTexture});
+onespaceMesh.alphaHash = 1;
+const onespace = new THREE.Mesh(onespaceGeo, onespaceMesh);
+onespace.position.set(-452, -3, -230);
+onespace.rotateY(-2 * Math.PI / 3);
+onespace.userData = { URL: "https://one-space.tiiny.site/"};
+
+const downloadCaptionTexture = new THREE.TextureLoader().load(DownloadCaption);
+const downloadCaptionGeo = new THREE.PlaneGeometry(45, 15);
+const downloadCaptionMesh = new THREE.MeshLambertMaterial({map: downloadCaptionTexture});
+downloadCaptionMesh.alphaHash = 1;
+const downloadCaption = new THREE.Mesh(downloadCaptionGeo, downloadCaptionMesh);
+downloadCaption.position.set(-480, -55, -185);
+downloadCaption.rotateY(-2 * Math.PI / 3);
+
 const panel2content = new THREE.Group();
-panel2content.add(panel2title);
+panel2content.add(panel2title, downloadIcon, panel2caption, onespace, downloadCaption);
 
 const panel3Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel3Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -238,7 +311,7 @@ const illinoisGeo = new THREE.PlaneGeometry(57, 83);
 const illinoisMesh = new THREE.MeshLambertMaterial({map: illinoisTexture});
 illinoisMesh.alphaHash = 1;
 const illinois = new THREE.Mesh(illinoisGeo, illinoisMesh);
-illinois.position.set(410, -10, 310);
+illinois.position.set(405, -10, 312.5);
 illinois.rotateY(Math.PI / 3);
 illinois.userData = { URL: "https://cs.illinois.edu/" }
 scene.add(illinois);
@@ -252,27 +325,16 @@ illinoisCaption.position.set(410, -75, 310);
 illinoisCaption.rotateY(Math.PI / 3);
 scene.add(illinoisCaption);
 
-const bisvTexture = new THREE.TextureLoader().load(BISV);
-const bisvGeo = new THREE.CircleGeometry(41.5, 120);
-const bisvMesh = new THREE.MeshLambertMaterial({map: bisvTexture});
-bisvMesh.alphaHash = 1;
-const bisv = new THREE.Mesh(bisvGeo, bisvMesh);
-bisv.position.set(470, -10, 205);
-bisv.rotateY(Math.PI / 3);
-bisv.userData = { URL: "https://siliconvalley.basisindependent.com/"};
-scene.add(bisv);
-
-const bisvCaptionTexture = new THREE.TextureLoader().load(BISVCaption);
-const bisvCaptionGeo = new THREE.PlaneGeometry(147, 41);
-const bisvCaptionMesh = new THREE.MeshLambertMaterial({map: bisvCaptionTexture});
-bisvCaptionMesh.alphaHash = 1;
-const bisvCaption = new THREE.Mesh(bisvCaptionGeo, bisvCaptionMesh);
-bisvCaption.position.set(470, -70, 205);
-bisvCaption.rotateY(Math.PI / 3);
-scene.add(bisvCaption);
+const courseworkTexture = new THREE.TextureLoader().load(Coursework);
+const courseworkGeo = new THREE.PlaneGeometry(150, 100);
+const courseworkMesh = new THREE.MeshLambertMaterial({map: courseworkTexture});
+courseworkMesh.alphaHash = 1;
+const coursework = new THREE.Mesh(courseworkGeo, courseworkMesh);
+coursework.position.set(475, -20, 190);
+coursework.rotateY(Math.PI / 3);
 
 const panel5Content = new THREE.Group();
-panel5Content.add(panel5title, illinois, illinoisCaption, bisv, bisvCaption);
+panel5Content.add(panel5title, illinois, illinoisCaption, coursework);
 
 const panel6Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel6Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -308,63 +370,34 @@ panel6caption.position.set(438, -60, -255);
 panel6caption.rotateY((2 * Math.PI) / 3);
 
 const gmailTexture = new THREE.TextureLoader().load(Gmail);
-const gmailGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const gmailGeo = new THREE.CircleGeometry(30, 50);
 const gmailMesh = new THREE.MeshLambertMaterial({ map: gmailTexture });
 gmailMesh.alphaHash = 1;
 const gmail = new THREE.Mesh(gmailGeo, gmailMesh);
-gmail.position.set(435, 5, -255);
-gmail.rotateY((7 * Math.PI) / 6);
-gmail.rotateZ(Math.PI / 2);
+gmail.position.set(440, 5, -255);
+gmail.rotateY((2 * Math.PI) / 3);
 gmail.userData = { URL: "mailto:bodlasahith@gmail.com" };
-const gmailEdges = new THREE.EdgesGeometry(gmailGeo);
-const gmailLines = new THREE.LineSegments(
-  gmailEdges,
-  new THREE.LineBasicMaterial({ color: "#008B8B" })
-);
-gmailLines.position.set(435, 5, -255);
-gmailLines.rotateY((7 * Math.PI) / 6);
-gmailLines.rotateZ(Math.PI / 2);
 
 const linkedinTexture = new THREE.TextureLoader().load(Linkedin);
-const linkedinGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const linkedinGeo = new THREE.CircleGeometry(30, 50);
 const linkedinMesh = new THREE.MeshLambertMaterial({ map: linkedinTexture });
 linkedinMesh.alphaHash = 1;
 const linkedin = new THREE.Mesh(linkedinGeo, linkedinMesh);
-linkedin.position.set(470, 5, -195);
-linkedin.rotateY((7 * Math.PI) / 6);
-linkedin.rotateZ(Math.PI / 2);
-linkedin.userData = {
-  URL: "https://www.linkedin.com/in/sahith-bodla-a9791120b/",
-};
-const linkedinEdges = new THREE.EdgesGeometry(linkedinGeo);
-const linkedinLines = new THREE.LineSegments(
-  linkedinEdges,
-  new THREE.LineBasicMaterial({ color: "#008B8B" })
-);
-linkedinLines.position.set(470, 5, -195);
-linkedinLines.rotateY((7 * Math.PI) / 6);
-linkedinLines.rotateZ(Math.PI / 2);
+linkedin.position.set(475, 5, -195);
+linkedin.rotateY((2 * Math.PI) / 3);
+linkedin.userData = { URL: "https://www.linkedin.com/in/sahith-bodla-a9791120b/" };
 
 const githubTexture = new THREE.TextureLoader().load(Github);
-const githubGeo = new THREE.CylinderGeometry(30, 30, 5, 32);
+const githubGeo = new THREE.CircleGeometry(30, 50);
 const githubMesh = new THREE.MeshLambertMaterial({ map: githubTexture });
 githubMesh.alphaHash = 1;
 const github = new THREE.Mesh(githubGeo, githubMesh);
-github.position.set(400, 5, -315);
-github.rotateY((7 * Math.PI) / 6);
-github.rotateZ(Math.PI / 2);
+github.position.set(405, 5, -315);
+github.rotateY((2 * Math.PI) / 3);
 github.userData = { URL: "https://github.com/bodlasahith" };
-const githubEdges = new THREE.EdgesGeometry(githubGeo);
-const githubLines = new THREE.LineSegments(
-  githubEdges,
-  new THREE.LineBasicMaterial({ color: "#008B8B" })
-);
-githubLines.position.set(400, 5, -315);
-githubLines.rotateY((7 * Math.PI) / 6);
-githubLines.rotateZ(Math.PI / 2);
 
 const panel6content = new THREE.Group();
-panel6content.add(panel6title, gmail, gmailLines, linkedin, linkedinLines, github, githubLines, panel6caption);
+panel6content.add(panel6title, gmail, linkedin, github, panel6caption);
 
 const panels = new THREE.Group();
 panels.add(panel1, panel2, panel3, panel4, panel5, panel6);
@@ -440,7 +473,7 @@ function onPanelsClick(event) {
   raycaster.setFromCamera(mouse, camera);
 
   const intersects = raycaster.intersectObjects(
-    [...panels.children, startingIcon, observation, platform, illinois, bisv, linkedin, gmail, github],
+    [...panels.children, startingIcon, observation, platform, sahith, sahithBitmoji, onespace, illinois, linkedin, gmail, github],
     true
   );
 
@@ -461,11 +494,15 @@ function onPanelsClick(event) {
       if (!clickEnabled) return;
 
       startingIconCameraAnimation(new THREE.Vector3(0, 750, 0));
-    } else if (clickedObject == linkedin || 
-              clickedObject == gmail || 
-              clickedObject == github ||
-              clickedObject == illinois ||
-              clickedObject == bisv) {
+    } else if (clickedObject === sahith) {
+      sahith.position.set(-80, -15, -500);
+    } else if (clickedObject === sahithBitmoji) {
+      sahith.position.set(-80, -15, -506);
+    } else if (clickedObject === linkedin || 
+              clickedObject === gmail || 
+              clickedObject === github ||
+              clickedObject === illinois ||
+              clickedObject === onespace) {
       window.open(clickedObject.userData.URL);
     } else {
       if (!clickEnabled) return;
@@ -634,6 +671,9 @@ function animate() {
   startingIcon.position.y = 150 + Math.sin(Date.now() * 0.001) * 5;
   observation.rotateY(-0.01);
   observation.position.y = 50 + Math.sin(Date.now() * 0.001) * 5;
+  sahith.position.y = -15 + Math.sin(Date.now() * 0.001);
+  sahithBitmoji.position.y = -15 + Math.sin(Date.now() * 0.001);
+  downloadIcon.position.y = -15 + Math.sin(Date.now() * 0.001);
 
   controls.update();
   renderer.render(scene, camera);
