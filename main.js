@@ -1,6 +1,6 @@
 import "./style.css";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from "https://unpkg.com/three@0.159.0/build/three.module.js";
+import { OrbitControls } from 'https://unpkg.com/three@0.159.0/examples/jsm/controls/OrbitControls.js';
 
 import One from "./images/one.png";
 import Zero from "./images/zero.png";
