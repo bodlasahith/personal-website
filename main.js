@@ -24,9 +24,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
-const axes = new THREE.AxesHelper(500);
-scene.add(axes);
-
 ////////////////////
 ///// GREETING /////
 ////////////////////
