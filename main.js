@@ -184,7 +184,7 @@ onespaceMesh.alphaHash = 1;
 const onespace = new THREE.Mesh(onespaceGeo, onespaceMesh);
 onespace.position.set(-452, -3, -230);
 onespace.rotateY(-2 * Math.PI / 3);
-onespace.userData = { URL: "https://one-space.tiiny.site/"};
+onespace.userData = { URL: "https://one-space-s.github.io"};
 
 const downloadCaptionTexture = new THREE.TextureLoader().load("./images/downloadcaption.png");
 const downloadCaptionGeo = new THREE.PlaneGeometry(45, 15);
