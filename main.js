@@ -26,13 +26,18 @@ import DownloadCaption from "./images/downloadcaption.png";
 import Resume from "./resume.pdf";
 
 import Panel3Title from "./images/panel3title.png";
+import Panel3Caption from "./images/panel3caption.png";
+import Founders from "./images/founders.png";
+import BISV from "./images/bisv.png";
 
 import Panel4Title from "./images/panel4title.png";
+import Panel4Caption from "./images/hobbies.png";
 
 import Panel5Title from "./images/panel5title.png";
 import Illinois from "./images/illinois.png";
 import IllinoisCaption from "./images/illinoiscaption.png";
 import Coursework from "./images/coursework.png";
+import Skills from "./images/skills.png";
 
 import Panel6Title from "./images/panel6title.png";
 import Panel6Caption from "./images/panel6caption.png";
@@ -260,8 +265,42 @@ const panel3title = new THREE.Mesh(panel3titleGeo, panel3titleMesh);
 panel3title.position.set(-438, 60, 255);
 panel3title.rotateY(-1 * Math.PI / 3);
 
+const panel3captionTexture = new THREE.TextureLoader().load(Panel3Caption);
+const panel3captionGeo = new THREE.PlaneGeometry(220, 140);
+const panel3captionMesh = new THREE.MeshLambertMaterial({map: panel3captionTexture});
+panel3captionMesh.alphaHash = 1;
+const panel3caption = new THREE.Mesh(panel3captionGeo, panel3captionMesh);
+panel3caption.position.set(-450, -25, 235);
+panel3caption.rotateY(-1 * Math.PI / 3);
+
+const foundersTexture = new THREE.TextureLoader().load(Founders);
+const foundersGeo = new THREE.PlaneGeometry(30, 30);
+const foundersMesh = new THREE.MeshLambertMaterial({map: foundersTexture});
+foundersMesh.alphaHash = 1;
+const founders = new THREE.Mesh(foundersGeo, foundersMesh);
+founders.position.set(-390, 25, 340);
+founders.rotateY(-1 * Math.PI / 3);
+
+const videoTexture = new THREE.TextureLoader().load(Illinois);
+const videoGeo = new THREE.PlaneGeometry(20, 30);
+const videoMesh = new THREE.MeshLambertMaterial({map: videoTexture});
+videoMesh.alphaHash = 1;
+const video = new THREE.Mesh(videoGeo, videoMesh);
+video.position.set(-390, -25, 340);
+video.rotateY(-1 * Math.PI / 3);
+video.userData = { URL: "https://mediaspace.illinois.edu/media/t/1_ro9tfei9" };
+
+const bisvTexture = new THREE.TextureLoader().load(BISV);
+const bisvGeo = new THREE.PlaneGeometry(30, 30);
+const bisvMesh = new THREE.MeshLambertMaterial({map: bisvTexture});
+bisvMesh.alphaHash = 1;
+const bisv = new THREE.Mesh(bisvGeo, bisvMesh);
+bisv.position.set(-390, -75, 340);
+bisv.rotateY(-1 * Math.PI / 3);
+bisv.userData = { URL: "https://siliconvalley.basisindependent.com/author/sahithb2022/" };
+
 const panel3content = new THREE.Group();
-panel3content.add(panel3title);
+panel3content.add(panel3title, panel3caption, founders, video, bisv);
 
 const panel4Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel4Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -281,8 +320,15 @@ panel4titleMesh.alphaHash = 1;
 const panel4title = new THREE.Mesh(panel4titleGeo, panel4titleMesh);
 panel4title.position.set(0, 60, 506);
 
+const panel4captionTexture = new THREE.TextureLoader().load(Panel4Caption);
+const panel4captionGeo = new THREE.PlaneGeometry(170, 100);
+const panel4captionMesh = new THREE.MeshLambertMaterial({map: panel4captionTexture});
+panel4captionMesh.alphaHash = 1;
+const panel4caption = new THREE.Mesh(panel4captionGeo, panel4captionMesh);
+panel4caption.position.set(-50, -20, 506);
+
 const panel4content = new THREE.Group();
-panel4content.add(panel4title);
+panel4content.add(panel4title, panel4caption);
 
 const panel5Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel5Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -330,11 +376,19 @@ const courseworkGeo = new THREE.PlaneGeometry(150, 100);
 const courseworkMesh = new THREE.MeshLambertMaterial({map: courseworkTexture});
 courseworkMesh.alphaHash = 1;
 const coursework = new THREE.Mesh(courseworkGeo, courseworkMesh);
-coursework.position.set(475, -20, 190);
+coursework.position.set(475, -10, 190);
 coursework.rotateY(Math.PI / 3);
 
+const skillsTexture = new THREE.TextureLoader().load(Skills);
+const skillsGeo = new THREE.PlaneGeometry(120, 30);
+const skillsMesh = new THREE.MeshLambertMaterial({map: skillsTexture});
+skillsMesh.alphaHash = 1;
+const skills = new THREE.Mesh(skillsGeo, skillsMesh);
+skills.position.set(472.5, -75, 200);
+skills.rotateY(Math.PI / 3);
+
 const panel5Content = new THREE.Group();
-panel5Content.add(panel5title, illinois, illinoisCaption, coursework);
+panel5Content.add(panel5title, illinois, illinoisCaption, coursework, skills);
 
 const panel6Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel6Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -473,7 +527,7 @@ function onPanelsClick(event) {
   raycaster.setFromCamera(mouse, camera);
 
   const intersects = raycaster.intersectObjects(
-    [...panels.children, startingIcon, observation, platform, sahith, sahithBitmoji, onespace, illinois, linkedin, gmail, github],
+    [...panels.children, startingIcon, observation, platform, sahith, sahithBitmoji, onespace, downloadIcon, bisv, video, illinois, linkedin, gmail, github],
     true
   );
 
@@ -502,8 +556,12 @@ function onPanelsClick(event) {
               clickedObject === gmail || 
               clickedObject === github ||
               clickedObject === illinois ||
+              clickedObject === video ||
+              clickedObject === bisv ||
               clickedObject === onespace) {
       window.open(clickedObject.userData.URL);
+    } else if (clickedObject === downloadIcon) { 
+      onObjectClicked(event);
     } else {
       if (!clickEnabled) return;
 
@@ -532,6 +590,18 @@ function startingIconCameraAnimation(target) {
     animateCamera();
   }
 }
+
+function onObjectClicked(event) {
+  const downloadLink = document.createElement('a');
+  downloadLink.href = Resume;
+  downloadLink.download = 'sahithb_resume.pdf';
+
+  document.body.appendChild(downloadLink);
+
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
+
 
 function animateCamera() {
   const increment = 0.05;
