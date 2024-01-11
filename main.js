@@ -586,7 +586,7 @@ function addNumber() {
   zeroMesh.alphaHash = 1;
   const zero = new THREE.Mesh(zeroGeo, zeroMesh);
 
-  const oneTexture = new THREE.TextureLoader().load("/images/one.png");
+  const oneTexture = new THREE.TextureLoader().load("./images/one.png");
   const oneGeo = new THREE.PlaneGeometry(2, 5);
   const oneMesh = new THREE.MeshBasicMaterial({ map: oneTexture });
   oneMesh.alphaHash = 1;
