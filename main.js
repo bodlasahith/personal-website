@@ -546,7 +546,7 @@ function startingIconCameraAnimation(target) {
 
 function onObjectClicked(event) {
   const downloadLink = document.createElement('a');
-  downloadLink.href = "./resume.pdf";
+  downloadLink.href = "./Resume.pdf";
   downloadLink.download = 'sahithb_resume.pdf';
 
   document.body.appendChild(downloadLink);
