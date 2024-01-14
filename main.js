@@ -1,5 +1,5 @@
 import * as THREE from "https://unpkg.com/three@0.159.0/build/three.module.js";
-import { OrbitControls } from 'https://unpkg.com/three@0.159.0/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from "https://unpkg.com/three@0.159.0/examples/jsm/controls/OrbitControls.js";
 
 /////////////////////////////
 ///// ENVIRONMENT SETUP /////
@@ -59,7 +59,7 @@ titleSpotLight.position.set(0, 450, 0);
 
 const startTexture = new THREE.TextureLoader().load("./images/start.png");
 const startGeo = new THREE.PlaneGeometry(125, 125);
-const startMesh = new THREE.MeshLambertMaterial({map: startTexture});
+const startMesh = new THREE.MeshLambertMaterial({ map: startTexture });
 startMesh.alphaHash = 1;
 const start = new THREE.Mesh(startGeo, startMesh);
 start.position.set(0, 20, -300);
@@ -67,9 +67,12 @@ start.rotation.x = -Math.PI / 2;
 
 const observationTitleTexture = new THREE.TextureLoader().load("./images/observation.png");
 const observationTitleGeo = new THREE.PlaneGeometry(250, 105);
-const observationTitleMesh = new THREE.MeshLambertMaterial({map: observationTitleTexture});
+const observationTitleMesh = new THREE.MeshLambertMaterial({ map: observationTitleTexture});
 observationTitleMesh.alphaHash = 1;
-const observationTitle = new THREE.Mesh(observationTitleGeo, observationTitleMesh);
+const observationTitle = new THREE.Mesh(
+  observationTitleGeo,
+  observationTitleMesh
+);
 observationTitle.position.set(0, 20, 280);
 observationTitle.rotation.x = -Math.PI / 2;
 
@@ -99,7 +102,7 @@ panel1Lines.position.set(0, 0, -500);
 
 const panel1titleTexture = new THREE.TextureLoader().load("./images/panel1title.png");
 const panel1titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel1titleMesh = new THREE.MeshLambertMaterial({map: panel1titleTexture});
+const panel1titleMesh = new THREE.MeshLambertMaterial({ map: panel1titleTexture});
 panel1titleMesh.alphaHash = 1;
 const panel1title = new THREE.Mesh(panel1titleGeo, panel1titleMesh);
 panel1title.position.set(0, 60, -506);
@@ -107,7 +110,7 @@ panel1title.rotateY(Math.PI);
 
 const panel1captionTexture = new THREE.TextureLoader().load("./images/panel1caption.png");
 const panel1captionGeo = new THREE.PlaneGeometry(160, 100);
-const panel1captionMesh = new THREE.MeshLambertMaterial({map: panel1captionTexture});
+const panel1captionMesh = new THREE.MeshLambertMaterial({ map: panel1captionTexture});
 panel1captionMesh.alphaHash = 1;
 const panel1caption = new THREE.Mesh(panel1captionGeo, panel1captionMesh);
 panel1caption.position.set(50, -20, -506);
@@ -123,7 +126,7 @@ sahith.rotateY(Math.PI);
 
 const sahithBitmojiTexture = new THREE.TextureLoader().load("./images/sahithbitmoji.png");
 const sahithBitmojiGeo = new THREE.CircleGeometry(45, 50);
-const sahithBitmojiMesh = new THREE.MeshLambertMaterial({map: sahithBitmojiTexture});
+const sahithBitmojiMesh = new THREE.MeshLambertMaterial({ map: sahithBitmojiTexture});
 sahithBitmojiMesh.alphaHash = 1;
 const sahithBitmoji = new THREE.Mesh(sahithBitmojiGeo, sahithBitmojiMesh);
 sahithBitmoji.position.set(-80, -15, -505.5);
@@ -131,7 +134,7 @@ sahithBitmoji.rotateY(Math.PI);
 
 const sahithCaptionTexture = new THREE.TextureLoader().load("./images/sahithcaption.png");
 const sahithCaptionGeo = new THREE.PlaneGeometry(90, 57);
-const sahithCaptionMesh = new THREE.MeshLambertMaterial({map: sahithCaptionTexture});
+const sahithCaptionMesh = new THREE.MeshLambertMaterial({ map: sahithCaptionTexture });
 sahithCaptionMesh.alphaHash = 1;
 const sahithCaption = new THREE.Mesh(sahithCaptionGeo, sahithCaptionMesh);
 sahithCaption.position.set(-80, -75, -505.5);
@@ -155,44 +158,44 @@ panel2Lines.rotateY(Math.PI / 3);
 
 const panel2titleTexture = new THREE.TextureLoader().load("./images/panel2title.png");
 const panel2titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel2titleMesh = new THREE.MeshLambertMaterial({map: panel2titleTexture});
+const panel2titleMesh = new THREE.MeshLambertMaterial({ map: panel2titleTexture });
 panel2titleMesh.alphaHash = 1;
 const panel2title = new THREE.Mesh(panel2titleGeo, panel2titleMesh);
 panel2title.position.set(-438, 60, -255);
-panel2title.rotateY(-2 * Math.PI / 3);
+panel2title.rotateY((-2 * Math.PI) / 3);
 
 const panel2captionTexture = new THREE.TextureLoader().load("./images/panel2caption.png");
 const panel2captionGeo = new THREE.PlaneGeometry(170, 100);
-const panel2captionMesh = new THREE.MeshLambertMaterial({map: panel2captionTexture});
+const panel2captionMesh = new THREE.MeshLambertMaterial({ map: panel2captionTexture});
 panel2captionMesh.alphaHash = 1;
 const panel2caption = new THREE.Mesh(panel2captionGeo, panel2captionMesh);
 panel2caption.position.set(-420, -10, -285);
-panel2caption.rotateY(-2 * Math.PI / 3);
+panel2caption.rotateY((-2 * Math.PI) / 3);
 
 const downloadIconTexture = new THREE.TextureLoader().load("./images/download.png");
 const downloadIconGeo = new THREE.CircleGeometry(30, 50);
-const downloadIconMesh = new THREE.MeshLambertMaterial({map: downloadIconTexture});
+const downloadIconMesh = new THREE.MeshLambertMaterial({ map: downloadIconTexture});
 downloadIconMesh.alphaHash = 1;
 const downloadIcon = new THREE.Mesh(downloadIconGeo, downloadIconMesh);
 downloadIcon.position.set(-480, -15, -185);
-downloadIcon.rotateY(-2 * Math.PI / 3);
+downloadIcon.rotateY((-2 * Math.PI) / 3);
 
 const onespaceTexture = new THREE.TextureLoader().load("./images/onespace.png");
 const onespaceGeo = new THREE.PlaneGeometry(15, 15);
-const onespaceMesh = new THREE.MeshLambertMaterial({map: onespaceTexture});
+const onespaceMesh = new THREE.MeshLambertMaterial({ map: onespaceTexture });
 onespaceMesh.alphaHash = 1;
 const onespace = new THREE.Mesh(onespaceGeo, onespaceMesh);
 onespace.position.set(-452, -3, -230);
-onespace.rotateY(-2 * Math.PI / 3);
-onespace.userData = { URL: "https://one-space-s.github.io"};
+onespace.rotateY((-2 * Math.PI) / 3);
+onespace.userData = { URL: "https://one-space-s.github.io" };
 
 const downloadCaptionTexture = new THREE.TextureLoader().load("./images/downloadcaption.png");
 const downloadCaptionGeo = new THREE.PlaneGeometry(45, 15);
-const downloadCaptionMesh = new THREE.MeshLambertMaterial({map: downloadCaptionTexture});
+const downloadCaptionMesh = new THREE.MeshLambertMaterial({ map: downloadCaptionTexture});
 downloadCaptionMesh.alphaHash = 1;
 const downloadCaption = new THREE.Mesh(downloadCaptionGeo, downloadCaptionMesh);
 downloadCaption.position.set(-480, -55, -185);
-downloadCaption.rotateY(-2 * Math.PI / 3);
+downloadCaption.rotateY((-2 * Math.PI) / 3);
 
 const panel2content = new THREE.Group();
 panel2content.add(panel2title, downloadIcon, panel2caption, onespace, downloadCaption);
@@ -212,40 +215,40 @@ panel3Lines.rotateY((2 * Math.PI) / 3);
 
 const panel3titleTexture = new THREE.TextureLoader().load("./images/panel3title.png");
 const panel3titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel3titleMesh = new THREE.MeshLambertMaterial({map: panel3titleTexture});
+const panel3titleMesh = new THREE.MeshLambertMaterial({ map: panel3titleTexture});
 panel3titleMesh.alphaHash = 1;
 const panel3title = new THREE.Mesh(panel3titleGeo, panel3titleMesh);
 panel3title.position.set(-438, 60, 255);
-panel3title.rotateY(-1 * Math.PI / 3);
+panel3title.rotateY((-1 * Math.PI) / 3);
 
 const panel3captionTexture = new THREE.TextureLoader().load("./images/panel3caption.png");
 const panel3captionGeo = new THREE.PlaneGeometry(220, 140);
-const panel3captionMesh = new THREE.MeshLambertMaterial({map: panel3captionTexture});
+const panel3captionMesh = new THREE.MeshLambertMaterial({ map: panel3captionTexture});
 panel3captionMesh.alphaHash = 1;
 const panel3caption = new THREE.Mesh(panel3captionGeo, panel3captionMesh);
 panel3caption.position.set(-450, -25, 235);
-panel3caption.rotateY(-1 * Math.PI / 3);
+panel3caption.rotateY((-1 * Math.PI) / 3);
 
 const foundersTexture = new THREE.TextureLoader().load("./images/founders.png");
 const foundersGeo = new THREE.PlaneGeometry(30, 30);
-const foundersMesh = new THREE.MeshLambertMaterial({map: foundersTexture});
+const foundersMesh = new THREE.MeshLambertMaterial({ map: foundersTexture });
 foundersMesh.alphaHash = 1;
 const founders = new THREE.Mesh(foundersGeo, foundersMesh);
 founders.position.set(-390, 25, 340);
-founders.rotateY(-1 * Math.PI / 3);
+founders.rotateY((-1 * Math.PI) / 3);
 
 const videoTexture = new THREE.TextureLoader().load("./images/illinois.png");
 const videoGeo = new THREE.PlaneGeometry(20, 30);
-const videoMesh = new THREE.MeshLambertMaterial({map: videoTexture});
+const videoMesh = new THREE.MeshLambertMaterial({ map: videoTexture });
 videoMesh.alphaHash = 1;
 const video = new THREE.Mesh(videoGeo, videoMesh);
 video.position.set(-390, -25, 340);
-video.rotateY(-1 * Math.PI / 3);
+video.rotateY((-1 * Math.PI) / 3);
 video.userData = { URL: "https://mediaspace.illinois.edu/media/t/1_ro9tfei9" };
 
 const bisvTexture = new THREE.TextureLoader().load("./images/bisv.png");
 const bisvGeo = new THREE.PlaneGeometry(30, 30);
-const bisvMesh = new THREE.MeshLambertMaterial({map: bisvTexture});
+const bisvMesh = new THREE.MeshLambertMaterial({ map: bisvTexture });
 bisvMesh.alphaHash = 1;
 const bisv = new THREE.Mesh(bisvGeo, bisvMesh);
 bisv.position.set(-390, -75, 340);
@@ -268,14 +271,14 @@ panel4Lines.position.set(0, 0, 500);
 
 const panel4titleTexture = new THREE.TextureLoader().load("./images/panel4title.png");
 const panel4titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel4titleMesh = new THREE.MeshLambertMaterial({map: panel4titleTexture});
+const panel4titleMesh = new THREE.MeshLambertMaterial({ map: panel4titleTexture});
 panel4titleMesh.alphaHash = 1;
 const panel4title = new THREE.Mesh(panel4titleGeo, panel4titleMesh);
 panel4title.position.set(0, 60, 506);
 
 const panel4captionTexture = new THREE.TextureLoader().load("./images/hobbies.png");
 const panel4captionGeo = new THREE.PlaneGeometry(170, 100);
-const panel4captionMesh = new THREE.MeshLambertMaterial({map: panel4captionTexture});
+const panel4captionMesh = new THREE.MeshLambertMaterial({ map: panel4captionTexture});
 panel4captionMesh.alphaHash = 1;
 const panel4caption = new THREE.Mesh(panel4captionGeo, panel4captionMesh);
 panel4caption.position.set(-50, -20, 506);
@@ -298,7 +301,7 @@ panel5Lines.rotateY(Math.PI / 3);
 
 const panel5titleTexture = new THREE.TextureLoader().load("./images/panel5title.png");
 const panel5titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel5titleMesh = new THREE.MeshLambertMaterial({map: panel5titleTexture});
+const panel5titleMesh = new THREE.MeshLambertMaterial({ map: panel5titleTexture});
 panel5titleMesh.alphaHash = 1;
 const panel5title = new THREE.Mesh(panel5titleGeo, panel5titleMesh);
 panel5title.position.set(438, 60, 255);
@@ -307,17 +310,17 @@ scene.add(panel5title);
 
 const illinoisTexture = new THREE.TextureLoader().load("./images/illinois.png");
 const illinoisGeo = new THREE.PlaneGeometry(57, 83);
-const illinoisMesh = new THREE.MeshLambertMaterial({map: illinoisTexture});
+const illinoisMesh = new THREE.MeshLambertMaterial({ map: illinoisTexture });
 illinoisMesh.alphaHash = 1;
 const illinois = new THREE.Mesh(illinoisGeo, illinoisMesh);
 illinois.position.set(405, -10, 312.5);
 illinois.rotateY(Math.PI / 3);
-illinois.userData = { URL: "https://cs.illinois.edu/" }
+illinois.userData = { URL: "https://cs.illinois.edu/" };
 scene.add(illinois);
 
 const illinoisCaptionTexture = new THREE.TextureLoader().load("./images/illinoiscaption.png");
 const illinoisCaptionGeo = new THREE.PlaneGeometry(147, 41);
-const illinoisCaptionMesh = new THREE.MeshLambertMaterial({map: illinoisCaptionTexture});
+const illinoisCaptionMesh = new THREE.MeshLambertMaterial({ map: illinoisCaptionTexture});
 illinoisCaptionMesh.alphaHash = 1;
 const illinoisCaption = new THREE.Mesh(illinoisCaptionGeo, illinoisCaptionMesh);
 illinoisCaption.position.set(410, -75, 310);
@@ -326,7 +329,7 @@ scene.add(illinoisCaption);
 
 const courseworkTexture = new THREE.TextureLoader().load("./images/coursework.png");
 const courseworkGeo = new THREE.PlaneGeometry(150, 100);
-const courseworkMesh = new THREE.MeshLambertMaterial({map: courseworkTexture});
+const courseworkMesh = new THREE.MeshLambertMaterial({ map: courseworkTexture});
 courseworkMesh.alphaHash = 1;
 const coursework = new THREE.Mesh(courseworkGeo, courseworkMesh);
 coursework.position.set(475, -10, 190);
@@ -334,7 +337,7 @@ coursework.rotateY(Math.PI / 3);
 
 const skillsTexture = new THREE.TextureLoader().load("./images/skills.png");
 const skillsGeo = new THREE.PlaneGeometry(120, 30);
-const skillsMesh = new THREE.MeshLambertMaterial({map: skillsTexture});
+const skillsMesh = new THREE.MeshLambertMaterial({ map: skillsTexture });
 skillsMesh.alphaHash = 1;
 const skills = new THREE.Mesh(skillsGeo, skillsMesh);
 skills.position.set(472.5, -75, 200);
@@ -505,15 +508,17 @@ function onPanelsClick(event) {
       sahith.position.set(-80, -15, -500);
     } else if (clickedObject === sahithBitmoji) {
       sahith.position.set(-80, -15, -506);
-    } else if (clickedObject === linkedin || 
-              clickedObject === gmail || 
-              clickedObject === github ||
-              clickedObject === illinois ||
-              clickedObject === video ||
-              clickedObject === bisv ||
-              clickedObject === onespace) {
+    } else if (
+      clickedObject === linkedin ||
+      clickedObject === gmail ||
+      clickedObject === github ||
+      clickedObject === illinois ||
+      clickedObject === video ||
+      clickedObject === bisv ||
+      clickedObject === onespace
+    ) {
       window.open(clickedObject.userData.URL);
-    } else if (clickedObject === downloadIcon) { 
+    } else if (clickedObject === downloadIcon) {
       onObjectClicked(event);
     } else {
       if (!clickEnabled) return;
@@ -545,16 +550,15 @@ function startingIconCameraAnimation(target) {
 }
 
 function onObjectClicked(event) {
-  const downloadLink = document.createElement('a');
+  const downloadLink = document.createElement("a");
   downloadLink.href = "./Resume.pdf";
-  downloadLink.download = 'sahithb_resume.pdf';
+  downloadLink.download = "sahithb_resume.pdf";
 
   document.body.appendChild(downloadLink);
 
   downloadLink.click();
   document.body.removeChild(downloadLink);
 }
-
 
 function animateCamera() {
   const increment = 0.05;
