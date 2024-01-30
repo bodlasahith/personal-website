@@ -5,9 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <title>Vite App</title>
+    <style>
+      body {
+        background-image: url("./images/matrix_bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
     <canvas id="bg"></canvas>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <button id="switch" title="Change View!">
+      <i class="fas fa-cube"></i>
+    </button>
+    <script>
+      document.getElementById("switch").addEventListener("click", function () {
+        var iconElement = this.querySelector("i");
+        var bg = document.getElementById("bg");
+        var body = document.body;
+
+        if (iconElement.classList.contains("fa-cube")) {
+          iconElement.classList.remove("fa-cube");
+          iconElement.classList.add("fa-list");
+        } else {
+          iconElement.classList.remove("fa-list");
+          iconElement.classList.add("fa-cube");
+        }
+
+        bg.style.display = bg.style.display === "block" ? "none" : "block";
+      });
+    </script>
     <audio id="backgroundAudio" controls autoplay loop volume="0.2" hidden>
       <source src="" type="audio/mp3" />
     </audio>
@@ -19,5 +53,128 @@
       }
     </script>
     <script type="module" src="./main.js"></script>
+    <div id="top">
+      <h1 id="title">Hi, I'm Sahith!</h1>
+      <p id="subtitle">
+        Click the icon for a Three.JS rendering!<br>
+        <a href="./Resume.pdf">Resume</a>
+      </p>
+    </div>
+    <div id="about">
+      <div id="about-text">
+        <h2>About Me</h2>
+        <p>
+          Nice to meet you! My name's Sahith Bodla and I'm a student at the
+          University of Illinois at Urbana-Champaign pursuing a degree in Computer
+          Science.
+        </p>
+        <p>
+          I have a keen interest in the latest developments and ideas in AI/ML,
+          full-stack development, economics, and more. I hope to take on all sorts
+          of challenges in the software world and am eager to keep learning in and
+          out of college!
+        </p>
+      </div>
+      <img src="./images/sahith2.png"></img>
+    </div>
+    <div id="experiences">
+      <h2>Experience</h2>
+      <div id="experience-list">
+        <div class="experience">
+          <h4>OneSpace: Feb 2023-present</h4>
+          <p>
+            Joined a team of 7 to develop a desktop software designed to streamline
+            workflow between various documents and editors.
+          </p>
+          <p>
+            Our innovative workspace is here to transform the way students, writers,
+            and professionals work by enabling them to compartmentalize their
+            analyses.
+          </p>
+          <a href="https://one-space-s.github.io">Check us out here!</a>
+          <p>(Can you guess who designed the OneSpace website?)</p>
+        </div>
+        <div class="experience">
+          <h4>CS 222 Software Design Lab Course Assistant: Jan 2024-present</h4>
+          <p>
+            Advised groups of students on semester-long coding project in language of
+            their choice.
+          </p>
+          <p>
+            As a software design course assistant, I gain practical expertise,
+            leadership, and strong communication skills while mastering the various
+            frameworks, languages, and developer tools needed for mentoring,
+            scheduling, and grading groupwork.
+          </p>
+        </div>
+      </div>
+      <h4>More experiences sooooon...</h4>
+    </div>
+    <div id="projects">
+      <h2>Projects</h2>
+      <div id="projects-list">
+        <div class="project">
+          <h4>EntreBrew: Feb 2023-present</h4>
+          <p>
+            Designing a website with React frontend and Django REST backend to foster
+            a supportive community for students to network with like-minded peers
+            where they can exchange ideas, collaborate, and find potential co-founders
+            or team members for their ventures. Slated to launch in Spring 2024!
+          </p>
+        </div>
+        <div class="project">
+          <h4>Pose Estimation for Curls: Fall 2023</h4>
+          <p>
+            Contributed to making a basic Python Streamlit website that analyzed bicep
+            curl technique using MediaPipe pose estimation and computer vision and
+            reported whether user displays proper form. Uses landmarking and angle
+            measurement to help gym newbies, and may expand to other exercises later.
+            Check out our project here ->
+          </p>
+        </div>
+        <div class="project">
+          <h4>Computer Vision for Swimming: Spring 2022</h4>
+          <p>
+            Made a 12-week blog detailing the development of a computer vision
+            software for analyzing technique in swimming. Gathered data to create
+            supervised learning model to determine biomechanical efficiency of a
+            swimmer performing freestyle. Check out the blog here ->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="last-sections">
+      <div id="education">
+        <h3>Education</h3>
+        <div>
+          <h4>University of Illinois at Urbana-Champaign</h4>
+          <img src="./images/illinois.png" id="illinois"></img>
+          <h5>B.S. in Computer Science<br>Fall 2022 – Spring 2026</h5>
+        </div>
+      </div>
+      <div id="hobbies">
+        <h3>Stuff I Like</h3>
+        <!-- images and captions instead of long descriptions -->
+      </div>
+      <div id="contact">
+        <h3>Let's Connect!</h3>
+        <div id="icons">
+          <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:bodlasahith@gmail.com"" id="email" target="_blank">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/bodlasahith" id="github" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <p>Have any questions/comments/thoughts on the website maybe?...</p>
+        <p>Feel free to reach out!</p>
+      </div>
+    </div>
+    <div id="end">
+
+    </div>
   </body>
 </html>

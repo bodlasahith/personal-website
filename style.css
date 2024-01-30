@@ -2,8 +2,218 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  display: none;
 }
 
 body {
-  background: black;
+  width: 100%;
+  background: rgb(0, 16, 33);
+  color: white;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 7vw;
+}
+
+#title {
+  margin-bottom: 2vw;
+}
+
+#subtitle {
+  text-align: center;
+  margin-top: 2vw;
+  margin-bottom: 4vw;
+}
+
+#switch {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  background: deepskyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 2vw;
+  transition: all 0.1s ease;
+}
+
+#switch:hover {
+  font-size: 2.25vw;
+  cursor: pointer;
+  background: rgb(1, 159, 212);
+}
+
+#about {
+  background-color: rgb(1, 45, 92);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw;
+}
+
+h2 {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+#about p {
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+#about img {
+  height: 20vw;
+  width: 20vw;
+  margin-left: 2vw;
+  border-radius: 10px;
+}
+
+#about-text {
+  flex-direction: column;
+}
+
+#experiences {
+  background-color: rgb(0, 87, 87);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw;
+}
+
+#experience-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(0, 53, 53);
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+}
+
+a {
+  color: deepskyblue;
+}
+
+#projects {
+  background-color: skyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw;
+}
+
+#projects-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(98, 149, 170);
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+}
+
+h3 {
+  font-size: 2vw;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+#last-sections {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+}
+
+#education {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(0, 15, 68);
+}
+
+#hobbies {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(0, 32, 147);
+}
+
+#contact {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(0, 15, 68);
+}
+
+#end {
+  height: 5vw;
+}
+
+#icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#icons a {
+  margin: 10px;
+  background: none;
+  color: deepskyblue;
+  border: none;
+  border-radius: 5px;
+  font-size: 2.5vw;
+}
+
+#icons a:hover {
+  color: rgb(1, 159, 212); 
+}
+
+#illinois {
+  height: 7.5vw;
+  width: 5vw;
 }
