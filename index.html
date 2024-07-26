@@ -111,6 +111,12 @@
           lastSections.forEach(function(section) {
             section.classList.add('animate');
           });
+
+          var skills = document.querySelectorAll('.skill');
+          skills.forEach(function(skill) {
+            skill.classList.add('animate');
+          });
+
         }
       }
     
@@ -140,7 +146,7 @@
             out of college!
           </p>
         </div>
-        <img src="./images/sahith2.png"></img>
+        <img src="./images/sahith2.png" alt="profile"></img>
       </div>
       <div id="experiences">
         <h2>Experience</h2>
@@ -176,13 +182,34 @@
             </p>
           </div>
         </div>
-        <h4>More experiences sooooon...</h4>
       </div>
       <div id="projects">
         <h2>Projects</h2>
         <div id="projects-list">
           <div class="project">
+            <h4>Music Poster Generator</h4>
+            <p>
+              
+            </p>
+          </div>
+          <div class="project">
+            <h4>JukeBox: A Travel Playlist App</h4>
+            <p>
+              JukeBox is a travel playlist app that allows users to create playlists
+              based on their destination. Users can input their destination and the app
+              will generate a playlist based on the location's culture and music scene.
+              The app uses the Spotify API to generate playlists and the Google Maps API
+              to determine the user's location.
+            </p>
+          </div>
+          <div class="project">
             <h4>State of Illinois Cannabis RDBMS: Feb 2024-May 2024</h4>
+            <p>
+              
+            </p>
+          </div>
+          <div class="project">
+            <h4>HackIlliois: Baymin</h4>
             <p>
               
             </p>
@@ -234,6 +261,47 @@
               <a href="https://siliconvalley.basisindependent.com/author/sahithb2022/">Check out my blog here!</a>
             </p>
           </div>
+          <div class="project">
+            <h4>Object Detection System for the Visually Impaired</h4>
+            <p>
+              This device provides the visually impaired with knowledge of their surroundings. 
+              Though the blind generally use canes to map out their path a few steps in front 
+              of themselves, this device corroborates some information gathered from touch 
+              using hearing. Just like how bats use echolocation to discover prey at night 
+              rather than vision, blind people tend to rely on sound to comprehend and 
+              acknowledge their surroundings when, for instance, crossing the street or walking 
+              through a mall.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="skills">
+        <h2>Skills</h2>
+        <div id="skills-list">
+          <div class="skill">
+            <h4>Programming Languages</h4>
+            <p>Python, Java, C++, C, JavaScript, Typescript, Terraform, Terragrunt, HTML/CSS, MySQL, MongoDB, Neo4j, Swift, MIPS Assembly, Verilog</p>
+          </div>
+          <div class="skill">
+            <h4>Developer Tools</h4>
+            <p>Git, Github, Docker, AWS Console, Postman, Google Cloud Platform, Visual Studio Code, Google Colaboratory</p>
+          </div>
+          <div class="skill">
+            <h4>Frontend Frameworks</h4>
+            <p>React, React Native, THREE.js, Bootstrap, Tailwind</p>
+          </div>
+          <div class="skill">
+            <h4>Backend Frameworks</h4>
+            <p>Django REST, Express.js, Nest.js, Node.js, Next.js, Nest.js, Jest</p>
+          </div>
+          <div class="skill">
+            <h4>Python AI/ML</h4>
+            <p>TensorFlow, Keras, PyTorch, OpenCV, MediaPipe, Pandas, Scikit-learn, Numpy, Sympy, Scipy, Matplotlib</p>
+          </div>
+          <div class="skill">
+            <h4>Other</h4>
+            <p>Agile, Scrum, Jira, Confluence, Figma, Sumo-Logic</p>
+          </div>
         </div>
       </div>
       <div class="last-sections">
@@ -241,7 +309,7 @@
           <h3>Education</h3>
           <div>
             <h4>University of Illinois at Urbana-Champaign</h4>
-            <img src="./images/illinois.png" id="illinois"></img>
+            <img src="./images/illinois.png" id="illinois" alt="illinois"></img>
             <h5>B.S. in Computer Science<br>Fall 2022 – Spring 2026</h5>
           </div>
         </div>
@@ -252,13 +320,13 @@
         <div id="contact">
           <h3>Let's Connect!</h3>
           <div id="icons">
-            <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" target="_blank">
+            <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" title="linked-in" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="mailto:bodlasahith@gmail.com"" id="email" target="_blank">
+            <a href="mailto:bodlasahith@gmail.com"" id="email" title="email" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://github.com/bodlasahith" id="github" target="_blank">
+            <a href="https://github.com/bodlasahith" id="github" title="github" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-github"></i>
             </a>
           </div>
