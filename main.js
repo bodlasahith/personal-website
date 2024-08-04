@@ -1,9 +1,9 @@
 import * as THREE from "https://unpkg.com/three@0.159.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.159.0/examples/jsm/controls/OrbitControls.js";
 
-/////////////////////////////
-///// ENVIRONMENT SETUP /////
-/////////////////////////////
+// --------------------------- //
+// ---- ENVIRONMENT SETUP ---- //
+// --------------------------- //
 
 const scene = new THREE.Scene();
 const scenePanelBackground = new THREE.TextureLoader().load("./images/matrix_bg.jpg");
@@ -24,9 +24,9 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
-////////////////////
-///// GREETING /////
-////////////////////
+//----------------//
+//--- GREETING ---//
+//----------------//
 
 const backgroundTexture = new THREE.TextureLoader().load("./images/panel.png");
 
@@ -76,9 +76,9 @@ const observationTitle = new THREE.Mesh(
 observationTitle.position.set(0, 20, 280);
 observationTitle.rotation.x = -Math.PI / 2;
 
-//////////////////
-///// PANELS /////
-//////////////////
+//--------------//
+//--- PANELS ---//
+//--------------//
 
 const bottomLight = new THREE.PointLight(0xffffff, 1000, 0, 1);
 bottomLight.position.set(0, -60, 0);
@@ -417,9 +417,9 @@ const panelLines = new THREE.Group();
 panelLines.add(startingIcon, panel1Lines, panel2Lines, panel3Lines, panel4Lines, panel5Lines, panel6Lines);
 scene.add(panelLines);
 
-const panelscontent = new THREE.Group();
-panelscontent.add(panel1content, panel2content, panel3content, panel4content, panel5Content, panel6content);
-scene.add(panelscontent);
+const panelsContent = new THREE.Group();
+panelsContent.add(panel1content, panel2content, panel3content, panel4content, panel5Content, panel6content);
+scene.add(panelsContent);
 
 const panelSpotLight = new THREE.SpotLight(
   0xffffff,
@@ -441,9 +441,9 @@ const panelLights = new THREE.Group();
 panelLights.add(panelLight, panelSpotLight);
 scene.add(panelLights);
 
-////////////////////////
-///// CLICK EVENTS /////
-////////////////////////
+//--------------------//
+//--- CLICK EVENTS ---//
+//--------------------//
 
 const panelSpotLightPositions = [
   new THREE.Vector3(0, 0, -800),
@@ -579,9 +579,9 @@ function animateCamera() {
   }
 }
 
-/////////////////////
-///// PARTICLES /////
-/////////////////////
+//-----------------//
+//--- PARTICLES ---//
+//-----------------//
 
 function addNumber() {
   const zeroTexture = new THREE.TextureLoader().load("./images/zero.png");
@@ -627,9 +627,9 @@ let isObservationMode = false;
 let orbitRadius = 750;
 let bobRadius = 500;
 
-/////////////////////
-///// ANIMATION /////
-/////////////////////
+//-----------------//
+//--- ANIMATION ---//
+//-----------------//
 
 const songs = [
   './tracks/circus_maximus.mp3',
@@ -648,14 +648,11 @@ const songs = [
   './tracks/topia_twins.mp3'
 ];
 
-// Get the audio element
 const backgroundAudio = document.getElementById('backgroundAudio');
 
-// Randomly select a song
 const randomIndex = Math.floor(Math.random() * songs.length);
 const randomSong = songs[randomIndex];
 
-// Set the source of the audio element
 backgroundAudio.src = randomSong;
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -672,7 +669,6 @@ function animate() {
     camera.position.set(x, y, z);
     camera.lookAt(0, 0, 0);
 
-    // Start playback
     backgroundAudio.play();
   }
 
@@ -689,9 +685,9 @@ function animate() {
     intro.rotation.y -= 0.005;
     intro.rotation.z -= 0.005;
 
-    panelscontent.rotation.x += 0.005;
-    panelscontent.rotation.y += 0.005;
-    panelscontent.rotation.z += 0.005;
+    panelsContent.rotation.x += 0.005;
+    panelsContent.rotation.y += 0.005;
+    panelsContent.rotation.z += 0.005;
 
     panelLights.rotation.x += 0.005;
     panelLights.rotation.y += 0.005;
@@ -712,9 +708,9 @@ function animate() {
     intro.rotation.y = 0;
     intro.rotation.z = 0;
 
-    panelscontent.rotation.x = 0;
-    panelscontent.rotation.y = 0;
-    panelscontent.rotation.z = 0;
+    panelsContent.rotation.x = 0;
+    panelsContent.rotation.y = 0;
+    panelsContent.rotation.z = 0;
 
     panelLights.rotation.x = 0;
     panelLights.rotation.y = 0;
