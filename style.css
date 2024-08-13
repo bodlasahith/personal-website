@@ -138,6 +138,18 @@ h2 {
   transform: translateX(0);
 }
 
+.experience h6 {
+  margin: 0;
+}
+
+.experience h4 {
+  margin-bottom: 5px;
+}
+
+.experience h6 {
+  margin-top: 5px;
+}
+
 a {
   color: deepskyblue;
 }
@@ -182,6 +194,18 @@ a {
 
 .project a {
   color: darkblue;
+}
+
+.project h6 {
+  margin: 0;
+}
+
+.project h4 {
+  margin-bottom: 5px;
+}
+
+.project h6 {
+  margin-top: 5px;
 }
 
 h3 {
