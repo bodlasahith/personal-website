@@ -9,12 +9,7 @@ const scene = new THREE.Scene();
 const scenePanelBackground = new THREE.TextureLoader().load("./images/matrix_bg.jpg");
 scene.background = scenePanelBackground;
 
-const camera = new THREE.PerspectiveCamera(
-  85,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  2000
-);
+const camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.1, 2000);
 camera.position.set(0, 750, 0);
 
 const renderer = new THREE.WebGLRenderer({
@@ -47,14 +42,7 @@ const title = new THREE.Mesh(titleGeo, titleMesh);
 title.position.set(0, 20, 0);
 title.rotation.x = -Math.PI / 2;
 
-const titleSpotLight = new THREE.SpotLight(
-  0xffffff,
-  100,
-  800,
-  Math.PI / 4,
-  1,
-  0.4
-);
+const titleSpotLight = new THREE.SpotLight(0xffffff, 100, 800, Math.PI / 4, 1, 0.4);
 titleSpotLight.position.set(0, 450, 0);
 
 const startTexture = new THREE.TextureLoader().load("./images/start.png");
@@ -67,12 +55,11 @@ start.rotation.x = -Math.PI / 2;
 
 const observationTitleTexture = new THREE.TextureLoader().load("./images/observation.png");
 const observationTitleGeo = new THREE.PlaneGeometry(250, 105);
-const observationTitleMesh = new THREE.MeshLambertMaterial({ map: observationTitleTexture});
+const observationTitleMesh = new THREE.MeshLambertMaterial({
+  map: observationTitleTexture,
+});
 observationTitleMesh.alphaHash = 1;
-const observationTitle = new THREE.Mesh(
-  observationTitleGeo,
-  observationTitleMesh
-);
+const observationTitle = new THREE.Mesh(observationTitleGeo, observationTitleMesh);
 observationTitle.position.set(0, 20, 280);
 observationTitle.rotation.x = -Math.PI / 2;
 
@@ -102,7 +89,9 @@ panel1Lines.position.set(0, 0, -500);
 
 const panel1titleTexture = new THREE.TextureLoader().load("./images/panel1title.png");
 const panel1titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel1titleMesh = new THREE.MeshLambertMaterial({ map: panel1titleTexture});
+const panel1titleMesh = new THREE.MeshLambertMaterial({
+  map: panel1titleTexture,
+});
 panel1titleMesh.alphaHash = 1;
 const panel1title = new THREE.Mesh(panel1titleGeo, panel1titleMesh);
 panel1title.position.set(0, 60, -506);
@@ -110,7 +99,9 @@ panel1title.rotateY(Math.PI);
 
 const panel1captionTexture = new THREE.TextureLoader().load("./images/panel1caption.png");
 const panel1captionGeo = new THREE.PlaneGeometry(160, 100);
-const panel1captionMesh = new THREE.MeshLambertMaterial({ map: panel1captionTexture});
+const panel1captionMesh = new THREE.MeshLambertMaterial({
+  map: panel1captionTexture,
+});
 panel1captionMesh.alphaHash = 1;
 const panel1caption = new THREE.Mesh(panel1captionGeo, panel1captionMesh);
 panel1caption.position.set(50, -20, -506);
@@ -126,7 +117,9 @@ sahith.rotateY(Math.PI);
 
 const sahithBitmojiTexture = new THREE.TextureLoader().load("./images/sahithbitmoji.png");
 const sahithBitmojiGeo = new THREE.CircleGeometry(45, 50);
-const sahithBitmojiMesh = new THREE.MeshLambertMaterial({ map: sahithBitmojiTexture});
+const sahithBitmojiMesh = new THREE.MeshLambertMaterial({
+  map: sahithBitmojiTexture,
+});
 sahithBitmojiMesh.alphaHash = 1;
 const sahithBitmoji = new THREE.Mesh(sahithBitmojiGeo, sahithBitmojiMesh);
 sahithBitmoji.position.set(-80, -15, -505.5);
@@ -134,14 +127,39 @@ sahithBitmoji.rotateY(Math.PI);
 
 const sahithCaptionTexture = new THREE.TextureLoader().load("./images/sahithcaption.png");
 const sahithCaptionGeo = new THREE.PlaneGeometry(90, 57);
-const sahithCaptionMesh = new THREE.MeshLambertMaterial({ map: sahithCaptionTexture });
+const sahithCaptionMesh = new THREE.MeshLambertMaterial({
+  map: sahithCaptionTexture,
+});
 sahithCaptionMesh.alphaHash = 1;
 const sahithCaption = new THREE.Mesh(sahithCaptionGeo, sahithCaptionMesh);
 sahithCaption.position.set(-80, -75, -505.5);
 sahithCaption.rotateY(Math.PI);
 
+const baseGeo = new THREE.CylinderGeometry(20, 15, 10, 64);
+const baseMesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+const base = new THREE.Mesh(baseGeo, baseMesh);
+base.position.set(100, -70, -565);
+const baseEdges = new THREE.EdgesGeometry(baseGeo);
+const baseLines = new THREE.LineSegments(
+  baseEdges,
+  new THREE.LineBasicMaterial({ color: "#008B8B" })
+);
+baseLines.position.set(100, -70, -565);
+
+const baseLight = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
+baseLight.position.set(100, -60, -565);
+
 const panel1content = new THREE.Group();
-panel1content.add(panel1title, sahith, sahithBitmoji, panel1caption, sahithCaption);
+panel1content.add(
+  panel1title,
+  sahith,
+  sahithBitmoji,
+  panel1caption,
+  sahithCaption,
+  base,
+  baseLines,
+  baseLight
+);
 
 const panel2Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel2Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -158,7 +176,9 @@ panel2Lines.rotateY(Math.PI / 3);
 
 const panel2titleTexture = new THREE.TextureLoader().load("./images/panel2title.png");
 const panel2titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel2titleMesh = new THREE.MeshLambertMaterial({ map: panel2titleTexture });
+const panel2titleMesh = new THREE.MeshLambertMaterial({
+  map: panel2titleTexture,
+});
 panel2titleMesh.alphaHash = 1;
 const panel2title = new THREE.Mesh(panel2titleGeo, panel2titleMesh);
 panel2title.position.set(-438, 60, -255);
@@ -166,7 +186,9 @@ panel2title.rotateY((-2 * Math.PI) / 3);
 
 const panel2captionTexture = new THREE.TextureLoader().load("./images/panel2caption.png");
 const panel2captionGeo = new THREE.PlaneGeometry(170, 100);
-const panel2captionMesh = new THREE.MeshLambertMaterial({ map: panel2captionTexture});
+const panel2captionMesh = new THREE.MeshLambertMaterial({
+  map: panel2captionTexture,
+});
 panel2captionMesh.alphaHash = 1;
 const panel2caption = new THREE.Mesh(panel2captionGeo, panel2captionMesh);
 panel2caption.position.set(-420, -10, -285);
@@ -174,7 +196,9 @@ panel2caption.rotateY((-2 * Math.PI) / 3);
 
 const downloadIconTexture = new THREE.TextureLoader().load("./images/download.png");
 const downloadIconGeo = new THREE.CircleGeometry(30, 50);
-const downloadIconMesh = new THREE.MeshLambertMaterial({ map: downloadIconTexture});
+const downloadIconMesh = new THREE.MeshLambertMaterial({
+  map: downloadIconTexture,
+});
 downloadIconMesh.alphaHash = 1;
 const downloadIcon = new THREE.Mesh(downloadIconGeo, downloadIconMesh);
 downloadIcon.position.set(-480, -15, -185);
@@ -191,7 +215,9 @@ onespace.userData = { URL: "https://one-space-s.github.io" };
 
 const downloadCaptionTexture = new THREE.TextureLoader().load("./images/downloadcaption.png");
 const downloadCaptionGeo = new THREE.PlaneGeometry(45, 15);
-const downloadCaptionMesh = new THREE.MeshLambertMaterial({ map: downloadCaptionTexture});
+const downloadCaptionMesh = new THREE.MeshLambertMaterial({
+  map: downloadCaptionTexture,
+});
 downloadCaptionMesh.alphaHash = 1;
 const downloadCaption = new THREE.Mesh(downloadCaptionGeo, downloadCaptionMesh);
 downloadCaption.position.set(-480, -55, -185);
@@ -215,7 +241,9 @@ panel3Lines.rotateY((2 * Math.PI) / 3);
 
 const panel3titleTexture = new THREE.TextureLoader().load("./images/panel3title.png");
 const panel3titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel3titleMesh = new THREE.MeshLambertMaterial({ map: panel3titleTexture});
+const panel3titleMesh = new THREE.MeshLambertMaterial({
+  map: panel3titleTexture,
+});
 panel3titleMesh.alphaHash = 1;
 const panel3title = new THREE.Mesh(panel3titleGeo, panel3titleMesh);
 panel3title.position.set(-438, 60, 255);
@@ -223,7 +251,9 @@ panel3title.rotateY((-1 * Math.PI) / 3);
 
 const panel3captionTexture = new THREE.TextureLoader().load("./images/panel3caption.png");
 const panel3captionGeo = new THREE.PlaneGeometry(220, 140);
-const panel3captionMesh = new THREE.MeshLambertMaterial({ map: panel3captionTexture});
+const panel3captionMesh = new THREE.MeshLambertMaterial({
+  map: panel3captionTexture,
+});
 panel3captionMesh.alphaHash = 1;
 const panel3caption = new THREE.Mesh(panel3captionGeo, panel3captionMesh);
 panel3caption.position.set(-450, -25, 235);
@@ -252,8 +282,10 @@ const bisvMesh = new THREE.MeshLambertMaterial({ map: bisvTexture });
 bisvMesh.alphaHash = 1;
 const bisv = new THREE.Mesh(bisvGeo, bisvMesh);
 bisv.position.set(-390, -75, 340);
-bisv.rotateY(-1 * Math.PI / 3);
-bisv.userData = { URL: "https://siliconvalley.basisindependent.com/author/sahithb2022/" };
+bisv.rotateY((-1 * Math.PI) / 3);
+bisv.userData = {
+  URL: "https://siliconvalley.basisindependent.com/author/sahithb2022/",
+};
 
 const panel3content = new THREE.Group();
 panel3content.add(panel3title, panel3caption, founders, video, bisv);
@@ -271,14 +303,18 @@ panel4Lines.position.set(0, 0, 500);
 
 const panel4titleTexture = new THREE.TextureLoader().load("./images/panel4title.png");
 const panel4titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel4titleMesh = new THREE.MeshLambertMaterial({ map: panel4titleTexture});
+const panel4titleMesh = new THREE.MeshLambertMaterial({
+  map: panel4titleTexture,
+});
 panel4titleMesh.alphaHash = 1;
 const panel4title = new THREE.Mesh(panel4titleGeo, panel4titleMesh);
 panel4title.position.set(0, 60, 506);
 
 const panel4captionTexture = new THREE.TextureLoader().load("./images/hobbies.png");
 const panel4captionGeo = new THREE.PlaneGeometry(170, 100);
-const panel4captionMesh = new THREE.MeshLambertMaterial({ map: panel4captionTexture});
+const panel4captionMesh = new THREE.MeshLambertMaterial({
+  map: panel4captionTexture,
+});
 panel4captionMesh.alphaHash = 1;
 const panel4caption = new THREE.Mesh(panel4captionGeo, panel4captionMesh);
 panel4caption.position.set(-50, -20, 506);
@@ -301,7 +337,9 @@ panel5Lines.rotateY(Math.PI / 3);
 
 const panel5titleTexture = new THREE.TextureLoader().load("./images/panel5title.png");
 const panel5titleGeo = new THREE.PlaneGeometry(235, 65);
-const panel5titleMesh = new THREE.MeshLambertMaterial({ map: panel5titleTexture});
+const panel5titleMesh = new THREE.MeshLambertMaterial({
+  map: panel5titleTexture,
+});
 panel5titleMesh.alphaHash = 1;
 const panel5title = new THREE.Mesh(panel5titleGeo, panel5titleMesh);
 panel5title.position.set(438, 60, 255);
@@ -320,7 +358,9 @@ scene.add(illinois);
 
 const illinoisCaptionTexture = new THREE.TextureLoader().load("./images/illinoiscaption.png");
 const illinoisCaptionGeo = new THREE.PlaneGeometry(147, 41);
-const illinoisCaptionMesh = new THREE.MeshLambertMaterial({ map: illinoisCaptionTexture});
+const illinoisCaptionMesh = new THREE.MeshLambertMaterial({
+  map: illinoisCaptionTexture,
+});
 illinoisCaptionMesh.alphaHash = 1;
 const illinoisCaption = new THREE.Mesh(illinoisCaptionGeo, illinoisCaptionMesh);
 illinoisCaption.position.set(410, -75, 310);
@@ -329,7 +369,9 @@ scene.add(illinoisCaption);
 
 const courseworkTexture = new THREE.TextureLoader().load("./images/coursework.png");
 const courseworkGeo = new THREE.PlaneGeometry(150, 100);
-const courseworkMesh = new THREE.MeshLambertMaterial({ map: courseworkTexture});
+const courseworkMesh = new THREE.MeshLambertMaterial({
+  map: courseworkTexture,
+});
 courseworkMesh.alphaHash = 1;
 const coursework = new THREE.Mesh(courseworkGeo, courseworkMesh);
 coursework.position.set(475, -10, 190);
@@ -395,7 +437,9 @@ linkedinMesh.alphaHash = 1;
 const linkedin = new THREE.Mesh(linkedinGeo, linkedinMesh);
 linkedin.position.set(475, 5, -195);
 linkedin.rotateY((2 * Math.PI) / 3);
-linkedin.userData = { URL: "https://www.linkedin.com/in/sahith-bodla-a9791120b/" };
+linkedin.userData = {
+  URL: "https://www.linkedin.com/in/sahith-bodla-a9791120b/",
+};
 
 const githubTexture = new THREE.TextureLoader().load("./images/github.png");
 const githubGeo = new THREE.CircleGeometry(30, 50);
@@ -414,21 +458,29 @@ panels.add(panel1, panel2, panel3, panel4, panel5, panel6);
 scene.add(panels);
 
 const panelLines = new THREE.Group();
-panelLines.add(startingIcon, panel1Lines, panel2Lines, panel3Lines, panel4Lines, panel5Lines, panel6Lines);
+panelLines.add(
+  startingIcon,
+  panel1Lines,
+  panel2Lines,
+  panel3Lines,
+  panel4Lines,
+  panel5Lines,
+  panel6Lines
+);
 scene.add(panelLines);
 
 const panelsContent = new THREE.Group();
-panelsContent.add(panel1content, panel2content, panel3content, panel4content, panel5Content, panel6content);
+panelsContent.add(
+  panel1content,
+  panel2content,
+  panel3content,
+  panel4content,
+  panel5Content,
+  panel6content
+);
 scene.add(panelsContent);
 
-const panelSpotLight = new THREE.SpotLight(
-  0xffffff,
-  1000,
-  350,
-  Math.PI / 6,
-  0,
-  0.5
-);
+const panelSpotLight = new THREE.SpotLight(0xffffff, 1000, 350, Math.PI / 6, 0, 0.5);
 panelSpotLight.position.set(0, 0, -800);
 const targetObject = new THREE.Object3D();
 targetObject.position.set(0, 0, 0);
@@ -464,12 +516,12 @@ const panelLightPositions = [
 ];
 
 const cameraPositions = [
-  new THREE.Vector3(0, 0, -635),
-  new THREE.Vector3(-550, 0, -317.5),
-  new THREE.Vector3(-550, 0, 317.5),
-  new THREE.Vector3(0, 0, 635),
-  new THREE.Vector3(550, 0, 317.5),
-  new THREE.Vector3(550, 0, -317.5),
+  new THREE.Vector3(0, 0, -675),
+  new THREE.Vector3(-585, 0, -337.5),
+  new THREE.Vector3(-585, 0, 337.5),
+  new THREE.Vector3(0, 0, 675),
+  new THREE.Vector3(585, 0, 337.5),
+  new THREE.Vector3(585, 0, -337.5),
 ];
 
 function onPanelsClick(event) {
@@ -483,7 +535,22 @@ function onPanelsClick(event) {
   raycaster.setFromCamera(mouse, camera);
 
   const intersects = raycaster.intersectObjects(
-    [...panels.children, startingIcon, observation, platform, sahith, sahithBitmoji, onespace, downloadIcon, bisv, video, illinois, linkedin, gmail, github],
+    [
+      ...panels.children,
+      startingIcon,
+      observation,
+      platform,
+      sahith,
+      sahithBitmoji,
+      onespace,
+      downloadIcon,
+      bisv,
+      video,
+      illinois,
+      linkedin,
+      gmail,
+      github,
+    ],
     true
   );
 
@@ -632,23 +699,23 @@ let bobRadius = 500;
 //-----------------//
 
 const songs = [
-  './tracks/circus_maximus.mp3',
-  './tracks/fe!n_🧛.mp3',
-  './tracks/hyaena.mp3',
-  './tracks/i_know_?.mp3',
-  './tracks/looove.mp3',
-  './tracks/meltdown_🦉.mp3',
-  './tracks/modern_jam.mp3',
-  './tracks/my_eyes_👁️.mp3',
-  './tracks/parasail.mp3',
-  './tracks/sirens.mp3',
-  './tracks/skitzo.mp3',
-  './tracks/telekinesis.mp3',
-  './tracks/til_further_notice.mp3',
-  './tracks/topia_twins.mp3'
+  "./tracks/circus_maximus.mp3",
+  "./tracks/fe!n_🧛.mp3",
+  "./tracks/hyaena.mp3",
+  "./tracks/i_know_?.mp3",
+  "./tracks/looove.mp3",
+  "./tracks/meltdown_🦉.mp3",
+  "./tracks/modern_jam.mp3",
+  "./tracks/my_eyes_👁️.mp3",
+  "./tracks/parasail.mp3",
+  "./tracks/sirens.mp3",
+  "./tracks/skitzo.mp3",
+  "./tracks/telekinesis.mp3",
+  "./tracks/til_further_notice.mp3",
+  "./tracks/topia_twins.mp3",
 ];
 
-const backgroundAudio = document.getElementById('backgroundAudio');
+const backgroundAudio = document.getElementById("backgroundAudio");
 
 const randomIndex = Math.floor(Math.random() * songs.length);
 const randomSong = songs[randomIndex];
@@ -729,6 +796,8 @@ function animate() {
   sahith.position.y = -15 + Math.sin(Date.now() * 0.001);
   sahithBitmoji.position.y = -15 + Math.sin(Date.now() * 0.001);
   downloadIcon.position.y = -15 + Math.sin(Date.now() * 0.001);
+  base.position.y = -70 + Math.sin(Date.now() * 0.001);
+  baseLines.position.y = -70 + Math.sin(Date.now() * 0.001);
 
   controls.update();
   renderer.render(scene, camera);
