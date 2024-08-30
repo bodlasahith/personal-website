@@ -294,12 +294,25 @@ h3 {
   transition: opacity 1s, transform 1s;
 }
 
+.last-sections h6 {
+  text-align: left;
+  font-weight: 100;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s, transform 1s;
+}
+
 .last-sections h4.animate,
 .last-sections h5.animate,
 .last-sections img.animate,
 .last-sections a.animate,
 .last-sections i.animate,
 .last-sections p.animate {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.last-sections h6.animate {
   opacity: 1;
   transform: translateY(0px);
 }
@@ -314,7 +327,7 @@ h3 {
   background-color: rgb(0, 15, 68);
 }
 
-#hobbies {
+#classes {
   width: 33.33%;
   display: flex;
   flex-direction: column;
