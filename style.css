@@ -214,7 +214,7 @@ h3 {
   margin-bottom: 2vw;
 }
 
-.skills {
+#skills {
   background-color: rgb(0, 0, 41);
   display: flex;
   flex-direction: column;
@@ -276,25 +276,29 @@ h3 {
   color: black;
 }
 
-.last-sections {
+#last-sections {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
 }
 
-.last-sections h4, 
-.last-sections h5, 
-.last-sections img,
-.last-sections a,
-.last-sections i,
-.last-sections p {
+#last-sections div {
+  padding: 2vw;
+}
+
+#last-sections h4, 
+#last-sections h5, 
+#last-sections img,
+#last-sections a,
+#last-sections i,
+#last-sections p {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s, transform 1s;
 }
 
-.last-sections h6 {
+#last-sections h6 {
   text-align: left;
   font-weight: 100;
   opacity: 0;
@@ -302,17 +306,17 @@ h3 {
   transition: opacity 1s, transform 1s;
 }
 
-.last-sections h4.animate,
-.last-sections h5.animate,
-.last-sections img.animate,
-.last-sections a.animate,
-.last-sections i.animate,
-.last-sections p.animate {
+#last-sections h4.animate,
+#last-sections h5.animate,
+#last-sections img.animate,
+#last-sections a.animate,
+#last-sections i.animate,
+#last-sections p.animate {
   opacity: 1;
   transform: translateY(0px);
 }
 
-.last-sections h6.animate {
+#last-sections h6.animate {
   opacity: 1;
   transform: translateY(0px);
 }
@@ -378,4 +382,14 @@ h3 {
 #illinois {
   height: 7.5vw;
   width: 5vw;
+  filter: brightness(350%);
+}
+
+#hobbies {
+  background: linear-gradient(to right, rgb(116, 56, 216), rgb(18, 150, 170));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw; 
 }
