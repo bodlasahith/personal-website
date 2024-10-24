@@ -22,6 +22,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <button id="switch" title="Change View!">
       <i class="fas fa-cube"></i>
     </button>
@@ -138,15 +139,15 @@
         <div class="about-text">
           <h2>About Me</h2>
           <p>
-            Nice to meet you! My name's Sahith Bodla and I'm a student at the
-            University of Illinois at Urbana-Champaign pursuing a degree in Computer
-            Science.
+            Nice to meet you! My name's Sahith Bodla and I'm a student at the University of 
+            Illinois at Urbana-Champaign pursuing a combined Bachelor's and Master's Degree 
+            in Computer Science with a Minor in Economics.
             <br/>
             <br/>
             I have a keen interest in the latest developments and ideas in AI/ML,
-            full-stack development, economics, and more. I hope to take on all sorts
-            of challenges in the software world and am eager to keep learning in and
-            out of college!
+            full-stack development, cloud networks, system infrastructure, and more. I 
+            hope to take on all sorts of challenges in the software world and am eager to 
+            keep learning in and out of college!
           </p>
         </div>
         <img src="./images/sahith2.png" alt="profile" />
@@ -168,20 +169,40 @@
               team to design and implement robust APIs for seamless integration with the 
               frontend application.
             </p>
+            <div class="project-icons">
+              <i class="devicon-typescript-plain" title="Typescript"></i>
+              <i class="devicon-jest-plain" title="Jest"></i>
+              <i class="devicon-html5-plain" title="HTML"></i>
+              <i class="devicon-css3-plain" title="CSS"></i>
+              <i class="devicon-terraform-plain" title="Terraform"></i>
+              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+              <i class="devicon-googlecloud-plain" title="GCP"></i>
+            </div>
           </div>
           <div class="experience">
             <h4>OneSpace</h4>
             <h6>Feb 2023 - present</h6>
             <p>
-              Joined a team of 7 to develop a desktop software designed to streamline
+              Co-founded by a team of 7 to develop a desktop software designed to streamline
               workflow between various documents and editors.
             </p>
             <p>
               Our innovative workspace is here to transform the way students, writers,
               and professionals work by enabling them to compartmentalize their
-              analyses.
+              analyses. We are currently in the initial testing phase with investors and 
+              select users (Trello and OrangeQC founders are among our early testers). We 
+              hope to launch publicly in the coming months!
             </p>
             <a href="https://onespace-app.com">Check us out here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-electron-original" title="Electron"></i>
+              <i class="devicon-html5-plain" title="HTML"></i>
+              <i class="devicon-css3-plain" title="CSS"></i>
+              <i class="devicon-sentry-original" title="Sentry"></i>
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-firebase-plain" title="Firebase"></i>
+            </div>
           </div>
           <div class="experience">
             <h4>CS 222 Software Design Lab Course Assistant</h4>
@@ -201,6 +222,60 @@
       </div>
       <div id="projects">
         <h2>Projects</h2>
+        <!-- add timeline -->
+        <div id="projects-list"> 
+          <div class="project">
+            <h4>Asynchronous Distributed System</h4>
+            <h6>Aug 2024 - Dec 2024</h6>
+            <p>
+              Developed a distributed system that allows users to run multiple tasks 
+              concurrently on a network of computers. The system uses a master-slave 
+              architecture to distribute tasks to worker nodes and collect results. 
+              Built with Golang.
+            </p>
+            <div class="project-icons">
+              <i class="devicon-go-original-wordmark" title="Golang"></i>
+            </div>
+          </div>
+          <div class="project">
+            <h4>Aerial Drone WiFi Network</h4>
+            <h6>Aug 2024 - Dec 2024</h6>
+            <p>
+              Designed a network of drones that provide WiFi coverage to remote areas 
+              without internet access. The drones are equipped with WiFi routers and 
+              fly in a coordinated pattern to provide coverage to a large area. Built 
+              with Python and Raspberry Pi.
+            </p>
+            <div class="project-icons">
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
+            </div>
+          </div>
+          <div class="project">
+            <h4>SimProBot</h4>
+            <h6>Aug 2024 - present</h6>
+            <div class="project-icons">
+              <i class="devicon-python-plain" title="Python"></i>
+            </div>
+          </div>
+          <div class="project">
+            <h4>SeriesFarm</h4>
+            <h6>Aug 2024 - present</h6>
+            <p>
+              SeriesFarm is a novel web application that allows farmers to apply for agricultural
+              loans via a user-friendly interface. The application uses a React frontend and 
+              a Django REST backend to provide a seamless experience.
+            </p>
+            <div class="project-icons">
+              <i class="devicon-django-plain" title="Django"></i>
+              <i class="devicon-sqlite-plain" title="SQLite"></i>
+              <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
+              <i class="devicon-html5-plain" title="HTML"></i>
+              <i class="devicon-css3-plain" title="CSS"></i>
+            </div>
+          </div>
+        </div>
+        <hr>
         <div id="projects-list">
           <div class="project">
             <h4>Virtual Fitting Room</h4>
@@ -212,6 +287,11 @@
               items to see how they look. Built with React and Next.js.
             </p>
             <a href="https://github.com/bodlasahith/fitting-room">Check out my code here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-nextjs-plain" title="Next"></i>
+              <i class="devicon-mongodb-plain" title="MongoDB"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Music Poster Generator</h4>
@@ -224,6 +304,13 @@
               Express, the Spotify API, Stable Diffusion AI, and MongoDB storage.
             </p>
             <a href="https://github.com/bodlasahith/music-posters">Check out my code here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-express-original" title="Express"></i>
+              <i class="devicon-mongodb-plain" title="MongoDB"></i>
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="fab fa-spotify" title="Spotify"></i>
+            </div>
           </div>
           <div class="project">
             <h4>JukeBox: A Travel Playlist App</h4>
@@ -236,13 +323,28 @@
               and the Google Maps API to determine the user's location.
             </p>
             <a href="https://github.com/bodlasahith/travel-playlist-app">Check out my code here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="fab fa-spotify" title="Spotify API"></i>
+              <i class="fab fa-google" title="Google API"></i>
+            </div>
           </div>
+        </div>
+        <hr>
+        <div id="projects-list">
           <div class="project">
             <h4>State of Illinois Cannabis RDBMS</h4>
             <h6>Feb 2024 - May 2024</h6>
             <p>
               (NDA)
             </p>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-express-original" title="Express"></i>
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-firebase-plain" title="Firebase"></i>
+              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+            </div>
           </div>
           <div class="project">
             <h4>HackIllinois: Baymin</h4>
@@ -256,6 +358,10 @@
               motors, wheels, and foam for stability.
             </p>
             <a href="https://devpost.com/software/baymin-dnaz01">Check out our project here!</a>
+            <div class="project-icons">
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Fitcheck</h4>
@@ -263,6 +369,16 @@
             <p>
               (NDA)
             </p>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-typescript-plain" title="Typescript"></i>
+              <i class="devicon-nestjs-original" title="Nest"></i>
+              <i class="devicon-prisma-original" title="Prisma"></i>
+              <i class="devicon-mongodb-plain" title="MongoDB"></i>
+              <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+              <i class="devicon-neo4j-plain" title="Neo4j"></i>
+              <i class="devicon-docker-plain" title="Docker"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Teen Safe Driving App</h4>
@@ -275,6 +391,15 @@
               document handling with React, Express, and AWS.
             </p>
             <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing">Check out our demo here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-tailwindcss-original" title="TailwindCSS"></i>
+              <i class="devicon-express-original" title="Express"></i>
+              <i class="devicon-figma-plain" title="Figma"></i>
+              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+              <i class="devicon-mysql-original" title="MySQL"></i>
+              <i class="devicon-sequelize-plain" title="Sequelize"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Evil Niche</h4>
@@ -289,7 +414,18 @@
               database.
             </p>
             <a href="https://github.com/bodlasahith/evil-niche">Check out our code here!</a>
+            <div class="project-icons">
+              <i class="devicon-html5-plain" title="HTML"></i>
+              <i class="devicon-css3-plain" title="CSS"></i>
+              <i class="devicon-express-original" title="Express"></i>
+              <i class="devicon-mysql-original" title="MySQL"></i>
+              <i class="devicon-googlecloud-plain" title="GCP"></i>
+              <i class="devicon-google-plain" title="Google API"></i>
+            </div>
           </div>
+        </div>
+        <hr>
+        <div id="projects-list">
           <div class="project">
             <h4>Personal Website</h4>
             <h6>Dec 2023 - present</h6>
@@ -298,6 +434,11 @@
               It was built using HTML, CSS, and THREE.js, and is hosted with Github Pages.
             </p>
             <a href="https://github.com/bodlasahith/personal-website">Check out my code here!</a>
+            <div class="project-icons">
+              <i class="devicon-html5-plain" title="HTML"></i>
+              <i class="devicon-css3-plain" title="CSS"></i>
+              <i class="devicon-javascript-plain"></i>
+            </div>
           </div>
           <div class="project">
             <h4>EntreBrew</h4>
@@ -309,6 +450,14 @@
               or team members for their ventures.
             </p>
             <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing">Check out the demo here!</a>
+            <div class="project-icons">
+              <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
+              <i class="devicon-tailwindcss-original"></i>
+              <i class="devicon-google-plain" title="Google OAuth"></i>
+              <i class="devicon-django-plain" title="Django"></i>
+              <i class="devicon-sqlite-plain" title="SQLite"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Pose Estimation for Curls</h4>
@@ -321,7 +470,14 @@
               with Python and Streamlit.
             </p>
             <a href="https://mediaspace.illinois.edu/media/t/1_ro9tfei9">Check out our project here!</a>
+            <div class="project-icons">
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-streamlit-plain" title="Streamlit"></i>
+            </div>
           </div>
+        </div>
+        <hr>
+        <div id="projects-list">
           <div class="project">
             <h4>Computer Vision for Swimming</h4>
             <h6>Jan 2022 - May 2022</h6>
@@ -332,6 +488,9 @@
               swimmer performing freestyle.
             </p>
             <a href="https://docs.google.com/presentation/d/1txKxix6OIB2m5izLp71KPErf4TcuT7JViL3AIyrwne8/edit?usp=sharing">Check out my project here!</a>
+            <div class="project-icons">
+              <i class="devicon-python-plain" title="Python"></i>
+            </div>
           </div>
           <div class="project">
             <h4>Object Detection System for the Visually Impaired</h4>
@@ -343,6 +502,10 @@
               using hearing. Built with C++ and Arduino with Sensor Kit.
             </p>
             <a href="https://github.com/bodlasahith/object-detection">Check out my project here!</a>
+            <div class="project-icons">
+              <i class="devicon-cplusplus-plain" title="C++"></i>
+              <i class="devicon-arduino-plain" title="Arduino"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -353,34 +516,34 @@
             <h4>Programming Languages</h4>
             <p>
               Python, Java, C++, C, JavaScript, Typescript, Golang, Terraform, Terragrunt, HTML/CSS, MySQL, 
-              CloudSQL, MongoDB, Neo4j, Swift, MIPS Assembly, Verilog
+              CloudSQL, PostgreSQL, MongoDB, Neo4j, Swift, MIPS Assembly, Verilog, Golang
             </p>
           </div>
           <div class="skill">
             <h4>Developer Tools</h4>
             <p>
               Git, Github, Docker, AWS Console, Postman, Firebase, Google Cloud Platform, Visual 
-              Studio Code, Google Colab
+              Studio Code, Google Colab, SQLite, MySQL Workbench, MongoDB Compass, Neo4j Browser
             </p>
           </div>
           <div class="skill">
             <h4>Frontend Frameworks</h4>
-            <p>React, React Native, Vercel, Streamlit, THREE.js, Bootstrap, TailwindCSS</p>
+            <p>React, React Native, Streamlit, THREE.js, Bootstrap, TailwindCSS</p>
           </div>
           <div class="skill">
             <h4>Backend Frameworks</h4>
-            <p>Django REST, Electron, Express.js, Node.js, Next.js, NestJS, Jest, Sentry</p>
+            <p>Django REST, Electron, Express.js, Node.js, Next.js, NestJS, Jest, Sentry, Prisma</p>
           </div>
           <div class="skill">
             <h4>Python AI/ML</h4>
             <p>
               TensorFlow, Keras, PyTorch, OpenCV, MediaPipe, Pandas, Scikit-learn, Numpy, Sympy, 
-              Scipy, Matplotlib
+              Scipy, Matplotlib, BeautifulSoup, Selenium, Stable Diffusion, Transformers, HuggingFace
             </p>
           </div>
           <div class="skill">
             <h4>Other</h4>
-            <p>Agile, Scrum, Jira, Confluence, Figma, Blender, Sumo-Logic, TeamCity</p>
+            <p>Agile, Scrum, Jira, Confluence, Figma, Blender, Sumo-Logic, TeamCity, Raspberry Pi, Arduino</p>
           </div>
         </div>
       </div>
@@ -390,7 +553,7 @@
           <div>
             <h4>University of Illinois at Urbana-Champaign</h4>
             <img src="./images/illinois.png" id="illinois" alt="illinois"></img>
-            <h5>B.S. in Computer Science<br>Fall 2022 – Spring 2026</h5>
+            <h5>BS/MCS Combined Degree in Computer Science<br>Fall 2022 - Spring 2026</h5>
           </div>
         </div>
         <div id="classes">
@@ -430,7 +593,19 @@
         </div>
       </div>
       <div id="hobbies">
-        <!-- images and captions instead of long descriptions -->
+        <h3>Some of my hobbies...</h3>
+        <div class="hobby">
+          <img src="images/Screenshot 2024-10-24 at 11.33.53 AM.png" alt="hiking" />
+          <h4>Hiking</h4>
+        </div>
+        <div class="hobby">
+          <img src="images/Screenshot 2024-10-24 at 10.46.29 AM.png" alt="programming" />
+          <h4>Swimming</h4>
+        </div>
+        <div class="hobby">
+          <img src="images/Screenshot 2024-10-24 at 11.34.02 AM.png" alt="traveling" />
+          <h4>Bodybuilding</h4>
+        </div>
       </div>
       <div id="end"></div>  
     </div>
