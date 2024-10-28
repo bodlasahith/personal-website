@@ -136,19 +136,19 @@ const sahithCaption = new THREE.Mesh(sahithCaptionGeo, sahithCaptionMesh);
 sahithCaption.position.set(-80, -75, -505.5);
 sahithCaption.rotateY(Math.PI);
 
-// const baseGeo = new THREE.CylinderGeometry(20, 15, 10, 64);
-// const baseMesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
-// const base = new THREE.Mesh(baseGeo, baseMesh);
-// base.position.set(100, -70, -565);
-// const baseEdges = new THREE.EdgesGeometry(baseGeo);
-// const baseLines = new THREE.LineSegments(
-//   baseEdges,
-//   new THREE.LineBasicMaterial({ color: "#008B8B" })
-// );
-// baseLines.position.set(100, -70, -565);
+const baseGeo = new THREE.CylinderGeometry(20, 15, 10, 64);
+const baseMesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+const base = new THREE.Mesh(baseGeo, baseMesh);
+base.position.set(100, -70, -565);
+const baseEdges = new THREE.EdgesGeometry(baseGeo);
+const baseLines = new THREE.LineSegments(
+  baseEdges,
+  new THREE.LineBasicMaterial({ color: "#008B8B" })
+);
+baseLines.position.set(100, -70, -565);
 
-// const baseLight = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
-// baseLight.position.set(100, -60, -565);
+const baseLight = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
+baseLight.position.set(100, -60, -565);
 
 const panel1content = new THREE.Group();
 panel1content.add(
@@ -157,9 +157,9 @@ panel1content.add(
   sahithBitmoji,
   panel1caption,
   sahithCaption,
-  // base,
-  // baseLines,
-  // baseLight
+  base,
+  baseLines,
+  baseLight
 );
 
 const panel2Geo = new THREE.BoxGeometry(280, 200, 10);
@@ -797,8 +797,8 @@ function animate() {
   sahith.position.y = -15 + Math.sin(Date.now() * 0.001);
   sahithBitmoji.position.y = -15 + Math.sin(Date.now() * 0.001);
   downloadIcon.position.y = -15 + Math.sin(Date.now() * 0.001);
-  // base.position.y = -70 + Math.sin(Date.now() * 0.001);
-  // baseLines.position.y = -70 + Math.sin(Date.now() * 0.001);
+  base.position.y = -70 + Math.sin(Date.now() * 0.001);
+  baseLines.position.y = -70 + Math.sin(Date.now() * 0.001);
 
   controls.update();
   renderer.render(scene, camera);
