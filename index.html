@@ -134,6 +134,24 @@
           Click the icon for a THREE.js rendering!<br>
           <a href="./Resume.pdf">Resume</a>
         </p>
+        <div id="topic-links">
+          <a href="#about" class="smooth-scroll">About</a> | 
+          <a href="#experiences" class="smooth-scroll">Experience</a> | 
+          <a href="#projects" class="smooth-scroll">Projects</a> | 
+          <a href="#skills" class="smooth-scroll">Skills</a> | 
+          <a href="#classes" class="smooth-scroll">Education/Contact</a> |
+          <a href="#hobbies" class="smooth-scroll">Miscellaneous</a>
+        </div>
+        <script>
+          document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+              });
+            });
+          });
+        </script>
       </div>
       <div id="about">
         <div class="about-text">
@@ -222,7 +240,7 @@
       </div>
       <div id="projects">
         <h2>Projects</h2>
-        <!-- add timeline -->
+        <h3>Fall 2024</h3>
         <div id="projects-list"> 
           <div class="project">
             <h4>Asynchronous Distributed System</h4>
@@ -249,6 +267,7 @@
             <div class="project-icons">
               <i class="devicon-python-plain" title="Python"></i>
               <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
+              <i class="devicon-arduino-plain" title="Arduino"></i>
             </div>
           </div>
           <div class="project">
@@ -276,6 +295,7 @@
           </div>
         </div>
         <hr>
+        <h3>Summer 2024</h3>
         <div id="projects-list">
           <div class="project">
             <h4>Virtual Fitting Room</h4>
@@ -331,6 +351,7 @@
           </div>
         </div>
         <hr>
+        <h3>Spring 2024</h3>
         <div id="projects-list">
           <div class="project">
             <h4>State of Illinois Cannabis RDBMS</h4>
@@ -426,6 +447,7 @@
           </div>
         </div>
         <hr>
+        <h3>Fall 2023</h3>
         <div id="projects-list">
           <div class="project">
             <h4>Personal Website</h4>
@@ -480,6 +502,7 @@
           </div>
         </div>
         <hr>
+        <h3>Pre Fall 2022</h3>
         <div id="projects-list">
           <div class="project">
             <h4>Computer Vision for Swimming</h4>
