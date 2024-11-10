@@ -76,11 +76,6 @@
           projects.forEach(function(project) {
             project.classList.add('animate');
           });
-
-          var about = document.querySelectorAll('.about-text p');
-          about.forEach(function(about) {
-            about.classList.add('animate');
-          });
           
           var lastSections = document.querySelectorAll('#last-sections h4');
           lastSections.forEach(function(section) {
@@ -88,11 +83,6 @@
           });
 
           var lastSections = document.querySelectorAll('#last-sections h5');
-          lastSections.forEach(function(section) {
-            section.classList.add('animate');
-          });
-
-          var lastSections = document.querySelectorAll('#last-sections h6');
           lastSections.forEach(function(section) {
             section.classList.add('animate');
           });
@@ -130,10 +120,10 @@
     <div id="2d-site">
       <div id="top">
         <h1 id="title">Hi, I'm Sahith!</h1>
-        <p id="subtitle">
+        <div id="subtitle">
           Click the icon for a THREE.js rendering!<br>
           <a href="./Resume.pdf">Resume</a>
-        </p>
+        </div>
         <div id="topic-links">
           <a href="#about" class="smooth-scroll">About</a> | 
           <a href="#experiences" class="smooth-scroll">Experience</a> | 
@@ -142,6 +132,45 @@
           <a href="#classes" class="smooth-scroll">Education/Contact</a> |
           <a href="#hobbies" class="smooth-scroll">Miscellaneous</a>
         </div>
+        <button id="next" title="Next Section">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <button id="prev" title="Previous Section">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        <script>
+          const sections = document.querySelectorAll('#topic-links a');
+          let currentSectionIndex = 0;
+
+          document.getElementById('next').addEventListener('click', function () {
+            if (currentSectionIndex < sections.length - 1) {
+              currentSectionIndex++;
+              document.querySelector(sections[currentSectionIndex].getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+              });
+            }
+          });
+
+          document.getElementById('prev').addEventListener('click', function () {
+            if (currentSectionIndex > 0) {
+              currentSectionIndex--;
+              document.querySelector(sections[currentSectionIndex].getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+              });
+            }
+          });
+
+          window.addEventListener('scroll', function () {
+            let currentSection = sections[currentSectionIndex].getAttribute('href');
+            sections.forEach((section, index) => {
+              const sectionElement = document.querySelector(section.getAttribute('href'));
+              const rect = sectionElement.getBoundingClientRect();
+              if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                currentSectionIndex = index;
+              }
+            });
+          });
+        </script>
         <script>
           document.querySelectorAll('.smooth-scroll').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -168,7 +197,7 @@
             keep learning in and out of college!
           </p>
         </div>
-        <img src="./images/sahith2.png" alt="profile" />
+        <img src="./images/sahith2.png" alt="profile" style="height: auto; width: auto;" />
       </div>
       <div id="experiences">
         <h2>Experience</h2>
@@ -214,6 +243,7 @@
             <a href="https://onespace-app.com">Check us out here!</a>
             <div class="project-icons">
               <i class="devicon-react-original" title="React"></i>
+              <i class="devicon-nodejs-plain"></i>
               <i class="devicon-electron-original" title="Electron"></i>
               <i class="devicon-html5-plain" title="HTML"></i>
               <i class="devicon-css3-plain" title="CSS"></i>
@@ -249,7 +279,6 @@
               Developed a distributed system that allows users to run multiple tasks 
               concurrently on a network of computers. The system uses a master-slave 
               architecture to distribute tasks to worker nodes and collect results. 
-              Built with Golang.
             </p>
             <div class="project-icons">
               <i class="devicon-go-original-wordmark" title="Golang"></i>
@@ -261,8 +290,7 @@
             <p>
               Designed a network of drones that provide WiFi coverage to remote areas 
               without internet access. The drones are equipped with WiFi routers and 
-              fly in a coordinated pattern to provide coverage to a large area. Built 
-              with Python and Raspberry Pi.
+              fly in a coordinated pattern to provide coverage to a large area.
             </p>
             <div class="project-icons">
               <i class="devicon-python-plain" title="Python"></i>
@@ -276,6 +304,8 @@
             <h6>Aug 2024 - present</h6>
             <div class="project-icons">
               <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-streamlit-plain" title="Streamlit"></i>
+              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
             </div>
           </div>
           <div class="project">
@@ -283,8 +313,7 @@
             <h6>Aug 2024 - present</h6>
             <p>
               SeriesFarm is a novel web application that allows farmers to apply for agricultural
-              loans via a user-friendly interface. The application uses a React frontend and 
-              a Django REST backend to provide a seamless experience.
+              loans via a user-friendly interface.
             </p>
             <div class="project-icons">
               <i class="devicon-django-plain" title="Django"></i>
@@ -305,7 +334,7 @@
               Developed a virtual fitting room as a Google Chrome extension that allows users 
               to try on clothes from the comfort of their own home. Users can upload a PNG picture 
               of themselves wearing an article of clothing and select from a variety of clothing 
-              items to see how they look. Built with React and Next.js.
+              items to see how they look.
             </p>
             <a href="https://github.com/bodlasahith/fitting-room">Check out my code here!</a>
             <div class="project-icons">
@@ -321,8 +350,7 @@
               This website provides a seamless integration with Spotify, allowing you to generate 
               personalized posters of your favorite albums, artists, and tracks. By logging in 
               with your Spotify account, you gain access to your entire music library and can 
-              easily select the content you want to feature on your posters. Built with React,
-              Express, the Spotify API, Stable Diffusion AI, and MongoDB storage.
+              easily select the content you want to feature on your posters.
             </p>
             <a href="https://github.com/bodlasahith/music-posters">Check out my code here!</a>
             <div class="project-icons">
@@ -339,9 +367,8 @@
             <p>
               JukeBox is a travel playlist app that allows users to create playlists
               based on their destination. Users can input their destination and the app
-              will generate a playlist based on the location's culture and music scene.
-              The app uses a React Native design and the Spotify API to generate playlists 
-              and the Google Maps API to determine the user's location.
+              will generate a playlist based on the duration of the trip and the user's 
+              music preferences.
             </p>
             <a href="https://github.com/bodlasahith/travel-playlist-app">Check out my code here!</a>
             <div class="project-icons">
@@ -372,12 +399,11 @@
             <h4>HackIllinois: Baymin</h4>
             <h6>Feb 2024</h6>
             <p>
-              Stemmed from the desire to create an autonomous vehicle capable 
-              of aiding in search and rescue missions. Collaboratively envisioned 
-              a rover-like vehicle equipped with advanced technology to detect and 
-              assist humans in various landscapes. Built using a Raspberry Pi with 
-              a custom Pi-hat and assembled it on an acrylic chassis equipped with 
-              motors, wheels, and foam for stability.
+              Created an autonomous vehicle capable of aiding in search and rescue 
+              missions. Collaboratively envisioned a rover-like vehicle equipped with 
+              advanced technology to detect and assist humans in various landscapes. 
+              Built using a Raspberry Pi with a custom Pi-hat and assembled it on an 
+              acrylic chassis equipped with motors, wheels, and foam for stability.
             </p>
             <a href="https://devpost.com/software/baymin-dnaz01">Check out our project here!</a>
             <div class="project-icons">
@@ -411,7 +437,7 @@
               and rules by developing a basic mobile browser app that assists driving 
               practice and studying. Created an engaging, multifaceted app that 
               encourages and assists driving practice, studying best practices, and 
-              document handling with React, Express, and AWS.
+              document handling.
             </p>
             <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing">Check out our demo here!</a>
             <div class="project-icons">
@@ -433,13 +459,13 @@
               determine what are the best places to commit certain kinds of crimes such 
               as larceny or homicide. It will also indicate different features of each 
               county that make it beneficial for would-be criminals to commit their crime 
-              of choice there. Built with Vanilla HTML/CSS, Express, and a MySQL GCP 
-              database.
+              of choice there.
             </p>
             <a href="https://github.com/bodlasahith/evil-niche">Check out our code here!</a>
             <div class="project-icons">
               <i class="devicon-html5-plain" title="HTML"></i>
               <i class="devicon-css3-plain" title="CSS"></i>
+              <i class="devicon-nodejs-plain"></i>
               <i class="devicon-express-original" title="Express"></i>
               <i class="devicon-mysql-original" title="MySQL"></i>
               <i class="devicon-googlecloud-plain" title="GCP"></i>
@@ -455,7 +481,7 @@
             <h6>Dec 2023 - present</h6>
             <p>
               This website was created to showcase my projects, skills, and experiences. 
-              It was built using HTML, CSS, and THREE.js, and is hosted with Github Pages.
+              It was built using HTML/CSS and THREE.js, hosted with Github Pages.
             </p>
             <a href="https://github.com/bodlasahith/personal-website">Check out my code here!</a>
             <div class="project-icons">
@@ -468,10 +494,9 @@
             <h4>EntreBrew</h4>
             <h6>Feb 2023 - Dec 2023</h6>
             <p>
-              Designing a website with React frontend and Django REST backend to foster
-              a supportive community for students to network with like-minded peers
-              where they can exchange ideas, collaborate, and find potential co-founders
-              or team members for their ventures.
+              Designing a website foster a supportive community for students to network 
+              with like-minded peers where they can exchange ideas, collaborate, and find
+              potential co-founders or team members for their ventures.
             </p>
             <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing">Check out the demo here!</a>
             <div class="project-icons">
@@ -491,8 +516,7 @@
               Contributed to making a basic Python Streamlit website that analyzed bicep
               curl technique using MediaPipe pose estimation and computer vision and
               reported whether user displays proper form. Uses landmark detection for angle
-              measurement to help gym newbies, and may expand to other exercises later. Built 
-              with Python and Streamlit.
+              measurement to help gym newbies, and may expand to other exercises later.
             </p>
             <a href="https://mediaspace.illinois.edu/media/t/1_ro9tfei9">Check out our project here!</a>
             <div class="project-icons">
@@ -526,7 +550,7 @@
               This device provides the visually impaired with knowledge of their surroundings. 
               Though the blind generally use canes to map out their path a few steps in front 
               of themselves, this device corroborates some information gathered from touch 
-              using hearing. Built with C++ and Arduino with Sensor Kit.
+              using hearing.
             </p>
             <a href="https://github.com/bodlasahith/object-detection">Check out my project here!</a>
             <div class="project-icons">
@@ -585,7 +609,7 @@
         </div>
         <div id="classes">
           <h3>Relevant Coursework</h3>
-          <h6>
+          <p>
             - CS 124: Introduction to Computer Science I<br>
             - CS 128: Introduction to Computer Science II<br>
             - CS 173: Discrete Structures<br>
@@ -600,7 +624,7 @@
             - CS 374: Introduction to Algorithms and Models of Computation<br>
             - CS 425: Distributed Systems<br>
             - CS 438: Wireless Networks<br>
-          </h6>
+          </p>
         </div>
         <div id="contact">
           <h3>Let's Connect!</h3>
@@ -632,6 +656,9 @@
         <div class="hobby">
           <img src="images/Screenshot 2024-10-24 at 11.34.02 AM.png" alt="traveling" />
           <h4>Bodybuilding</h4>
+        </div>
+        <div class="hobby">
+          <h4>Traveling</h4>
         </div>
       </div>
       <div id="end"></div>  

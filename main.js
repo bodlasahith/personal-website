@@ -157,8 +157,8 @@ panel1content.add(
   sahithBitmoji,
   panel1caption,
   sahithCaption,
-  base,
-  baseLines,
+  // base,
+  // baseLines,
   baseLight
 );
 
