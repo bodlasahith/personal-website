@@ -46,9 +46,6 @@
         bg.style.display = bg.style.display === "block" ? "none" : "block";
       });
     </script>
-    <audio id="backgroundAudio" controls autoplay loop volume="0.2" hidden>
-      <source src="" type="audio/mp3" />
-    </audio>
     <script type="importmap">
       {
         "imports": {
@@ -276,9 +273,11 @@
             <h4>Asynchronous Distributed System</h4>
             <h6>Aug 2024 - Dec 2024</h6>
             <p>
-              Developed a distributed system that allows users to run multiple tasks 
-              concurrently on a network of computers. The system uses a master-slave 
-              architecture to distribute tasks to worker nodes and collect results. 
+              Developed a distributed system with 10 VMs that allows users to run multiple tasks 
+              concurrently on a network of computers. The system uses a SWIM-based architecture
+              architecture to distribute tasks to worker nodes and collect results as well as monitor 
+              and reboot machines that fail. A robust mapreduce-like architecture was implemented to 
+              handle task distribution and simulated an Apache Spark-like stream processing algorithm.
             </p>
             <div class="project-icons">
               <i class="devicon-go-original-wordmark" title="Golang"></i>
@@ -288,10 +287,14 @@
             <h4>Aerial Drone WiFi Network</h4>
             <h6>Aug 2024 - Dec 2024</h6>
             <p>
-              Designed a network of drones that provide WiFi coverage to remote areas 
-              without internet access. The drones are equipped with WiFi routers and 
-              fly in a coordinated pattern to provide coverage to a large area.
+              Designed a mesh network of drones that provide WiFi coverage to remote areas without internet 
+              access. The drones are equipped with Raspberry Pi 4s and ESP32 microcontrollers that act 
+              as access points and relay stations. The Pis are connected to a central base station that
+              manages the network and provides internet access via a 5G LTE connection. The ESP32s 
+              communicate over ESP-NOW that allows for low-latency communication between drones by 
+              directly pinging each other's MAC addresses.
             </p>
+            <a href="https://github.com/bodlasahith/aerial-drone-wifi-network">Check out our code here!</a>
             <div class="project-icons">
               <i class="devicon-python-plain" title="Python"></i>
               <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
@@ -302,6 +305,13 @@
           <div class="project">
             <h4>SimProBot</h4>
             <h6>Aug 2024 - present</h6>
+            <p>
+              SimProBot is an advanced language model designed to analyze and learn 
+              from class content at UIUC, offering students comprehensive descriptions 
+              and summaries to better understand each course. Built with LangChain, 
+              OpenAI, and LLaMA, it utilizes a Pinecone vector database and is seamlessly 
+              deployed through AWS SageMaker on a Streamlit website.
+            </p>
             <div class="project-icons">
               <i class="devicon-python-plain" title="Python"></i>
               <i class="devicon-streamlit-plain" title="Streamlit"></i>
@@ -313,7 +323,10 @@
             <h6>Aug 2024 - present</h6>
             <p>
               SeriesFarm is a novel web application that allows farmers to apply for agricultural
-              loans via a user-friendly interface.
+              loans via a user-friendly interface. The app uses a machine learning model to provide
+              farmers with personalized loan recommendations based on their financial history and
+              crop data. SeriesFarm also features a dashboard that allows farmers to track their loan
+              applications and receive updates on their status. Built with Django, SQLite, and Bootstrap
             </p>
             <div class="project-icons">
               <i class="devicon-django-plain" title="Django"></i>

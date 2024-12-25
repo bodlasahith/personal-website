@@ -699,30 +699,6 @@ let bobRadius = 500;
 //--- ANIMATION ---//
 //-----------------//
 
-const songs = [
-  "./tracks/circus_maximus.mp3",
-  "./tracks/fe!n_🧛.mp3",
-  "./tracks/hyaena.mp3",
-  "./tracks/i_know_?.mp3",
-  "./tracks/looove.mp3",
-  "./tracks/meltdown_🦉.mp3",
-  "./tracks/modern_jam.mp3",
-  "./tracks/my_eyes_👁️.mp3",
-  "./tracks/parasail.mp3",
-  "./tracks/sirens.mp3",
-  "./tracks/skitzo.mp3",
-  "./tracks/telekinesis.mp3",
-  "./tracks/til_further_notice.mp3",
-  "./tracks/topia_twins.mp3",
-];
-
-const backgroundAudio = document.getElementById("backgroundAudio");
-
-const randomIndex = Math.floor(Math.random() * songs.length);
-const randomSong = songs[randomIndex];
-
-backgroundAudio.src = randomSong;
-
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function animate() {
@@ -736,8 +712,6 @@ function animate() {
 
     camera.position.set(x, y, z);
     camera.lookAt(0, 0, 0);
-
-    backgroundAudio.play();
   }
 
   if (isObservationMode) {
@@ -783,8 +757,6 @@ function animate() {
     panelLights.rotation.x = 0;
     panelLights.rotation.y = 0;
     panelLights.rotation.z = 0;
-
-    backgroundAudio.pause();
 
     controls.update();
     renderer.render(scene, camera);
