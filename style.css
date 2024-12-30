@@ -8,7 +8,7 @@ canvas {
 body {
   width: 100%;
   background: rgb(0, 16, 33);
-  color: white;
+  color: #dddddd;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -45,7 +45,7 @@ h1 {
 }
 
 #topic-links a {
-  color: white;
+  color: #dddddd;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.5vw;
@@ -86,9 +86,9 @@ h1 {
   left: 2.5vw;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.5);
-  border: 1px solid white;
+  border: 1px solid #dddddd;
   border-radius: 5px;
-  color: white;
+  color: #dddddd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,8 +112,8 @@ h1 {
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #dddddd;
+  color: #dddddd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +165,7 @@ h2 {
 }
 
 #experiences {
-  background-color: rgb(0, 87, 87);
+  background-color: rgb(1, 45, 92);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -187,7 +187,7 @@ h2 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(0, 53, 53);
+  background-color: rgb(0, 31, 63);
   margin: 1vw;
   padding: 1vw;
   border-radius: 10px;
@@ -215,11 +215,11 @@ h2 {
 }
 
 a {
-  color: deepskyblue;
+  color: lightskyblue;
 }
 
 #projects {
-  background-color: skyblue;
+  background-color: rgb(1, 45, 92);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -238,7 +238,7 @@ a {
 .project {
   flex: 1 1 45%;
   text-align: center;
-  background-color: rgb(98, 149, 170);
+  background-color: rgb(0, 31, 63);
   padding: 15px;
   margin: 10px;
   border-radius: 8px;
@@ -253,7 +253,7 @@ a {
 }
 
 .project a {
-  color: darkblue;
+  color: lightskyblue;
 }
 
 .project h6 {
@@ -278,7 +278,7 @@ a {
 .project-icons i {
   margin: 10px;
   background: none;
-  border: 1px solid white;
+  border: 1px solid #dddddd;
   border-radius: 5px;
   font-size: 2vw;
   padding: 5px;
@@ -286,7 +286,7 @@ a {
 }
 
 .project-icons i:hover {
-  background: white;
+  background: #dddddd;
   border: 1px solid black;
   color: black;
 }
@@ -304,7 +304,7 @@ h3 {
 }
 
 #skills {
-  background-color: rgb(0, 0, 41);
+  background-color: rgb(1, 45, 92);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -321,7 +321,7 @@ h3 {
 
 .skill {
   flex: 1 1 45%;
-  background-color: lightsteelblue;
+  background-color: rgb(0, 31, 63);
   padding: 15px;
   margin: 10px;
   border-radius: 8px;
@@ -359,12 +359,12 @@ h3 {
 
 .skill h4 {
   font-size: 18px;
-  color: black;
+  color: #dddddd;
 }
 
 .skill p {
   font-size: 16px;
-  color: black;
+  color: #dddddd;
 }
 
 #last-sections {
@@ -415,7 +415,7 @@ h3 {
 }
 
 #education {
-  width: 33.33%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -425,17 +425,17 @@ h3 {
 }
 
 #classes {
-  width: 33.33%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center;
   text-align: center;
-  background-color: rgb(0, 32, 147);
+  background-color: rgb(0, 15, 68);
 }
 
 #contact {
-  width: 33.33%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -471,8 +471,8 @@ h3 {
 }
 
 #icons a:hover {
-  border: 1px solid white;
-  color: white
+  border: 1px solid #dddddd;
+  color: #dddddd
 }
 
 #illinois {
