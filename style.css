@@ -7,7 +7,7 @@ canvas {
 
 body {
   width: 100%;
-  color: rgb(1, 45, 92);
+  color: #012d5c;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 }
 
 h1 {
-  color: #dddddd;
+  color: #ddd;
   font-size: 7vw;
 }
 
@@ -32,7 +32,7 @@ h1 {
 }
 
 #subtitle {
-  color: #dddddd;
+  color: #ddd;
   text-align: center;
   margin-bottom: 2vw;
   font-size: 1vw;
@@ -46,7 +46,7 @@ h1 {
 }
 
 #topic-links a {
-  color: #dddddd;
+  color: #ddd;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.5vw;
@@ -57,6 +57,10 @@ h1 {
 #topic-links a:hover {
   color: deepskyblue;
   text-decoration: underline;
+}
+
+#topic-links div {
+  color: #ddd;
 }
 
 #switch {
@@ -78,7 +82,7 @@ h1 {
 
 #switch:hover {
   cursor: pointer;
-  background: #dddddd;
+  background: #ddd;
 }
 
 #next {
@@ -87,9 +91,9 @@ h1 {
   left: 2.5vw;
   transform: translateX(-50%);
   background: none;
-  border: 1px solid rgb(1, 45, 92);
+  border: 1px solid #012d5c;
   border-radius: 5px;
-  color: rgb(1, 45, 92);
+  color: #012d5c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +107,7 @@ h1 {
 
 #next:hover {
   color: black;
-  background: rgba(255, 255, 255, 0.75);
+  background: #ffffffbf;
 }
 
 #prev {
@@ -113,8 +117,8 @@ h1 {
   transform: translateX(-50%);
   background: none;
   border-radius: 5px;
-  border: 1px solid rgb(1, 45, 92);
-  color: rgb(1, 45, 92);
+  border: 1px solid #012d5c;
+  color: #012d5c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +132,7 @@ h1 {
 
 #prev:hover {
   color: black;
-  background: rgba(255, 255, 255, 0.75);
+  background: #ffffffbf;
 }
 
 #about {
@@ -163,7 +167,7 @@ h2 {
   font-size: 1.5vw;
   text-align: center;
   background-color: #2a6f97;
-  color: #dddddd !important;
+  color: #ddd !important;
   border-radius: 10px;
   padding: 2vw;
 }
@@ -194,7 +198,7 @@ h2 {
   align-items: stretch;
   text-align: center;
   background: #2a6f97;
-  color: #dddddd !important;
+  color: #ddd !important;
   margin: 1vw 0;
   padding: 1vw;
   border-radius: 10px;
@@ -220,7 +224,7 @@ h2 {
   right: 0px;
   width: 2px;
   height: 100%;
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 .experience-image {
@@ -302,7 +306,7 @@ a {
 }
 
 .project h4 {
-  color: #dddddd;
+  color: #ddd;
   margin-bottom: 5px;
 }
 
@@ -327,8 +331,8 @@ a {
 .project-icons i {
   margin: 10px;
   background: none;
-  border: 1px solid #dddddd;
-  color: #dddddd;
+  border: 1px solid #ddd;
+  color: #ddd;
   border-radius: 5px;
   font-size: 2vw;
   padding: 5px;
@@ -336,9 +340,35 @@ a {
 }
 
 .project-icons i:hover {
-  background: #dddddd;
+  background: #ddd;
   border: 1px solid black;
   color: black;
+}
+
+.project-icons i[title] {
+  position: relative;
+}
+
+.project-icons i[title]::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #012d5c;
+  color: #ddd;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 0.5em;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.project-icons i:hover[title]::after {
+  opacity: 1;
 }
 
 .slide-container {
@@ -366,7 +396,7 @@ a {
   position: absolute;
   top: 50%;
   padding: 16px;
-  color: rgb(1, 45, 92);
+  color: #012d5c;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -387,8 +417,8 @@ a {
 
 .prev:hover, .next:hover {
   color: black;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgb(1, 45, 92);
+  background: #ffffff80;
+  border: 1px solid #012d5c;
 }
 
 .modal {
@@ -400,8 +430,7 @@ a {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: #00000066;
   padding-top: 60px;
 }
 
@@ -411,14 +440,42 @@ a {
   padding: 20px;
   border-radius: 10px;
   max-width: 800px;
+  animation: modalFadeIn 0.3s forwards;
 }
 
 .modal-contant span, h4, h6, p {
-  color: #dddddd;
+  color: #ddd;
 }
 
+.modal.fade-out .modal-content {
+  animation: modalFadeOut 0.3s forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+
 .close {
-  color: #aaa;
+  color: #ddd;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -434,7 +491,7 @@ a {
 hr {
   width: 95%;
   margin: 2vw;
-  border: 1px solid rgb(98, 149, 170);
+  border: 1px solid #6295aa;
 }
 
 h3 {
@@ -465,7 +522,7 @@ h3 {
   padding: 15px;
   margin: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px #0000001a;
   opacity: 0;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -500,17 +557,17 @@ h3 {
 
 .skill h4 {
   font-size: 18px;
-  color: #dddddd;
+  color: #ddd;
 }
 
 .skill p {
   font-size: 16px;
-  color: #dddddd;
+  color: #ddd;
 }
 
 .experience:hover, .project:hover, .skill:hover, .about-text p:hover, #about img:hover {
   transform: scale(1.01);
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 8px #000000e6;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -538,7 +595,7 @@ h3 {
 #last-sections a,
 #last-sections p {
   opacity: 0;
-  color: rgb(1, 45, 92);
+  color: #012d5c;
   transform: translateY(50px);
   transition: opacity 1s, transform 1s;
 }
@@ -620,8 +677,8 @@ h3 {
 #icons a {
   margin: 10px;
   background: none;
-  color: rgb(1, 45, 92);
-  border: 1px solid rgb(1, 45, 92);
+  color: #012d5c;
+  border: 1px solid #012d5c;
   padding: 5px;
   border-radius: 5px;
   font-size: 2.5vw;
@@ -629,7 +686,7 @@ h3 {
 }
 
 #icons a:hover {
-  background: #dddddd;
+  background: #ddd;
   border: 1px solid black;
   color: black;
 }
@@ -659,7 +716,7 @@ h3 {
 }
 
 #hobbies h3 {
-  color: #dddddd;
+  color: #ddd;
 }
 
 .hobby {

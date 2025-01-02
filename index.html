@@ -128,11 +128,18 @@
       }
 
       function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block";
+        modal.classList.remove('fade-out');
       }
 
       function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
+        const modal = document.getElementById(modalId);
+        modal.classList.add('fade-out');
+        setTimeout(() => {
+          modal.style.display = "none";
+          modal.classList.remove('fade-out');
+        }, 300);
       }
 
       document.addEventListener('keydown', function(event) {
@@ -140,7 +147,7 @@
           const modals = document.querySelectorAll('.modal');
           modals.forEach(modal => {
             if (modal.style.display === "block") {
-              modal.style.display = "none";
+              closeModal(modal.id);
             }
           });
         }
@@ -160,11 +167,16 @@
           <a href="./Resume.pdf">Resume</a>
         </div>
         <div id="topic-links">
-          <a href="#about" class="smooth-scroll">About</a> | 
-          <a href="#experiences" class="smooth-scroll">Experience</a> | 
-          <a href="#projects" class="smooth-scroll">Projects</a> | 
-          <a href="#skills" class="smooth-scroll">Skills</a> | 
-          <a href="#classes" class="smooth-scroll">Education/Contact</a> |
+          <a href="#about" class="smooth-scroll">About</a>
+          <div> | </div> 
+          <a href="#experiences" class="smooth-scroll">Experience</a>
+          <div> | </div>
+          <a href="#projects" class="smooth-scroll">Projects</a>
+          <div> | </div>
+          <a href="#skills" class="smooth-scroll">Skills</a>
+          <div> | </div>
+          <a href="#classes" class="smooth-scroll">Education/Contact</a>
+          <div> | </div>
           <a href="#hobbies" class="smooth-scroll">Miscellaneous</a>
         </div>
         <button id="next" title="Next Section">
@@ -283,10 +295,10 @@
                 investors and select users (Trello and OrangeQC founders are among our early 
                 testers). We hope to launch publicly in the coming months!
               </p>
-              <a href="https://onespace-app.com">Check us out here!</a>
+              <a href="https://onespace-app.com" target="_blank" rel="noopener">Check us out here!</a>
               <div class="project-icons">
                 <i class="devicon-react-original" title="React"></i>
-                <i class="devicon-nodejs-plain"></i>
+                <i class="devicon-nodejs-plain" title="NodeJS"></i>
                 <i class="devicon-electron-original" title="Electron"></i>
                 <i class="devicon-html5-plain" title="HTML"></i>
                 <i class="devicon-css3-plain" title="CSS"></i>
@@ -331,8 +343,8 @@
             <div class="project-period" id="fall-2024">
               <h3>Fall 2024</h3>
               <div class="projects-list">
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2024-1')">Asynchronous Distributed System</h4>
+                <div class="project" onclick="openModal('modal-fall-2024-1')">
+                  <h4 >Asynchronous Distributed System</h4>
                   <img src="./images/network.png" alt="Asynchronous Distributed System" />
                 </div>
                 <div id="modal-fall-2024-1" class="modal">
@@ -355,8 +367,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2024-2')">Aerial Drone WiFi Network</h4>
+                <div class="project" onclick="openModal('modal-fall-2024-2')">
+                  <h4>Aerial Drone WiFi Network</h4>
                   <img src="./images/drone.png" alt="drone" />
                 </div>
                 <div id="modal-fall-2024-2" class="modal">
@@ -376,7 +388,7 @@
                       deployed in disaster-stricken areas to quickly restore communication networks, 
                       significantly aiding in relief and rescue operations.
                     </p>
-                    <a href="https://github.com/bodlasahith/aerial-drone-wifi-network">Check out our code here!</a>
+                    <a href="https://github.com/bodlasahith/aerial-drone-wifi-network" target="_blank" rel="noopener">Check out our code here!</a>
                     <div class="project-icons">
                       <i class="devicon-python-plain" title="Python"></i>
                       <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
@@ -385,8 +397,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2024-3')">SimProBot</h4>
+                <div class="project" onclick="openModal('modal-fall-2024-3')">
+                  <h4>SimProBot</h4>
                   <img src="./images/class.png" alt="SimProBot" />
                 </div>
                 <div id="modal-fall-2024-3" class="modal">
@@ -412,8 +424,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2024-4')">SeriesFarm</h4>
+                <div class="project" onclick="openModal('modal-fall-2024-4')">
+                  <h4>SeriesFarm</h4>
                   <img src="./images/farm.png" alt="SeriesFarm" />
                 </div>
                 <div id="modal-fall-2024-4" class="modal">
@@ -452,8 +464,8 @@
             <div class="project-period" id="summer-2024">
               <h3>Summer 2024</h3>
               <div class="projects-list">
-                <div class="project">
-                  <h4 onclick="openModal('modal-summer-2024-1')">Virtual Fitting Room</h4>
+                <div class="project" onclick="openModal('modal-summer-2024-1')">
+                  <h4>Virtual Fitting Room</h4>
                   <img src="./images/fitting_room.png" alt="Virtual Fitting Room" />
                 </div>
                 <div id="modal-summer-2024-1" class="modal">
@@ -469,7 +481,7 @@
                       experience by providing a more interactive and personalized way to visualize 
                       clothing, ultimately reducing return rates and increasing customer satisfaction.
                     </p>
-                    <a href="https://github.com/bodlasahith/fitting-room">Check out my code here!</a>
+                    <a href="https://github.com/bodlasahith/fitting-room" target="_blank" rel="noopener">Check out my code here!</a>
                     <div class="project-icons">
                       <i class="devicon-react-original" title="React"></i>
                       <i class="devicon-nextjs-plain" title="Next"></i>
@@ -477,8 +489,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-summer-2024-2')">Music Poster Generator</h4>
+                <div class="project" onclick="openModal('modal-summer-2024-2')">
+                  <h4>Music Poster Generator</h4>
                   <img src="./images/music_posters.png" alt="Music Poster Generator" />
                 </div>
                 <div id="modal-summer-2024-2" class="modal">
@@ -497,7 +509,7 @@
                       by allowing users to create custom artwork that reflects their musical tastes, 
                       making it a fun and engaging way to interact with their favorite music.
                     </p>
-                    <a href="https://github.com/bodlasahith/music-posters">Check out my code here!</a>
+                    <a href="https://github.com/bodlasahith/music-posters" target="_blank" rel="noopener">Check out my code here!</a>
                     <div class="project-icons">
                       <i class="devicon-react-original" title="React"></i>
                       <i class="devicon-express-original" title="Express"></i>
@@ -507,8 +519,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-summer-2024-3')">JukeBox: A Travel Playlist App</h4>
+                <div class="project" onclick="openModal('modal-summer-2024-3')">
+                  <h4>JukeBox: A Travel Playlist App</h4>
                   <img src="./images/jukebox.png" alt="JukeBox: A Travel Playlist App" />
                 </div>
                 <div id="modal-summer-2024-3" class="modal">
@@ -525,7 +537,7 @@
                       music data, and the Google Maps API for destination information, this app leverages 
                       modern web technologies to deliver a seamless and enjoyable user experience.
                     </p>
-                    <a href="https://github.com/bodlasahith/travel-playlist-app">Check out my code here!</a>
+                    <a href="https://github.com/bodlasahith/travel-playlist-app" target="_blank" rel="noopener">Check out my code here!</a>
                     <div class="project-icons">
                       <i class="devicon-react-original" title="React"></i>
                       <i class="fab fa-spotify" title="Spotify API"></i>
@@ -544,8 +556,8 @@
             <div class="project-period" id="spring-2024">
               <h3>Spring 2024</h3>
               <div class="projects-list">
-                <div class="project">
-                  <h4 onclick="openModal('modal-spring-2024-1')">State of Illinois Cannabis RDBMS</h4>
+                <div class="project" onclick="openModal('modal-spring-2024-1')">
+                  <h4>State of Illinois Cannabis RDBMS</h4>
                   <img src="./images/soi.png" alt="State of Illinois Cannabis RDBMS" />
                 </div>
                 <div id="modal-spring-2024-1" class="modal">
@@ -569,8 +581,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-spring-2024-2')">HackIllinois: Baymin</h4>
+                <div class="project" onclick="openModal('modal-spring-2024-2')">
+                  <h4>HackIllinois: Baymin</h4>
                   <img src="./images/baymin.png" alt="HackIllinois: Baymin" />
                 </div>
                 <div id="modal-spring-2024-2" class="modal">
@@ -590,15 +602,15 @@
                       environments makes it a valuable asset for emergency responders, potentially saving 
                       lives and reducing the risks faced by human rescuers.
                     </p>
-                    <a href="https://devpost.com/software/baymin-dnaz01">Check out our project here!</a>
+                    <a href="https://devpost.com/software/baymin-dnaz01" target="_blank" rel="noopener">Check out our project here!</a>
                     <div class="project-icons">
                       <i class="devicon-python-plain" title="Python"></i>
                       <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-spring-2024-3')">Fitcheck</h4>
+                <div class="project" onclick="openModal('modal-spring-2024-3')">
+                  <h4>Fitcheck</h4>
                   <img src="./images/fitcheck.png" alt="Fitcheck" />
                 </div>
                 <div id="modal-spring-2024-3" class="modal">
@@ -631,8 +643,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-spring-2024-4')">Teen Safe Driving App</h4>
+                <div class="project" onclick="openModal('modal-spring-2024-4')">
+                  <h4>Teen Safe Driving App</h4>
                   <img src="./images/driving.png" alt="Teen Safe Driving App" />
                 </div>
                 <div id="modal-spring-2024-4" class="modal">
@@ -650,7 +662,7 @@
                       young drivers, making it easier for them to understand and adhere to driving 
                       regulations, ultimately promoting safer driving habits.
                     </p>
-                    <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing">Check out our demo here!</a>
+                    <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing" target="_blank" rel="noopener">Check out our demo here!</a>
                     <div class="project-icons">
                       <i class="devicon-react-original" title="React"></i>
                       <i class="devicon-tailwindcss-original" title="TailwindCSS"></i>
@@ -662,8 +674,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-spring-2024-5')">Evil Niche</h4>
+                <div class="project" onclick="openModal('modal-spring-2024-5')">
+                  <h4>Evil Niche</h4>
                   <img src="./images/evil_niche.png" alt="Evil Niche" />
                 </div>
                 <div id="modal-spring-2024-5" class="modal">
@@ -678,11 +690,11 @@
                       it aims to empower law enforcement agencies and policymakers to make data-driven 
                       decisions, ultimately enhancing public safety and community well-being.
                     </p>
-                    <a href="https://github.com/bodlasahith/evil-niche">Check out our code here!</a>
+                    <a href="https://github.com/bodlasahith/evil-niche" target="_blank" rel="noopener">Check out our code here!</a>
                     <div class="project-icons">
                       <i class="devicon-html5-plain" title="HTML"></i>
                       <i class="devicon-css3-plain" title="CSS"></i>
-                      <i class="devicon-nodejs-plain"></i>
+                      <i class="devicon-nodejs-plain" title="NodeJS"></i>
                       <i class="devicon-express-original" title="Express"></i>
                       <i class="devicon-mysql-original" title="MySQL"></i>
                       <i class="devicon-googlecloud-plain" title="GCP"></i>
@@ -701,8 +713,8 @@
             <div class="project-period" id="fall-2023">
               <h3>Fall 2023</h3>
               <div class="projects-list">
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2023-1')">Personal Website</h4>
+                <div class="project" onclick="openModal('modal-fall-2023-1')">
+                  <h4>Personal Website</h4>
                   <img src="./images/website.png" alt="Personal Website" />
                 </div>
                 <div id="modal-fall-2023-1" class="modal">
@@ -714,7 +726,7 @@
                       This website was created to showcase my projects, skills, and experiences. Built 
                       using HTML/CSS and THREE.js, hosted with Github Pages.
                     </p>
-                    <a href="https://github.com/bodlasahith/personal-website">Check out my code here!</a>
+                    <a href="https://github.com/bodlasahith/personal-website" target="_blank" rel="noopener">Check out my code here!</a>
                     <div class="project-icons">
                       <i class="devicon-html5-plain" title="HTML"></i>
                       <i class="devicon-css3-plain" title="CSS"></i>
@@ -722,8 +734,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2023-2')">EntreBrew</h4>
+                <div class="project" onclick="openModal('modal-fall-2023-2')">
+                  <h4>EntreBrew</h4>
                   <img src="./images/entrebrew.png" alt="EntreBrew" />
                 </div>
                 <div id="modal-fall-2023-2" class="modal">
@@ -741,7 +753,7 @@
                       secure user experience, ultimately driving collaboration and innovation within the 
                       student community.
                     </p>
-                    <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing">Check out the demo here!</a>
+                    <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing" target="_blank" rel="noopener">Check out the demo here!</a>
                     <div class="project-icons">
                       <i class="devicon-react-original" title="React"></i>
                       <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
@@ -753,8 +765,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-fall-2023-3')">Pose Estimation for Bicep Curls</h4>
+                <div class="project" onclick="openModal('modal-fall-2023-3')">
+                  <h4>Pose Estimation for Bicep Curls</h4>
                   <img src="./images/curl.png" alt="Pose Estimation for Bicep Curls" />
                 </div>
                 <div id="modal-fall-2023-3" class="modal">
@@ -768,7 +780,7 @@
                       user displays proper form. Uses landmark detection for angle measurement to help gym 
                       newbies, and may expand to other exercises later.
                     </p>
-                    <a href="https://github.com/bodlasahith/e-gym-bro">Check out our project here!</a>
+                    <a href="https://github.com/bodlasahith/e-gym-bro" target="_blank" rel="noopener">Check out our project here!</a>
                     <div class="project-icons">
                       <i class="devicon-python-plain" title="Python"></i>
                       <i class="devicon-streamlit-plain" title="Streamlit"></i>
@@ -786,9 +798,9 @@
           <div class="slides">
             <div class="project-period" id="pre-fall-2022">
               <h3>Pre Fall 2022</h3>
-              <div class="projects-list">
+              <div class="projects-list" onclick="openModal('modal-pre-fall-2022-1')">
                 <div class="project">
-                  <h4 onclick="openModal('modal-pre-fall-2022-1')">Computer Vision for Swimming</h4>
+                  <h4>Computer Vision for Swimming</h4>
                   <img src="./images/swimming.png" alt="Computer Vision for Swimming" />
                 </div>
                 <div id="modal-pre-fall-2022-1" class="modal">
@@ -807,14 +819,14 @@
                       competitive swimmer myself, I gain great use and have keen insights and credibility 
                       into the project area, ensuring the solutions are practical and effective.
                     </p>
-                    <a href="https://docs.google.com/presentation/d/1txKxix6OIB2m5izLp71KPErf4TcuT7JViL3AIyrwne8/edit?usp=sharing">Check out my project here!</a>
+                    <a href="https://docs.google.com/presentation/d/1txKxix6OIB2m5izLp71KPErf4TcuT7JViL3AIyrwne8/edit?usp=sharing" target="_blank" rel="noopener">Check out my project here!</a>
                     <div class="project-icons">
                       <i class="devicon-python-plain" title="Python"></i>
                     </div>
                   </div>
                 </div>
-                <div class="project">
-                  <h4 onclick="openModal('modal-pre-fall-2022-2')">Object Detection System for the Visually Impaired</h4>
+                <div class="project" onclick="openModal('modal-pre-fall-2022-2')">
+                  <h4>Object Detection System for the Visually Impaired</h4>
                   <img src="./images/blind.png" alt="Object Detection System for the Visually Impaired" />
                 </div>
                 <div id="modal-pre-fall-2022-2" class="modal">
@@ -837,7 +849,7 @@
                       feedback on their surroundings, this device significantly improves their ability to 
                       navigate safely and confidently in various environments. 
                     </p>
-                    <a href="https://github.com/bodlasahith/object-detection">Check out my project here!</a>
+                    <a href="https://github.com/bodlasahith/object-detection" target="_blank" rel="noopener">Check out my project here!</a>
                     <div class="project-icons">
                       <i class="devicon-cplusplus-plain" title="C++"></i>
                       <i class="devicon-arduino-plain" title="Arduino"></i>
@@ -895,7 +907,7 @@
           <div>
             <h4>University of Illinois at Urbana-Champaign</h4>
             <img src="./images/illinois.png" id="illinois" alt="illinois"></img>
-            <h5>BS-MCS Combined Degree in Computer Science with Minor in Economics<br>Fall 2022 - Spring 2026</h5>
+            <h5>BS-MCS Combined Degree in Computer Science with Minor in Economics<br><br>Fall 2022 - Spring 2026</h5>
           </div>
         </div>
         <div id="classes">
@@ -921,13 +933,13 @@
         <div id="contact">
           <h3>Let's Connect!</h3>
           <div id="icons">
-            <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" title="linked-in" >
+            <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" title="linked-in" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="mailto:bodlasahith@gmail.com"" id="email" title="email" >
+            <a href="mailto:bodlasahith@gmail.com"" id="email" title="email" target="_blank">
               <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://github.com/bodlasahith" id="github" title="github" >
+            <a href="https://github.com/bodlasahith" id="github" title="github" target="_blank" rel="noopener">
               <i class="fab fa-github"></i>
             </a>
           </div>
