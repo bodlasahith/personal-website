@@ -815,21 +815,18 @@ function animate() {
   startingIcon.position.y = 150 + Math.sin(Date.now() * 0.001) * 5;
   observation.rotateY(-0.01);
   observation.position.y = 50 + Math.sin(Date.now() * 0.001) * 5;
-  sahith.position.y = -15 + Math.sin(Date.now() * 0.001);
-  sahithBitmoji.position.y = -15 + Math.sin(Date.now() * 0.001);
-  downloadIcon.position.y = -15 + Math.sin(Date.now() * 0.001);
-  base1.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base1Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base2.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base2Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base3.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base3Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base4.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base4Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base5.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base5Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base6.position.y = -70 + Math.sin(Date.now() * 0.001);
-  base6Lines.position.y = -70 + Math.sin(Date.now() * 0.001);
+  panel1.position.y = Math.sin(Date.now() * 0.001);
+  panel1content.position.y = Math.sin(Date.now() * 0.001);
+  panel2.position.y = Math.sin(Date.now() * 0.001);
+  panel2content.position.y = Math.sin(Date.now() * 0.001);
+  panel3.position.y = Math.sin(Date.now() * 0.001);
+  panel3content.position.y = Math.sin(Date.now() * 0.001);
+  panel4.position.y = Math.sin(Date.now() * 0.001);
+  panel4content.position.y = Math.sin(Date.now() * 0.001);
+  panel5.position.y = Math.sin(Date.now() * 0.001);
+  panel5Content.position.y = Math.sin(Date.now() * 0.001);
+  panel6.position.y = Math.sin(Date.now() * 0.001);
+  panel6content.position.y = Math.sin(Date.now() * 0.001);
 
   controls.update();
   renderer.render(scene, camera);
@@ -931,6 +928,7 @@ loader.load(
 
     addEdges(arrow);
     scene.add(arrow);
+    animateObject(arrow);
   },
   undefined,
   (error) => {
@@ -956,6 +954,7 @@ loader.load(
 
     addEdges(stick_figure);
     scene.add(stick_figure);
+    animateObject(stick_figure);
   },
   undefined,
   (error) => {
@@ -981,5 +980,92 @@ loader.load(
 
     addEdges(grad_cap);
     scene.add(grad_cap);
+    animateObject(grad_cap);
   },
 )
+
+loader.load(
+  "blender-models/laptop.glb",
+  (gltf) => {
+    const laptop = gltf.scene;
+
+    laptop.position.set(-430, -55, -370);
+    laptop.rotateY(Math.PI);
+
+    const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+    laptop.traverse((child) => {
+      if (child.isMesh) {
+        child.material = matrixMaterial;
+      }
+    });
+
+    addEdges(laptop);
+    scene.add(laptop);
+    animateObject(laptop);
+  },
+)
+
+loader.load("blender-models/phone.glb", (gltf) => {
+  const phone = gltf.scene;
+
+  phone.scale.set(3, 3, 3);
+  phone.position.set(-430, -55, 370);
+
+  const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+  phone.traverse((child) => {
+    if (child.isMesh) {
+      child.material = matrixMaterial;
+    }
+  });
+
+  addEdges(phone);
+  scene.add(phone);
+  animateObject(phone);
+});
+
+loader.load("blender-models/contact.glb", (gltf) => {
+  const contact = gltf.scene;
+
+  contact.scale.set(15, 15, 15);
+  contact.position.set(430, -55, -370);
+
+  const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+  contact.traverse((child) => {
+    if (child.isMesh) {
+      child.material = matrixMaterial;
+    }
+  });
+
+  addEdges(contact);
+  scene.add(contact);
+  animateObject(contact);
+});
+
+loader.load("blender-models/dumbbell.glb", (gltf) => {
+  const dumbbell = gltf.scene;
+
+  dumbbell.scale.set(2, 2, 2);
+  dumbbell.position.set(100, -55, 565);
+  dumbbell.rotateY(Math.PI / 3);
+  dumbbell.rotateX(Math.PI / 12);
+
+  const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+  dumbbell.traverse((child) => {
+    if (child.isMesh) {
+      child.material = matrixMaterial;
+    }
+  });
+
+  addEdges(dumbbell);
+  scene.add(dumbbell);
+  animateObject(dumbbell);
+});
+
+function animateObject(object) {
+  const initialY = object.position.y;
+  function bob() {
+    object.position.y = initialY + Math.sin(Date.now() * 0.001) * 2.5;
+    requestAnimationFrame(bob);
+  }
+  bob();
+}

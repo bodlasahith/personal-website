@@ -112,13 +112,51 @@
       }
     
       setInterval(checkScroll, 100);
+      
+      let slideIndex = 0;
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function showSlides(n) {
+        const slides = document.querySelectorAll('.project-period');
+        if (n >= slides.length) { return; }
+        if (n < 0) { return; }
+        slides.forEach(slide => slide.style.display = 'none');
+        slides[slideIndex].style.display = 'block';
+      }
+
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+          const modals = document.querySelectorAll('.modal');
+          modals.forEach(modal => {
+            if (modal.style.display === "block") {
+              modal.style.display = "none";
+            }
+          });
+        }
+      });
+
+      // Initialize slides
+      document.addEventListener("DOMContentLoaded", () => {
+        showSlides(slideIndex);
+      });
     </script>
     <script type="module" src="./main.js"></script>
     <div id="2d-site">
       <div id="top">
         <h1 id="title">Hi, I'm Sahith!</h1>
         <div id="subtitle">
-          Click the icon for a THREE.js rendering!<br>
+          Click the top-right icon for a THREE.js rendering!<br>
           <a href="./Resume.pdf">Resume</a>
         </div>
         <div id="topic-links">
@@ -179,7 +217,7 @@
           });
         </script>
       </div>
-      <section id="about">
+      <div id="about">
         <div class="about-text">
           <h2>About Me</h2>
           <p>
@@ -199,448 +237,618 @@
             (the picture on the right is from my trip to the Grand Canyon!).
           </p>
         </div>
-        <img src="./images/sahith2.png" alt="profile" style="height: auto; width: auto;" />
-      </section>
+        <img src="./images/sahith2.png" alt="profile" />
+      </div>
       <div id="experiences">
         <h2>Experience</h2>
         <div id="experience-list">
           <div class="experience">
-            <h4>Gen Digital</h4>
-            <h6>Jun 2024 - Aug 2024</h6>
-            <p>
-              Worked on developing a system to enhance user privacy and security by removing email 
-              trackers from user alias emails and providing AI-driven feedback on the potential 
-              risk or scam level of incoming emails. This project aimed to protect users from 
-              phishing attempts and other email-based threats, significantly improving their trust 
-              and safety. By collaborating with a cross-functional team, we designed and 
-              implemented solutions that proactively mitigated risks, ensuring users felt more 
-              secure in their digital communications.
-            </p>
-            <div class="project-icons">
-              <i class="devicon-typescript-plain" title="Typescript"></i>
-              <i class="devicon-jest-plain" title="Jest"></i>
-              <i class="devicon-html5-plain" title="HTML"></i>
-              <i class="devicon-css3-plain" title="CSS"></i>
-              <i class="devicon-terraform-plain" title="Terraform"></i>
-              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-              <i class="devicon-googlecloud-plain" title="GCP"></i>
+            <div class="experience-content">
+              <h4>Gen Digital</h4>
+              <h6>Jun 2024 - Aug 2024</h6>
+              <p>
+                Worked on developing a system to enhance user privacy and security by removing email 
+                trackers from user alias emails and providing AI-driven feedback on the potential 
+                risk or scam level of incoming emails. This project aimed to protect users from 
+                phishing attempts and other email-based threats, significantly improving their trust 
+                and safety. By collaborating with a cross-functional team, we designed and 
+                implemented solutions that proactively mitigated risks, ensuring users felt more 
+                secure in their digital communications.
+              </p>
+              <div class="project-icons">
+                <i class="devicon-typescript-plain" title="Typescript"></i>
+                <i class="devicon-jest-plain" title="Jest"></i>
+                <i class="devicon-html5-plain" title="HTML"></i>
+                <i class="devicon-css3-plain" title="CSS"></i>
+                <i class="devicon-terraform-plain" title="Terraform"></i>
+                <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                <i class="devicon-googlecloud-plain" title="GCP"></i>
+              </div>
+            </div>
+            <div class="experience-image">
+              <img src="./images/gen.png" alt="Gen Digital">
             </div>
           </div>
           <div class="experience">
-            <h4>OneSpace</h4>
-            <h6>Feb 2023 - present</h6>
-            <p>
-              Co-founded by a team of 7 to develop a desktop software designed to streamline
-              workflow between various documents and editors. Our innovative workspace is here to 
-              transform the way students, writers, and professionals work by enabling them to 
-              compartmentalize their analyses. OneSpace has the potential to revolutionize 
-              workflows and editing by providing a seamless, integrated environment that enhances 
-              productivity and collaboration.  We are currently in the initial testing phase with 
-              investors and select users (Trello and OrangeQC founders are among our early 
-              testers). We hope to launch publicly in the coming months!
-            </p>
-            <a href="https://onespace-app.com">Check us out here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-nodejs-plain"></i>
-              <i class="devicon-electron-original" title="Electron"></i>
-              <i class="devicon-html5-plain" title="HTML"></i>
-              <i class="devicon-css3-plain" title="CSS"></i>
-              <i class="devicon-sentry-original" title="Sentry"></i>
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-firebase-plain" title="Firebase"></i>
+            <div class="experience-content">
+              <h4>OneSpace</h4>
+              <h6>Feb 2023 - present</h6>
+              <p>
+                Co-founded by a team of 7 to develop a desktop software designed to streamline
+                workflow between various documents and editors. Our innovative workspace is here to 
+                transform the way students, writers, and professionals work by enabling them to 
+                compartmentalize their analyses. OneSpace has the potential to revolutionize 
+                workflows and editing by providing a seamless, integrated environment that enhances 
+                productivity and collaboration.  We are currently in the initial testing phase with 
+                investors and select users (Trello and OrangeQC founders are among our early 
+                testers). We hope to launch publicly in the coming months!
+              </p>
+              <a href="https://onespace-app.com">Check us out here!</a>
+              <div class="project-icons">
+                <i class="devicon-react-original" title="React"></i>
+                <i class="devicon-nodejs-plain"></i>
+                <i class="devicon-electron-original" title="Electron"></i>
+                <i class="devicon-html5-plain" title="HTML"></i>
+                <i class="devicon-css3-plain" title="CSS"></i>
+                <i class="devicon-sentry-original" title="Sentry"></i>
+                <i class="devicon-python-plain" title="Python"></i>
+                <i class="devicon-firebase-plain" title="Firebase"></i>
+              </div>
+            </div>
+            <div class="experience-image">
+              <img src="./images/onespace2.png" alt="OneSpace" id="onespace" />
             </div>
           </div>
           <div class="experience">
-            <h4>CS 222 Software Design Lab Course Assistant</h4>
-            <h6>Jan 2024 - present</h6>
-            <p>
-              Advised groups of students on semester-long coding project in language of
-              their choice.
-            </p>
-            <p>
-              As a software design course assistant, I gain practical expertise, leadership, and 
-              strong communication skills while mastering the various frameworks, languages, and 
-              developer tools needed for mentoring, scheduling, and grading group-work. This 
-              experience not only enhances my technical proficiency but also prepares me for 
-              industry challenges by fostering a collaborative environment and honing my 
-              problem-solving abilities. It helps me become a better programmer by providing 
-              real-world scenarios where I can apply my knowledge, adapt to new technologies, and
-              effectively communicate complex concepts to others.
-            </p>
+            <div class="experience-content">
+              <h4>CS 222 Software Design Lab Course Assistant</h4>
+              <h6>Jan 2024 - present</h6>
+              <p>
+                Advised groups of students on semester-long coding project in language of
+                their choice.
+              </p>
+              <p>
+                As a software design course assistant, I gain practical expertise, leadership, and 
+                strong communication skills while mastering the various frameworks, languages, and 
+                developer tools needed for mentoring, scheduling, and grading group-work. This 
+                experience not only enhances my technical proficiency but also prepares me for 
+                industry challenges by fostering a collaborative environment and honing my 
+                problem-solving abilities. It helps me become a better programmer by providing 
+                real-world scenarios where I can apply my knowledge, adapt to new technologies, and
+                effectively communicate complex concepts to others.
+              </p>
+            </div>
+            <div class="experience-image">
+              <img src="./images/illinois2.png" alt="CS 222 Software Design Lab Course Assistant" id="illinois2" />
+            </div>
           </div>
         </div>
       </div>
       <div id="projects">
         <h2>Projects</h2>
-        <h3>Fall 2024</h3>
-        <div id="projects-list"> 
-          <div class="project">
-            <h4>Asynchronous Distributed System</h4>
-            <h6>Aug 2024 - Dec 2024</h6>
-            <p>
-              Developed a distributed system with 10 VMs that allows users to run multiple tasks 
-              concurrently on a network of computers. The system uses a SWIM-based architecture
-              to distribute tasks to worker nodes and collect results, as well as monitor 
-              and reboot machines that fail. A robust mapreduce-like architecture was implemented to 
-              handle task distribution and simulated an Apache Spark-like stream processing algorithm.
-              This project taught me the importance of fault tolerance, efficient task distribution, 
-              and real-time data processing, which are crucial for building scalable and reliable systems
-              similar to those used in industry e.g. Google, Amazon EC2, Microsoft Azure, etc.
-            </p>
-            <div class="project-icons">
-              <i class="devicon-go-original-wordmark" title="Golang"></i>
+        <div class="slide-container">
+          <div class="slides">
+            <div class="project-period" id="fall-2024">
+              <h3>Fall 2024</h3>
+              <div class="projects-list">
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2024-1')">Asynchronous Distributed System</h4>
+                  <img src="./images/network.png" alt="Asynchronous Distributed System" />
+                </div>
+                <div id="modal-fall-2024-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2024-1')">&times;</span>
+                    <h4>Asynchronous Distributed System</h4>
+                    <h6>Aug 2024 - Dec 2024</h6>
+                    <p>
+                      Developed a distributed system with 10 VMs that allows users to run multiple tasks 
+                      concurrently on a network of computers. The system uses a SWIM-based architecture
+                      to distribute tasks to worker nodes and collect results, as well as monitor 
+                      and reboot machines that fail. A robust mapreduce-like architecture was implemented to 
+                      handle task distribution and simulated an Apache Spark-like stream processing algorithm.
+                      This project taught me the importance of fault tolerance, efficient task distribution, 
+                      and real-time data processing, which are crucial for building scalable and reliable systems
+                      similar to those used in industry e.g. Google, Amazon EC2, Microsoft Azure, etc.
+                    </p>
+                    <div class="project-icons">
+                      <i class="devicon-go-original-wordmark" title="Golang"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2024-2')">Aerial Drone WiFi Network</h4>
+                  <img src="./images/drone.png" alt="drone" />
+                </div>
+                <div id="modal-fall-2024-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2024-2')">&times;</span>
+                    <h4>Aerial Drone WiFi Network</h4>
+                    <h6>Aug 2024 - Dec 2024</h6>
+                    <p>
+                      Designed a mesh network of drones that provide WiFi coverage to remote areas without 
+                      internet access. The drones are equipped with Raspberry Pi 4s and ESP32 
+                      microcontrollers that act as access points and relay stations. The Pis are connected 
+                      to a central base station that manages the network and provides internet access via a 
+                      5G LTE connection. The ESP32s communicate over ESP-NOW that allows for low-latency 
+                      communication between drones by directly pinging each other's MAC addresses. This 
+                      project has the potential to revolutionize connectivity in underserved regions, 
+                      enabling access to education, healthcare, and emergency services. It can also be 
+                      deployed in disaster-stricken areas to quickly restore communication networks, 
+                      significantly aiding in relief and rescue operations.
+                    </p>
+                    <a href="https://github.com/bodlasahith/aerial-drone-wifi-network">Check out our code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
+                      <i class="devicon-cplusplus-plain" title="C++"></i>
+                      <i class="devicon-arduino-plain" title="Arduino"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2024-3')">SimProBot</h4>
+                  <img src="./images/class.png" alt="SimProBot" />
+                </div>
+                <div id="modal-fall-2024-3" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2024-3')">&times;</span>
+                    <h4>SimProBot</h4>
+                    <h6>Aug 2024 - present</h6>
+                    <p>
+                      SimProBot is an advanced language model designed to analyze and learn from class 
+                      content at UIUC, offering students comprehensive descriptions and summaries to better 
+                      understand each course. Built with LangChain, OpenAI, and LLaMA, it utilizes a 
+                      Pinecone vector database and is seamlessly deployed through AWS SageMaker on a 
+                      Streamlit website. This project has the potential to revolutionize the way students 
+                      interact with their coursework, providing personalized learning experiences and 
+                      aiding in the retention of complex concepts. In the future, it could be expanded to 
+                      support a wider range of subjects and educational institutions, making high-quality 
+                      education more accessible and effective for students worldwide.
+                    </p>
+                    <div class="project-icons">
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-streamlit-plain" title="Streamlit"></i>
+                      <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2024-4')">SeriesFarm</h4>
+                  <img src="./images/farm.png" alt="SeriesFarm" />
+                </div>
+                <div id="modal-fall-2024-4" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2024-4')">&times;</span>
+                    <h4>SeriesFarm</h4>
+                    <h6>Aug 2024 - present</h6>
+                    <p>
+                      SeriesFarm is a novel web application that allows farmers to apply for agricultural 
+                      loans via a user-friendly interface. The app uses a machine learning model to 
+                      provide farmers with personalized loan recommendations based on their financial 
+                      history and crop data. SeriesFarm also features a dashboard that allows farmers to 
+                      track their loan applications and receive updates on their status. Built with 
+                      Django, SQLite, and Bootstrap, SeriesFarm empowers farmers by simplifying the loan 
+                      application process, making financial resources more accessible, and ultimately 
+                      supporting the agricultural community's growth and sustainability.
+                    </p>
+                    <div class="project-icons">
+                      <i class="devicon-django-plain" title="Django"></i>
+                      <i class="devicon-sqlite-plain" title="SQLite"></i>
+                      <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
+                      <i class="devicon-html5-plain" title="HTML"></i>
+                      <i class="devicon-css3-plain" title="CSS"></i>
+                      <i class="devicon-python-plain" title="Python"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project">
-            <h4>Aerial Drone WiFi Network</h4>
-            <h6>Aug 2024 - Dec 2024</h6>
-            <p>
-              Designed a mesh network of drones that provide WiFi coverage to remote areas without 
-              internet access. The drones are equipped with Raspberry Pi 4s and ESP32 
-              microcontrollers that act as access points and relay stations. The Pis are connected 
-              to a central base station that manages the network and provides internet access via a 
-              5G LTE connection. The ESP32s communicate over ESP-NOW that allows for low-latency 
-              communication between drones by directly pinging each other's MAC addresses. This 
-              project has the potential to revolutionize connectivity in underserved regions, 
-              enabling access to education, healthcare, and emergency services. It can also be 
-              deployed in disaster-stricken areas to quickly restore communication networks, 
-              significantly aiding in relief and rescue operations.
-            </p>
-            <a href="https://github.com/bodlasahith/aerial-drone-wifi-network">Check out our code here!</a>
-            <div class="project-icons">
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
-              <i class="devicon-cplusplus-plain" title="C++"></i>
-              <i class="devicon-arduino-plain" title="Arduino"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>SimProBot</h4>
-            <h6>Aug 2024 - present</h6>
-            <p>
-              SimProBot is an advanced language model designed to analyze and learn from class 
-              content at UIUC, offering students comprehensive descriptions and summaries to better 
-              understand each course. Built with LangChain, OpenAI, and LLaMA, it utilizes a 
-              Pinecone vector database and is seamlessly deployed through AWS SageMaker on a 
-              Streamlit website. This project has the potential to revolutionize the way students 
-              interact with their coursework, providing personalized learning experiences and 
-              aiding in the retention of complex concepts. In the future, it could be expanded to 
-              support a wider range of subjects and educational institutions, making high-quality 
-              education more accessible and effective for students worldwide.
-            </p>
-            <div class="project-icons">
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-streamlit-plain" title="Streamlit"></i>
-              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>SeriesFarm</h4>
-            <h6>Aug 2024 - present</h6>
-            <p>
-              SeriesFarm is a novel web application that allows farmers to apply for agricultural 
-              loans via a user-friendly interface. The app uses a machine learning model to 
-              provide farmers with personalized loan recommendations based on their financial 
-              history and crop data. SeriesFarm also features a dashboard that allows farmers to 
-              track their loan applications and receive updates on their status. Built with 
-              Django, SQLite, and Bootstrap, SeriesFarm empowers farmers by simplifying the loan 
-              application process, making financial resources more accessible, and ultimately 
-              supporting the agricultural community's growth and sustainability.
-            </p>
-            <div class="project-icons">
-              <i class="devicon-django-plain" title="Django"></i>
-              <i class="devicon-sqlite-plain" title="SQLite"></i>
-              <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
-              <i class="devicon-html5-plain" title="HTML"></i>
-              <i class="devicon-css3-plain" title="CSS"></i>
-              <i class="devicon-python-plain" title="Python"></i>
-            </div>
-          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <hr>
-        <h3>Summer 2024</h3>
-        <div id="projects-list">
-          <div class="project">
-            <h4>Virtual Fitting Room</h4>
-            <h6>Aug 2024</h6>
-            <p>
-              Developed a virtual fitting room as a Google Chrome extension using React, Next.js, 
-              and MongoDB. This extension allows users to try on clothes from the comfort of their 
-              own home by uploading a PNG picture of themselves and selecting from a variety of 
-              clothing items. The purpose of this project is to enhance the online shopping 
-              experience by providing a more interactive and personalized way to visualize 
-              clothing, ultimately reducing return rates and increasing customer satisfaction.
-            </p>
-            <a href="https://github.com/bodlasahith/fitting-room">Check out my code here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-nextjs-plain" title="Next"></i>
-              <i class="devicon-mongodb-plain" title="MongoDB"></i>
+        <div class="slide-container">
+          <div class="slides">
+            <div class="project-period" id="summer-2024">
+              <h3>Summer 2024</h3>
+              <div class="projects-list">
+                <div class="project">
+                  <h4 onclick="openModal('modal-summer-2024-1')">Virtual Fitting Room</h4>
+                  <img src="./images/fitting_room.png" alt="Virtual Fitting Room" />
+                </div>
+                <div id="modal-summer-2024-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-summer-2024-1')">&times;</span>
+                    <h4>Virtual Fitting Room</h4>
+                    <h6>Aug 2024</h6>
+                    <p>
+                      Developed a virtual fitting room as a Google Chrome extension using React, Next.js, 
+                      and MongoDB. This extension allows users to try on clothes from the comfort of their 
+                      own home by uploading a PNG picture of themselves and selecting from a variety of 
+                      clothing items. The purpose of this project is to enhance the online shopping 
+                      experience by providing a more interactive and personalized way to visualize 
+                      clothing, ultimately reducing return rates and increasing customer satisfaction.
+                    </p>
+                    <a href="https://github.com/bodlasahith/fitting-room">Check out my code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-nextjs-plain" title="Next"></i>
+                      <i class="devicon-mongodb-plain" title="MongoDB"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-summer-2024-2')">Music Poster Generator</h4>
+                  <img src="./images/music_posters.png" alt="Music Poster Generator" />
+                </div>
+                <div id="modal-summer-2024-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-summer-2024-2')">&times;</span>
+                    <h4>Music Poster Generator</h4>
+                    <h6>Jul 2024 - Aug 2024</h6>
+                    <p>
+                      This website provides a seamless integration with Spotify, allowing you to generate 
+                      personalized posters of your favorite albums, artists, and tracks. By logging in 
+                      with your Spotify account, you gain access to your entire music library and can 
+                      easily select the content you want to feature on your posters. Built using React 
+                      for the frontend, Express for the backend, and MongoDB for the database, this 
+                      project leverages the Spotify API to fetch user data and create visually appealing 
+                      posters. The purpose of this project is to enhance the music listening experience 
+                      by allowing users to create custom artwork that reflects their musical tastes, 
+                      making it a fun and engaging way to interact with their favorite music.
+                    </p>
+                    <a href="https://github.com/bodlasahith/music-posters">Check out my code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-express-original" title="Express"></i>
+                      <i class="devicon-mongodb-plain" title="MongoDB"></i>
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="fab fa-spotify" title="Spotify"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-summer-2024-3')">JukeBox: A Travel Playlist App</h4>
+                  <img src="./images/jukebox.png" alt="JukeBox: A Travel Playlist App" />
+                </div>
+                <div id="modal-summer-2024-3" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-summer-2024-3')">&times;</span>
+                    <h4>JukeBox: A Travel Playlist App</h4>
+                    <h6>Jun 2024 - Jul 2024</h6>
+                    <p>
+                      JukeBox is a travel playlist app that allows users to create playlists based on their 
+                      destination. Users can input their destination and the app will generate a playlist 
+                      based on the duration of the trip and the user's music preferences. This project 
+                      enhances the travel experience by providing personalized music recommendations 
+                      tailored to the journey. Built using React for the frontend, the Spotify API for 
+                      music data, and the Google Maps API for destination information, this app leverages 
+                      modern web technologies to deliver a seamless and enjoyable user experience.
+                    </p>
+                    <a href="https://github.com/bodlasahith/travel-playlist-app">Check out my code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="fab fa-spotify" title="Spotify API"></i>
+                      <i class="fab fa-google" title="Google API"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project">
-            <h4>Music Poster Generator</h4>
-            <h6>Jul 2024 - Aug 2024</h6>
-            <p>
-              This website provides a seamless integration with Spotify, allowing you to generate 
-              personalized posters of your favorite albums, artists, and tracks. By logging in 
-              with your Spotify account, you gain access to your entire music library and can 
-              easily select the content you want to feature on your posters. Built using React 
-              for the frontend, Express for the backend, and MongoDB for the database, this 
-              project leverages the Spotify API to fetch user data and create visually appealing 
-              posters. The purpose of this project is to enhance the music listening experience 
-              by allowing users to create custom artwork that reflects their musical tastes, 
-              making it a fun and engaging way to interact with their favorite music.
-            </p>
-            <a href="https://github.com/bodlasahith/music-posters">Check out my code here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-express-original" title="Express"></i>
-              <i class="devicon-mongodb-plain" title="MongoDB"></i>
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="fab fa-spotify" title="Spotify"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>JukeBox: A Travel Playlist App</h4>
-            <h6>Jun 2024 - Jul 2024</h6>
-            <p>
-              JukeBox is a travel playlist app that allows users to create playlists based on their 
-              destination. Users can input their destination and the app will generate a playlist 
-              based on the duration of the trip and the user's music preferences. This project 
-              enhances the travel experience by providing personalized music recommendations 
-              tailored to the journey. Built using React for the frontend, the Spotify API for 
-              music data, and the Google Maps API for destination information, this app leverages 
-              modern web technologies to deliver a seamless and enjoyable user experience.
-            </p>
-            <a href="https://github.com/bodlasahith/travel-playlist-app">Check out my code here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="fab fa-spotify" title="Spotify API"></i>
-              <i class="fab fa-google" title="Google API"></i>
-            </div>
-          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <hr>
-        <h3>Spring 2024</h3>
-        <div id="projects-list">
-          <div class="project">
-            <h4>State of Illinois Cannabis RDBMS</h4>
-            <h6>Feb 2024 - May 2024</h6>
-            <p>
-              Developed a platform to display data collected from cannabis farms, plants, 
-              factories, and stores. Provided insights and visualizations on a React site with a 
-              database hosted on AWS. This project aimed to enhance transparency and efficiency 
-              in the cannabis industry by offering real-time data analysis and reporting, helping 
-              stakeholders make informed decisions and optimize their operations.
-            </p>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-express-original" title="Express"></i>
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-firebase-plain" title="Firebase"></i>
-              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-            </div>
+        <div class="slide-container">
+          <div class="slides">
+            <div class="project-period" id="spring-2024">
+              <h3>Spring 2024</h3>
+              <div class="projects-list">
+                <div class="project">
+                  <h4 onclick="openModal('modal-spring-2024-1')">State of Illinois Cannabis RDBMS</h4>
+                  <img src="./images/soi.png" alt="State of Illinois Cannabis RDBMS" />
+                </div>
+                <div id="modal-spring-2024-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2024-1')">&times;</span>
+                    <h4>State of Illinois Cannabis RDBMS</h4>
+                    <h6>Feb 2024 - May 2024</h6>
+                    <p>
+                      Developed a platform to display data collected from cannabis farms, plants, 
+                      factories, and stores. Provided insights and visualizations on a React site with a 
+                      database hosted on AWS. This project aimed to enhance transparency and efficiency 
+                      in the cannabis industry by offering real-time data analysis and reporting, helping 
+                      stakeholders make informed decisions and optimize their operations.
+                    </p>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-express-original" title="Express"></i>
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-firebase-plain" title="Firebase"></i>
+                      <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-spring-2024-2')">HackIllinois: Baymin</h4>
+                  <img src="./images/baymin.png" alt="HackIllinois: Baymin" />
+                </div>
+                <div id="modal-spring-2024-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2024-2')">&times;</span>
+                    <h4>HackIllinois: Baymin</h4>
+                    <h6>Feb 2024</h6>
+                    <p>
+                      Created an autonomous vehicle capable of aiding in search and rescue missions. 
+                      Collaboratively envisioned a rover-like vehicle equipped with advanced technology to 
+                      detect and assist humans in various landscapes. Built using a Raspberry Pi with a 
+                      custom Pi-hat and assembled it on an acrylic chassis equipped with motors, wheels, 
+                      and foam for stability. This project aims to enhance the efficiency and safety of 
+                      search and rescue operations by providing a reliable tool that can navigate 
+                      challenging terrains, locate individuals in distress, and deliver essential supplies 
+                      or communication devices. The autonomous vehicle's ability to operate in diverse 
+                      environments makes it a valuable asset for emergency responders, potentially saving 
+                      lives and reducing the risks faced by human rescuers.
+                    </p>
+                    <a href="https://devpost.com/software/baymin-dnaz01">Check out our project here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-spring-2024-3')">Fitcheck</h4>
+                  <img src="./images/fitcheck.png" alt="Fitcheck" />
+                </div>
+                <div id="modal-spring-2024-3" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2024-3')">&times;</span>
+                    <h4>Fitcheck</h4>
+                    <h6>Feb 2024 - May 2024</h6>
+                    <p>
+                      Contributing to a startup creating an iOS app to create a novel and unique social 
+                      media platform to help users exchange and express their fashion and personal fits. 
+                      The app allows users to upload photos of their outfits, share them with friends, and 
+                      receive feedback. Built using React Native for the frontend and  for the backend, 
+                      the app provides a seamless and engaging user experience. This project aims to 
+                      foster a community where users can showcase their style, discover new trends, and 
+                      connect with like-minded fashion enthusiasts. The tech stack involved React Native 
+                      frontend (Expo) and the backend was Nest/Prisma and MongoDB for making social 
+                      network/friendship circle graphs as well as helping implement Twilio and chatrooms 
+                      as well as map visualizations for user frequency (similar to Snap Maps).
+                    </p>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-figma-plain" title="Figma"></i>
+                      <i class="devicon-typescript-plain" title="Typescript"></i>
+                      <i class="devicon-nestjs-original" title="Nest"></i>
+                      <i class="devicon-prisma-original" title="Prisma"></i>
+                      <i class="devicon-mongodb-plain" title="MongoDB"></i>
+                      <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                      <i class="devicon-neo4j-plain" title="Neo4j"></i>
+                      <i class="devicon-docker-plain" title="Docker"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-spring-2024-4')">Teen Safe Driving App</h4>
+                  <img src="./images/driving.png" alt="Teen Safe Driving App" />
+                </div>
+                <div id="modal-spring-2024-4" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2024-4')">&times;</span>
+                    <h4>Teen Safe Driving App</h4>
+                    <h6>Jan 2024 - May 2024</h6>
+                    <p>
+                      Developed a mobile browser app to help new drivers ages 16-20 learn about driving 
+                      safety and rules. The app assists with driving practice, studying best practices, 
+                      and document handling, providing an engaging and supportive learning experience. 
+                      Built using React for the frontend, TailwindCSS for styling, and Express.js for the 
+                      backend, the app ensures a responsive and user-friendly interface with robust 
+                      server-side functionality. This project aims to enhance the learning experience for 
+                      young drivers, making it easier for them to understand and adhere to driving 
+                      regulations, ultimately promoting safer driving habits.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing">Check out our demo here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-tailwindcss-original" title="TailwindCSS"></i>
+                      <i class="devicon-express-original" title="Express"></i>
+                      <i class="devicon-figma-plain" title="Figma"></i>
+                      <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                      <i class="devicon-mysql-original" title="MySQL"></i>
+                      <i class="devicon-sequelize-plain" title="Sequelize"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-spring-2024-5')">Evil Niche</h4>
+                  <img src="./images/evil_niche.png" alt="Evil Niche" />
+                </div>
+                <div id="modal-spring-2024-5" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2024-5')">&times;</span>
+                    <h4>Evil Niche</h4>
+                    <h6>Jan 2024 - May 2024</h6>
+                    <p>
+                      Developed using HTML, CSS, Node.js, Express, MySQL, and Google Cloud Platform, 
+                      this project leverages county data to identify high-crime regions in Florida and 
+                      other parts of the United States. By providing detailed insights into crime patterns, 
+                      it aims to empower law enforcement agencies and policymakers to make data-driven 
+                      decisions, ultimately enhancing public safety and community well-being.
+                    </p>
+                    <a href="https://github.com/bodlasahith/evil-niche">Check out our code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-html5-plain" title="HTML"></i>
+                      <i class="devicon-css3-plain" title="CSS"></i>
+                      <i class="devicon-nodejs-plain"></i>
+                      <i class="devicon-express-original" title="Express"></i>
+                      <i class="devicon-mysql-original" title="MySQL"></i>
+                      <i class="devicon-googlecloud-plain" title="GCP"></i>
+                      <i class="devicon-google-plain" title="Google API"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
           </div>
-          <div class="project">
-            <h4>HackIllinois: Baymin</h4>
-            <h6>Feb 2024</h6>
-            <p>
-              Created an autonomous vehicle capable of aiding in search and rescue missions. 
-              Collaboratively envisioned a rover-like vehicle equipped with advanced technology to 
-              detect and assist humans in various landscapes. Built using a Raspberry Pi with a 
-              custom Pi-hat and assembled it on an acrylic chassis equipped with motors, wheels, 
-              and foam for stability. This project aims to enhance the efficiency and safety of 
-              search and rescue operations by providing a reliable tool that can navigate 
-              challenging terrains, locate individuals in distress, and deliver essential supplies 
-              or communication devices. The autonomous vehicle's ability to operate in diverse 
-              environments makes it a valuable asset for emergency responders, potentially saving 
-              lives and reducing the risks faced by human rescuers.
-            </p>
-            <a href="https://devpost.com/software/baymin-dnaz01">Check out our project here!</a>
-            <div class="project-icons">
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-raspberrypi-plain" title="Raspberry Pi"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>Fitcheck</h4>
-            <h6>Feb 2024 - May 2024</h6>
-            <p>
-              Contributing to a startup creating an iOS app to create a novel and unique social 
-              media platform to help users exchange and express their fashion and personal fits. 
-              The app allows users to upload photos of their outfits, share them with friends, and 
-              receive feedback. Built using React Native for the frontend and  for the backend, 
-              the app provides a seamless and engaging user experience. This project aims to 
-              foster a community where users can showcase their style, discover new trends, and 
-              connect with like-minded fashion enthusiasts. The tech stack involved React Native 
-              frontend (Expo) and the backend was Nest/Prisma and MongoDB for making social 
-              network/friendship circle graphs as well as helping implement Twilio and chatrooms 
-              as well as map visualizations for user frequency (similar to Snap Maps).
-            </p>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-figma-plain" title="Figma"></i>
-              <i class="devicon-typescript-plain" title="Typescript"></i>
-              <i class="devicon-nestjs-original" title="Nest"></i>
-              <i class="devicon-prisma-original" title="Prisma"></i>
-              <i class="devicon-mongodb-plain" title="MongoDB"></i>
-              <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
-              <i class="devicon-neo4j-plain" title="Neo4j"></i>
-              <i class="devicon-docker-plain" title="Docker"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>Teen Safe Driving App</h4>
-            <h6>Jan 2024 - May 2024</h6>
-            <p>
-              Developed a mobile browser app to help new drivers ages 16-20 learn about driving 
-              safety and rules. The app assists with driving practice, studying best practices, 
-              and document handling, providing an engaging and supportive learning experience. 
-              Built using React for the frontend, TailwindCSS for styling, and Express.js for the 
-              backend, the app ensures a responsive and user-friendly interface with robust 
-              server-side functionality. This project aims to enhance the learning experience for 
-              young drivers, making it easier for them to understand and adhere to driving 
-              regulations, ultimately promoting safer driving habits.
-            </p>
-            <a href="https://drive.google.com/file/d/1QPYV3v-lmtdLihHR68G3azlA3DD1YpMm/view?usp=sharing">Check out our demo here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-tailwindcss-original" title="TailwindCSS"></i>
-              <i class="devicon-express-original" title="Express"></i>
-              <i class="devicon-figma-plain" title="Figma"></i>
-              <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-              <i class="devicon-mysql-original" title="MySQL"></i>
-              <i class="devicon-sequelize-plain" title="Sequelize"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>Evil Niche</h4>
-            <h6>Jan 2024 - May 2024</h6>
-            <p>
-              Developed using HTML, CSS, Node.js, Express, MySQL, and Google Cloud Platform, 
-              this project leverages county data to identify high-crime regions in Florida and 
-              other parts of the United States. By providing detailed insights into crime patterns, 
-              it aims to empower law enforcement agencies and policymakers to make data-driven 
-              decisions, ultimately enhancing public safety and community well-being.
-            </p>
-            <a href="https://github.com/bodlasahith/evil-niche">Check out our code here!</a>
-            <div class="project-icons">
-              <i class="devicon-html5-plain" title="HTML"></i>
-              <i class="devicon-css3-plain" title="CSS"></i>
-              <i class="devicon-nodejs-plain"></i>
-              <i class="devicon-express-original" title="Express"></i>
-              <i class="devicon-mysql-original" title="MySQL"></i>
-              <i class="devicon-googlecloud-plain" title="GCP"></i>
-              <i class="devicon-google-plain" title="Google API"></i>
-            </div>
-          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <hr>
-        <h3>Fall 2023</h3>
-        <div id="projects-list">
-          <div class="project">
-            <h4>Personal Website</h4>
-            <h6>Dec 2023 - present</h6>
-            <p>
-              This website was created to showcase my projects, skills, and experiences. Built 
-              using HTML/CSS and THREE.js, hosted with Github Pages.
-            </p>
-            <a href="https://github.com/bodlasahith/personal-website">Check out my code here!</a>
-            <div class="project-icons">
-              <i class="devicon-html5-plain" title="HTML"></i>
-              <i class="devicon-css3-plain" title="CSS"></i>
-              <i class="devicon-javascript-plain"></i>
+        <div class="slide-container">
+          <div class="slides">
+            <div class="project-period" id="fall-2023">
+              <h3>Fall 2023</h3>
+              <div class="projects-list">
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2023-1')">Personal Website</h4>
+                  <img src="./images/website.png" alt="Personal Website" />
+                </div>
+                <div id="modal-fall-2023-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2023-1')">&times;</span>
+                    <h4>Personal Website</h4>
+                    <h6>Dec 2023 - present</h6>
+                    <p>
+                      This website was created to showcase my projects, skills, and experiences. Built 
+                      using HTML/CSS and THREE.js, hosted with Github Pages.
+                    </p>
+                    <a href="https://github.com/bodlasahith/personal-website">Check out my code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-html5-plain" title="HTML"></i>
+                      <i class="devicon-css3-plain" title="CSS"></i>
+                      <i class="devicon-javascript-plain"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2023-2')">EntreBrew</h4>
+                  <img src="./images/entrebrew.png" alt="EntreBrew" />
+                </div>
+                <div id="modal-fall-2023-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2023-2')">&times;</span>
+                    <h4>EntreBrew</h4>
+                    <h6>Feb 2023 - Dec 2023</h6>
+                    <p>
+                      Designing a website to foster a supportive community for students to network with 
+                      like-minded peers where they can exchange ideas, collaborate, and find potential 
+                      co-founders or team members for their ventures. This platform aims to empower 
+                      students by providing them with the resources and connections needed to turn their 
+                      innovative ideas into successful projects. By leveraging modern web technologies 
+                      such as React, Django, SQLite, and Google OAuth, the website ensures a seamless and 
+                      secure user experience, ultimately driving collaboration and innovation within the 
+                      student community.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing">Check out the demo here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
+                      <i class="devicon-tailwindcss-original"></i>
+                      <i class="devicon-figma-plain" title="Figma"></i>
+                      <i class="devicon-google-plain" title="Google OAuth"></i>
+                      <i class="devicon-django-plain" title="Django"></i>
+                      <i class="devicon-sqlite-plain" title="SQLite"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-fall-2023-3')">Pose Estimation for Bicep Curls</h4>
+                  <img src="./images/curl.png" alt="Pose Estimation for Bicep Curls" />
+                </div>
+                <div id="modal-fall-2023-3" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-fall-2023-3')">&times;</span>
+                    <h4>Pose Estimation for Bicep Curls</h4>
+                    <h6>Aug 2023 - Dec 2023</h6>
+                    <p>
+                      Contributed to making a basic Python Streamlit website that analyzed bicep curl 
+                      technique using MediaPipe pose estimation and computer vision and reported whether 
+                      user displays proper form. Uses landmark detection for angle measurement to help gym 
+                      newbies, and may expand to other exercises later.
+                    </p>
+                    <a href="https://github.com/bodlasahith/e-gym-bro">Check out our project here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-streamlit-plain" title="Streamlit"></i>
+                      <i class="devicon-figma-plain" title="Figma"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project">
-            <h4>EntreBrew</h4>
-            <h6>Feb 2023 - Dec 2023</h6>
-            <p>
-              Designing a website to foster a supportive community for students to network with 
-              like-minded peers where they can exchange ideas, collaborate, and find potential 
-              co-founders or team members for their ventures. This platform aims to empower 
-              students by providing them with the resources and connections needed to turn their 
-              innovative ideas into successful projects. By leveraging modern web technologies 
-              such as React, Django, SQLite, and Google OAuth, the website ensures a seamless and 
-              secure user experience, ultimately driving collaboration and innovation within the 
-              student community.
-            </p>
-            <a href="https://drive.google.com/file/d/1KDSY1-NbbMVaDeP6BZCpkEZd9sfzwEnR/view?usp=sharing">Check out the demo here!</a>
-            <div class="project-icons">
-              <i class="devicon-react-original" title="React"></i>
-              <i class="devicon-bootstrap-plain" title="Bootstrap"></i>
-              <i class="devicon-tailwindcss-original"></i>
-              <i class="devicon-figma-plain" title="Figma"></i>
-              <i class="devicon-google-plain" title="Google OAuth"></i>
-              <i class="devicon-django-plain" title="Django"></i>
-              <i class="devicon-sqlite-plain" title="SQLite"></i>
-            </div>
-          </div>
-          <div class="project">
-            <h4>Pose Estimation for Bicep Curls</h4>
-            <h6>Aug 2023 - Dec 2023</h6>
-            <p>
-              Contributed to making a basic Python Streamlit website that analyzed bicep curl 
-              technique using MediaPipe pose estimation and computer vision and reported whether 
-              user displays proper form. Uses landmark detection for angle measurement to help gym 
-              newbies, and may expand to other exercises later.
-            </p>
-            <a href="https://github.com/bodlasahith/e-gym-bro">Check out our project here!</a>
-            <div class="project-icons">
-              <i class="devicon-python-plain" title="Python"></i>
-              <i class="devicon-streamlit-plain" title="Streamlit"></i>
-              <i class="devicon-figma-plain" title="Figma"></i>
-            </div>
-          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <hr>
-        <h3>Pre Fall 2022</h3>
-        <div id="projects-list">
-          <div class="project">
-            <h4>Computer Vision for Swimming</h4>
-            <h6>Jan 2022 - May 2022</h6>
-            <p>
-              Made a 12-week blog detailing the development of a computer vision software for 
-              analyzing technique in swimming. Gathered data to create a supervised learning model 
-              to determine the biomechanical efficiency of a swimmer performing freestyle. This project 
-              utilized various AI/ML techniques such as pose estimation, supervised learning, and 
-              computer vision to accurately analyze and provide feedback on swimming techniques. 
-              By leveraging these advanced technologies, the project aims to enhance training 
-              methods, improve performance, and reduce the risk of injuries for swimmers. As a 
-              competitive swimmer myself, I gain great use and have keen insights and credibility 
-              into the project area, ensuring the solutions are practical and effective.
-            </p>
-            <a href="https://docs.google.com/presentation/d/1txKxix6OIB2m5izLp71KPErf4TcuT7JViL3AIyrwne8/edit?usp=sharing">Check out my project here!</a>
-            <div class="project-icons">
-              <i class="devicon-python-plain" title="Python"></i>
+        <div class="slide-container">
+          <div class="slides">
+            <div class="project-period" id="pre-fall-2022">
+              <h3>Pre Fall 2022</h3>
+              <div class="projects-list">
+                <div class="project">
+                  <h4 onclick="openModal('modal-pre-fall-2022-1')">Computer Vision for Swimming</h4>
+                  <img src="./images/swimming.png" alt="Computer Vision for Swimming" />
+                </div>
+                <div id="modal-pre-fall-2022-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-pre-fall-2022-1')">&times;</span>
+                    <h4>Computer Vision for Swimming</h4>
+                    <h6>Jan 2022 - May 2022</h6>
+                    <p>
+                      Made a 12-week blog detailing the development of a computer vision software for 
+                      analyzing technique in swimming. Gathered data to create a supervised learning model 
+                      to determine the biomechanical efficiency of a swimmer performing freestyle. This project 
+                      utilized various AI/ML techniques such as pose estimation, supervised learning, and 
+                      computer vision to accurately analyze and provide feedback on swimming techniques. 
+                      By leveraging these advanced technologies, the project aims to enhance training 
+                      methods, improve performance, and reduce the risk of injuries for swimmers. As a 
+                      competitive swimmer myself, I gain great use and have keen insights and credibility 
+                      into the project area, ensuring the solutions are practical and effective.
+                    </p>
+                    <a href="https://docs.google.com/presentation/d/1txKxix6OIB2m5izLp71KPErf4TcuT7JViL3AIyrwne8/edit?usp=sharing">Check out my project here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-python-plain" title="Python"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project">
+                  <h4 onclick="openModal('modal-pre-fall-2022-2')">Object Detection System for the Visually Impaired</h4>
+                  <img src="./images/blind.png" alt="Object Detection System for the Visually Impaired" />
+                </div>
+                <div id="modal-pre-fall-2022-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-pre-fall-2022-2')">&times;</span>
+                    <h4>Object Detection System for the Visually Impaired</h4>
+                    <h6>May 2021 - Aug 2021</h6>
+                    <p>
+                      This device provides the visually impaired with knowledge of their surroundings. 
+                      Though the blind generally use canes to map out their path a few steps in front of 
+                      themselves, this device corroborates some information gathered from touch using 
+                      hearing. The system is built using an Arduino, breadboard, ultrasonic sensors, 
+                      and a speaker. The setup was mounted to a lightweight cardboard wearable cutout to 
+                      sit on the user's nose similar to a pair of glasses to simulate the experience. The 
+                      ultrasonic sensors detect obstacles in the path of the user and relay this 
+                      information to the Arduino, which then processes the data and sends auditory signals 
+                      through the speaker to alert the user of nearby objects. This setup is compact, 
+                      cost-effective, and easy to use, making it a practical solution for enhancing the 
+                      mobility and independence of visually impaired individuals. By providing real-time 
+                      feedback on their surroundings, this device significantly improves their ability to 
+                      navigate safely and confidently in various environments. 
+                    </p>
+                    <a href="https://github.com/bodlasahith/object-detection">Check out my project here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-cplusplus-plain" title="C++"></i>
+                      <i class="devicon-arduino-plain" title="Arduino"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project">
-            <h4>Object Detection System for the Visually Impaired</h4>
-            <h6>May 2021 - Aug 2021</h6>
-            <p>
-              This device provides the visually impaired with knowledge of their surroundings. 
-              Though the blind generally use canes to map out their path a few steps in front of 
-              themselves, this device corroborates some information gathered from touch using 
-              hearing. The system is built using an Arduino, breadboard, ultrasonic sensors, 
-              and a speaker. The setup was mounted to a lightweight cardboard wearable cutout to 
-              sit on the user's nose similar to a pair of glasses to simulate the experience. The 
-              ultrasonic sensors detect obstacles in the path of the user and relay this 
-              information to the Arduino, which then processes the data and sends auditory signals 
-              through the speaker to alert the user of nearby objects. This setup is compact, 
-              cost-effective, and easy to use, making it a practical solution for enhancing the 
-              mobility and independence of visually impaired individuals. By providing real-time 
-              feedback on their surroundings, this device significantly improves their ability to 
-              navigate safely and confidently in various environments. 
-            </p>
-            <a href="https://github.com/bodlasahith/object-detection">Check out my project here!</a>
-            <div class="project-icons">
-              <i class="devicon-cplusplus-plain" title="C++"></i>
-              <i class="devicon-arduino-plain" title="Arduino"></i>
-            </div>
-          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
       </div>
       <div id="skills">
