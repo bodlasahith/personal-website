@@ -20,6 +20,18 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
+window.toggleEventListeners = function() {
+  const is2DSiteVisible = document.getElementById('2d-site').style.display === "block";
+  
+  if (is2DSiteVisible) {
+    document.removeEventListener("mousedown", onPanelsClick, false);
+  } else {
+    document.addEventListener("mousedown", onPanelsClick, false);
+  }
+};
+
+window.toggleEventListeners();
+
 //----------------//
 //--- GREETING ---//
 //----------------//
@@ -283,7 +295,7 @@ panel4titleMesh.alphaHash = 1;
 const panel4title = new THREE.Mesh(panel4titleGeo, panel4titleMesh);
 panel4title.position.set(0, 60, 506);
 
-const panel4captionTexture = new THREE.TextureLoader().load("./images/hobbies.png");
+const panel4captionTexture = new THREE.TextureLoader().load("./images/panel4caption.png");
 const panel4captionGeo = new THREE.PlaneGeometry(170, 100);
 const panel4captionMesh = new THREE.MeshLambertMaterial({
   map: panel4captionTexture,
@@ -291,6 +303,13 @@ const panel4captionMesh = new THREE.MeshLambertMaterial({
 panel4captionMesh.alphaHash = 1;
 const panel4caption = new THREE.Mesh(panel4captionGeo, panel4captionMesh);
 panel4caption.position.set(-50, -20, 506);
+
+const hobbiesTexture = new THREE.TextureLoader().load("./images/hobbies.png");
+const hobbiesGeo = new THREE.PlaneGeometry(85, 85);
+const hobbiesMesh = new THREE.MeshLambertMaterial({ map: hobbiesTexture });
+hobbiesMesh.alphaHash = 1;
+const hobbies = new THREE.Mesh(hobbiesGeo, hobbiesMesh);
+hobbies.position.set(85, -20, 506);
 
 const base4Geo = new THREE.CylinderGeometry(20, 15, 10, 64);
 const base4Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -307,7 +326,7 @@ const base4Light = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
 base4Light.position.set(100, -60, 565);
 
 const panel4content = new THREE.Group();
-panel4content.add(panel4title, panel4caption, base4, base4Lines, base4Light);
+panel4content.add(panel4title, panel4caption, hobbies, base4, base4Lines, base4Light);
 
 const panel5Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel5Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });

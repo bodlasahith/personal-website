@@ -663,10 +663,6 @@ h3 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#end {
-  height: 5vw;
-}
-
 #icons {
   display: flex;
   flex-direction: row;
@@ -706,7 +702,7 @@ h3 {
 }
 
 #hobbies {
-  background: linear-gradient(to right, rgb(116, 56, 216), rgb(18, 150, 170));
+  /* background: linear-gradient(to right, rgb(116, 56, 216), rgb(18, 150, 170)); */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -729,7 +725,6 @@ h3 {
 }
 
 .hobby img {
-  max-height: 10vw;
-  max-width: 10vw;
+  max-width: 15vw;
   border-radius: 10px;
 }

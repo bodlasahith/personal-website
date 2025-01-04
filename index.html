@@ -36,14 +36,16 @@
           iconElement.classList.add("fa-list");
 
           document.getElementById('2d-site').style.display = "none";
+          bg.style.display = "block";
         } else {
           iconElement.classList.remove("fa-list");
           iconElement.classList.add("fa-cube");
 
           document.getElementById('2d-site').style.display = "block";
+          bg.style.display = "none";
         }
 
-        bg.style.display = bg.style.display === "block" ? "none" : "block";
+        window.toggleEventListeners();
       });
     </script>
     <script type="importmap">
@@ -246,7 +248,7 @@
             <br/>
             Outside of academics and coding, I enjoy drumming, swimming, bodybuilding, 
             watching NBA and NFL games, playing the piano, listening to music, and traveling
-            (the picture on the right is from my trip to the Grand Canyon!).
+            (the picture on the right is at Hoover Dam!).
           </p>
         </div>
         <img src="./images/sahith2.png" alt="profile" />
@@ -950,22 +952,22 @@
       <div id="hobbies">
         <h3>Some of my hobbies...</h3>
         <div class="hobby">
-          <img src="images/Screenshot 2024-10-24 at 11.33.53 AM.png" alt="hiking" />
+          <img src="./images/Screenshot 2024-10-24 at 11.33.53 AM.png" alt="hiking" />
           <h4>Hiking</h4>
         </div>
         <div class="hobby">
-          <img src="images/Screenshot 2024-10-24 at 10.46.29 AM.png" alt="programming" />
+          <img src="./images/Screenshot 2024-10-24 at 10.46.29 AM.png" alt="programming" />
           <h4>Swimming</h4>
         </div>
         <div class="hobby">
-          <img src="images/Screenshot 2024-10-24 at 11.34.02 AM.png" alt="traveling" />
+          <img src="./images/workout.jpeg" alt="working out" />
           <h4>Bodybuilding</h4>
         </div>
         <div class="hobby">
+          <img src="./images/Screenshot 2025-01-03 at 5.58.08 PM.png" alt="traveling" />
           <h4>Traveling</h4>
         </div>
       </div>
-      <div id="end"></div>  
     </div>
   </body>
 </html>
