@@ -559,22 +559,6 @@ function onPanelsHover(event) {
   const raycaster = new THREE.Raycaster();
   raycaster.setFromCamera(mouse, camera);
 
-  const intersects = raycaster.intersectObjects(
-    [
-      ...panels.children,
-      startingIcon,
-      observation,
-      platform,
-      sahith,
-      sahithBitmoji,
-      downloadIcon,
-      linkedin,
-      gmail,
-      github,
-    ],
-    true
-  );
-
   const panelIntersects = raycaster.intersectObjects(panels.children, true);
   const backgroundTexture2 = new THREE.TextureLoader().load("./images/panel2.png");
 
@@ -595,7 +579,6 @@ function onPanelsHover(event) {
     originalMaterials.clear();
   }
 }
-
 document.addEventListener("mousemove", onPanelsHover, false);
 
 function onPanelsClick(event) {
@@ -886,7 +869,7 @@ animateTitle("Greetings!");
 
 //-------------------//
 //-----  MODELS -----//
-//-------------------//\
+//-------------------//
 
 function addEdges(object) {
   object.traverse((child) => {
