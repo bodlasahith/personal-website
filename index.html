@@ -35,13 +35,13 @@
           iconElement.classList.remove("fa-cube");
           iconElement.classList.add("fa-list");
 
-          document.getElementById('2d-site').style.display = "none";
+          document.getElementById('flat-site').style.display = "none";
           bg.style.display = "block";
         } else {
           iconElement.classList.remove("fa-list");
           iconElement.classList.add("fa-cube");
 
-          document.getElementById('2d-site').style.display = "block";
+          document.getElementById('flat-site').style.display = "block";
           bg.style.display = "none";
         }
 
@@ -155,69 +155,44 @@
         }
       });
 
-      // Initialize slides
       document.addEventListener("DOMContentLoaded", () => {
         showSlides(slideIndex);
       });
     </script>
     <script type="module" src="./main.js"></script>
-    <div id="2d-site">
+    <div id="flat-site">
       <div id="top">
         <h1 id="title">Hi, I'm Sahith!</h1>
         <div id="subtitle">
           Click the top-right icon for a THREE.js rendering!<br>
-          <a href="./Resume.pdf">Resume</a>
         </div>
-        <div id="topic-links">
-          <a href="#about" class="smooth-scroll">About</a>
-          <div> | </div> 
-          <a href="#experiences" class="smooth-scroll">Experience</a>
-          <div> | </div>
-          <a href="#projects" class="smooth-scroll">Projects</a>
-          <div> | </div>
-          <a href="#skills" class="smooth-scroll">Skills</a>
-          <div> | </div>
-          <a href="#classes" class="smooth-scroll">Education/Contact</a>
-          <div> | </div>
-          <a href="#hobbies" class="smooth-scroll">Miscellaneous</a>
+        <button id="open-sidebar" title="Open Sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div id="sidebar">
+          <a href="#about" class="smooth-scroll"><i class="fas fa-user"></i> About</a>
+          <a href="#experiences" class="smooth-scroll"><i class="fas fa-briefcase"></i> Experience</a>
+          <a href="#projects" class="smooth-scroll"><i class="fas fa-project-diagram"></i> Projects</a>
+          <a href="#skills" class="smooth-scroll"><i class="fas fa-code"></i> Skills</a>
+          <a href="#classes" class="smooth-scroll"><i class="fas fa-graduation-cap"></i> Education/Contact</a>
+          <a href="#hobbies" class="smooth-scroll"><i class="fas fa-heart"></i> Miscellaneous</a>
+          <hr>
+          <a href="./Resume.pdf" target="_blank"><i class="fas fa-file-alt"></i> Resume</a>
         </div>
-        <button id="next" title="Next Section">
-          <i class="fas fa-arrow-down"></i>
-        </button>
-        <button id="prev" title="Previous Section">
-          <i class="fas fa-arrow-up"></i>
-        </button>
         <script>
-          const sections = document.querySelectorAll('#topic-links a');
-          let currentSectionIndex = 0;
+          let sidebarOpen = true;
 
-          document.getElementById('next').addEventListener('click', function () {
-            if (currentSectionIndex < sections.length - 1) {
-              currentSectionIndex++;
-              document.querySelector(sections[currentSectionIndex].getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-              });
+          document.getElementById("open-sidebar").addEventListener("click", function () {
+            const mainContent = document.getElementById("flat-site");
+            if (!sidebarOpen) {
+              document.getElementById("sidebar").style.width = "200px";
+              mainContent.style.marginLeft = "200px";
+              sidebarOpen = true;
+            } else {
+              document.getElementById("sidebar").style.width = "0";
+              mainContent.style.marginLeft = "0";
+              sidebarOpen = false;
             }
-          });
-
-          document.getElementById('prev').addEventListener('click', function () {
-            if (currentSectionIndex > 0) {
-              currentSectionIndex--;
-              document.querySelector(sections[currentSectionIndex].getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-              });
-            }
-          });
-
-          window.addEventListener('scroll', function () {
-            let currentSection = sections[currentSectionIndex].getAttribute('href');
-            sections.forEach((section, index) => {
-              const sectionElement = document.querySelector(section.getAttribute('href'));
-              const rect = sectionElement.getBoundingClientRect();
-              if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                currentSectionIndex = index;
-              }
-            });
           });
         </script>
         <script>
@@ -258,7 +233,19 @@
         <div id="experience-list">
           <div class="experience">
             <div class="experience-content">
-              <h4>Gen Digital</h4>
+              <h4>Amazon: Software Development Engineer Intern</h4>
+              <h6>May 2025 - Aug 2025</h6>
+              <p>
+                Coming soon!
+              </p>
+            </div>
+            <div class="experience-image">
+              <img src="./images/amazon.png" alt="Amazon">
+            </div>
+          </div>
+          <div class="experience">
+            <div class="experience-content">
+              <h4>Gen Digital: Software Engineer Intern</h4>
               <h6>Jun 2024 - Aug 2024</h6>
               <p>
                 Worked on developing a system to enhance user privacy and security by removing email 
@@ -285,7 +272,7 @@
           </div>
           <div class="experience">
             <div class="experience-content">
-              <h4>OneSpace</h4>
+              <h4>OneSpace: Co-founder/Full-Stack Engineer</h4>
               <h6>Feb 2023 - present</h6>
               <p>
                 Co-founded by a team of 7 to develop a desktop software designed to streamline
@@ -315,8 +302,8 @@
           </div>
           <div class="experience">
             <div class="experience-content">
-              <h4>CS 222 Software Design Lab Course Assistant</h4>
-              <h6>Jan 2024 - present</h6>
+              <h4>CS 222 Software Design Lab: Course Assistant</h4>
+              <h6>Jan 2024 - Dec 2024</h6>
               <p>
                 Advised groups of students on semester-long coding project in language of
                 their choice.
@@ -342,11 +329,94 @@
         <h2>Projects</h2>
         <div class="slide-container">
           <div class="slides">
+            <div class="project-period" id="summer-2025">
+              <h3>Summer 2025</h3>
+              <div class="projects-list">
+                <div class="project" onclick="openModal('modal-summer-2025-1')">
+                  <h4>Aether: A Peer-to-Peer Cloud Gaming Platform</h4>
+                  <img src="./images/aether.png" alt="Aether: A Peer-to-Peer Cloud Gaming Platform" />
+                </div>
+                <div id="modal-summer-2025-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-summer-2025-1')">&times;</span>
+                    <h4>Aether: A Peer-to-Peer Cloud Gaming Platform</h4>
+                    <h6>Feb 2025 - Aug 2025</h6>
+                    <p>
+                      Coming soon!
+                    </p>
+                  </div>  
+                </div>
+              </div> 
+            </div>
+            <div class="project-period" id="spring-2025">
+              <h3>Spring 2025</h3>
+              <div class="projects-list">
+                <div class="project" onclick="openModal('modal-spring-2025-1')">
+                  <h4>Found It!</h4>
+                  <img src="./images/foundit.png" alt="Found It!" />
+                </div>
+                <div id="modal-spring-2025-1" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2025-1')">&times;</span>
+                    <h4>Found It!</h4>
+                    <h6>Jan 2025 - May 2025</h6>
+                    <p>
+                      Developed a web application that allows users to find lost items in their 
+                      neighborhood. Users can post about lost items and search for found items 
+                      in their area. Built using React for the frontend, Express for the backend, 
+                      and MongoDB for the database, this project aims to create a community-driven 
+                      platform that helps people reconnect with their lost belongings. By leveraging 
+                      user-generated content and location-based services, Found It! enhances the 
+                      chances of recovering lost items and fosters a sense of community among users.
+                    </p>
+                    <a href="https://drive.google.com/file/d/18O_PQD7LLAj9mfbntPcx4OEKH4Rp22Ao/view?usp=sharing" target="_blank" rel="noopener">Check out our demo here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-react-original" title="React"></i>
+                      <i class="devicon-nodejs-plain" title="NodeJS"></i>
+                      <i class="devicon-tailwindcss-original" title="Tailwind CSS"></i>
+                      <i class="devicon-supabase-plain" title="Supabase"></i>
+                      <i class="devicon-vercel-original" title="Vercel"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project" onclick="openModal('modal-spring-2025-2')">
+                  <h4>State of Illinois Cannabis RDBMS</h4>
+                  <img src="./images/soi.png" alt="State of Illinois Cannabis RDBMS" />
+                </div>
+                <div id="modal-spring-2025-2" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-spring-2025-2')">&times;</span>
+                    <h4>State of Illinois Cannabis RDBMS</h4>
+                    <h6>Feb 2024 - May 2024, Feb 2025 - May 2025</h6>
+                    <p>
+                      Led the development of a platform to display data collected from cannabis farms, 
+                      factories, and dispensaries. Provided insights and visualizations on a Streamlit 
+                      site with Firebase authentication. This project aimed to enhance transparency and 
+                      efficiency in the cannabis industry by offering real-time data analysis and 
+                      reporting, helping stakeholders make informed decisions and optimize their operations. 
+                      Additionally, implemented a chatbot based on CSV data to make NLP queries on the vector 
+                      embeddings in Pinecone generated from the data in AWS, enabling users to interact with 
+                      the data intuitively and efficiently. This model was deployed off AWS SageMaker and the 
+                      application was containerized with Docker and deployed over Vercel.
+                    </p>
+                    <a href="https://drive.google.com/file/d/18sxKEASDZfFua9Pm3BtIlrRJybDpYwi6/view?usp=sharing" target="_blank" rel="noopener">Check out our demo here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-streamlit-plain" title="Streamlit"></i>
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-firebase-plain" title="Firebase"></i>
+                      <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                      <i class="devicon-docker-plain" title="Docker"></i>
+                      <i class="devicon-vercel-original" title="Vercel"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-period" id="fall-2024">
               <h3>Fall 2024</h3>
               <div class="projects-list">
                 <div class="project" onclick="openModal('modal-fall-2024-1')">
-                  <h4 >Asynchronous Distributed System</h4>
+                  <h4>Asynchronous Distributed System</h4>
                   <img src="./images/network.png" alt="Asynchronous Distributed System" />
                 </div>
                 <div id="modal-fall-2024-1" class="modal">
@@ -558,31 +628,6 @@
             <div class="project-period" id="spring-2024">
               <h3>Spring 2024</h3>
               <div class="projects-list">
-                <div class="project" onclick="openModal('modal-spring-2024-1')">
-                  <h4>State of Illinois Cannabis RDBMS</h4>
-                  <img src="./images/soi.png" alt="State of Illinois Cannabis RDBMS" />
-                </div>
-                <div id="modal-spring-2024-1" class="modal">
-                  <div class="modal-content">
-                    <span class="close" onclick="closeModal('modal-spring-2024-1')">&times;</span>
-                    <h4>State of Illinois Cannabis RDBMS</h4>
-                    <h6>Feb 2024 - May 2024</h6>
-                    <p>
-                      Developed a platform to display data collected from cannabis farms, plants, 
-                      factories, and stores. Provided insights and visualizations on a React site with a 
-                      database hosted on AWS. This project aimed to enhance transparency and efficiency 
-                      in the cannabis industry by offering real-time data analysis and reporting, helping 
-                      stakeholders make informed decisions and optimize their operations.
-                    </p>
-                    <div class="project-icons">
-                      <i class="devicon-react-original" title="React"></i>
-                      <i class="devicon-express-original" title="Express"></i>
-                      <i class="devicon-python-plain" title="Python"></i>
-                      <i class="devicon-firebase-plain" title="Firebase"></i>
-                      <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-                    </div>
-                  </div>
-                </div>
                 <div class="project" onclick="openModal('modal-spring-2024-2')">
                   <h4>HackIllinois: Baymin</h4>
                   <img src="./images/baymin.png" alt="HackIllinois: Baymin" />
@@ -871,15 +916,17 @@
           <div class="skill">
             <h4>Programming Languages</h4>
             <p>
-              Python, Java, C++, C, JavaScript, Typescript, Golang, Terraform, Terragrunt, HTML/CSS, MySQL, 
-              CloudSQL, PostgreSQL, MongoDB, Neo4j, Swift, MIPS Assembly, Verilog
+              Python, Java, C++, C, CUDA, JavaScript, Typescript, Golang, Terraform, Terragrunt, 
+              HTML/CSS, MySQL, CloudSQL, PostgreSQL, MongoDB, Neo4j, Swift, x86 Assembly, 
+              MIPS Assembly, Verilog, Haskell
             </p>
           </div>
           <div class="skill">
             <h4>Developer Tools</h4>
             <p>
               Git, Github, Docker, AWS Console, Postman, Firebase, Google Cloud Platform, Visual 
-              Studio Code, Google Colab, SQLite, MySQL Workbench, MongoDB Compass, Neo4j Browser
+              Studio Code, Google Colab, SQLite, MySQL Workbench, MongoDB Compass, Neo4j Browser,
+              Jupyter Notebook, PyCharm, Xcode, Android Studio
             </p>
           </div>
           <div class="skill">
@@ -899,7 +946,10 @@
           </div>
           <div class="skill">
             <h4>Other</h4>
-            <p>Agile, Scrum, Jira, Confluence, Figma, Blender, Sumo-Logic, TeamCity, Raspberry Pi, Arduino</p>
+            <p>
+              Agile, Scrum, Jira, Confluence, Figma, Blender, Sumo-Logic, TeamCity, Raspberry Pi, 
+              Arduino, Nsight Compute, Nsight Systems, Unreal Engine, Vercel, Heroku
+            </p>
           </div>
         </div>
       </div>
@@ -909,27 +959,32 @@
           <div>
             <h4>University of Illinois at Urbana-Champaign</h4>
             <img src="./images/illinois.png" id="illinois" alt="illinois"></img>
-            <h5>BS-MCS Combined Degree in Computer Science with Minor in Economics<br><br>Fall 2022 - Spring 2026</h5>
+            <h5>BS in Computer Science with Minor in Economics<br><br>Fall 2022 - Spring 2025</h5>
           </div>
         </div>
         <div id="classes">
           <h3>Relevant Coursework</h3>
           <p>
-            - CS 124: Introduction to Computer Science I<br>
-            - CS 128: Introduction to Computer Science II<br>
+            - CS 124: Intro to Computer Science I<br>
+            - CS 128: Intro to Computer Science II<br>
             - CS 173: Discrete Structures<br>
             - MATH 257: Linear Algebra with Computational Applications<br>
             - CS 222: Software Design Lab<br>
-            - CS 225: Data Structures and Algorithms<br>
+            - CS 225: Data Structures<br>
             - CS 233: Computer Architecture<br>
-            - CS 361: Probability and Statistics for Computer Science<br>
+            - CS 361: Prob & Stats for Computer Science<br>
             - CS 341: System Programming<br>
-            - CS 357: Numerical Methods<br>
+            - CS 357: Numerical Methods I<br>
             - CS 411: Database Systems<br>
             - CS 441: Applied Machine Learning<br>
-            - CS 374: Introduction to Algorithms and Models of Computation<br>
+            - CS 374: Intro to Algorithms & Models of Computation<br>
             - CS 425: Distributed Systems<br>
             - CS 439: Wireless Networks<br>
+            - CS 421: Programming Languages & Compilers<br>
+            - CS 461: Computer Security I<br>
+            - CS 483: Applied Parallel Programming<br>
+            - CS 415: Game Development<br>
+            - CS 525: Advanced Distributed Systems<br>
           </p>
         </div>
         <div id="contact">
@@ -938,7 +993,7 @@
             <a href="https://www.linkedin.com/in/sahith-bodla-a9791120b/" id="linked-in" title="linked-in" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="mailto:bodlasahith@gmail.com"" id="email" title="email" target="_blank">
+            <a href="mailto:bodlasahith@gmail.com" id="email" title="email" target="_blank">
               <i class="fas fa-envelope"></i>
             </a>
             <a href="https://github.com/bodlasahith" id="github" title="github" target="_blank" rel="noopener">

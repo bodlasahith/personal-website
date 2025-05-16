@@ -20,9 +20,9 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
-window.toggleEventListeners = function() {
-  const is2DSiteVisible = document.getElementById('2d-site').style.display === "block";
-  
+window.toggleEventListeners = function () {
+  const is2DSiteVisible = document.getElementById("flat-site").style.display === "block";
+
   if (is2DSiteVisible) {
     document.removeEventListener("mousedown", onPanelsClick, false);
   } else {
@@ -395,7 +395,15 @@ const base5Light = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
 base5Light.position.set(430, -60, 370);
 
 const panel5Content = new THREE.Group();
-panel5Content.add(panel5title, illinois, illinoisCaption, coursework, base5, base5Lines, base5Light);
+panel5Content.add(
+  panel5title,
+  illinois,
+  illinoisCaption,
+  coursework,
+  base5,
+  base5Lines,
+  base5Light
+);
 
 const panel6Geo = new THREE.BoxGeometry(280, 200, 10);
 const panel6Mesh = new THREE.MeshLambertMaterial({ map: backgroundTexture });
@@ -474,7 +482,16 @@ const base6Light = new THREE.PointLight(0xffffff, 2000, 0, 1.5);
 base6Light.position.set(430, -60, -370);
 
 const panel6content = new THREE.Group();
-panel6content.add(panel6title, gmail, linkedin, github, panel6caption, base6, base6Lines, base6Light);
+panel6content.add(
+  panel6title,
+  gmail,
+  linkedin,
+  github,
+  panel6caption,
+  base6,
+  base6Lines,
+  base6Light
+);
 
 const panels = new THREE.Group();
 panels.add(panel1, panel2, panel3, panel4, panel5, panel6);
@@ -912,7 +929,7 @@ const angles = [(2 * Math.PI) / 3, Math.PI, (-2 * Math.PI) / 3, -Math.PI / 3, 0,
 
 const loader = new GLTFLoader();
 loader.load(
-  "blender-models/arrow.glb",
+  "./models/arrow.glb",
   (gltf) => {
     const arrow = gltf.scene;
     createCopies(arrow, arrow_positions, angles);
@@ -939,7 +956,7 @@ loader.load(
 );
 
 loader.load(
-  "blender-models/stick_figure.glb",
+  "./models/stick_figure.glb",
   (gltf) => {
     const stick_figure = gltf.scene;
 
@@ -964,50 +981,44 @@ loader.load(
   }
 );
 
-loader.load(
-  "blender-models/grad_cap.glb",
-  (gltf) => {
-    const grad_cap = gltf.scene;
+loader.load("./models/grad_cap.glb", (gltf) => {
+  const grad_cap = gltf.scene;
 
-    grad_cap.scale.set(5, 5, 5);
-    grad_cap.position.set(430, -50, 370);
-    grad_cap.rotateX(Math.PI / 12);
+  grad_cap.scale.set(5, 5, 5);
+  grad_cap.position.set(430, -50, 370);
+  grad_cap.rotateX(Math.PI / 12);
 
-    const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
-    grad_cap.traverse((child) => {
-      if (child.isMesh) {
-        child.material = matrixMaterial;
-      }
-    });
+  const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+  grad_cap.traverse((child) => {
+    if (child.isMesh) {
+      child.material = matrixMaterial;
+    }
+  });
 
-    addEdges(grad_cap);
-    scene.add(grad_cap);
-    animateObject(grad_cap);
-  },
-)
+  addEdges(grad_cap);
+  scene.add(grad_cap);
+  animateObject(grad_cap);
+});
 
-loader.load(
-  "blender-models/laptop.glb",
-  (gltf) => {
-    const laptop = gltf.scene;
+loader.load("./models/laptop.glb", (gltf) => {
+  const laptop = gltf.scene;
 
-    laptop.position.set(-430, -55, -370);
-    laptop.rotateY(Math.PI);
+  laptop.position.set(-430, -55, -370);
+  laptop.rotateY(Math.PI);
 
-    const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
-    laptop.traverse((child) => {
-      if (child.isMesh) {
-        child.material = matrixMaterial;
-      }
-    });
+  const matrixMaterial = new THREE.MeshLambertMaterial({ map: backgroundTexture });
+  laptop.traverse((child) => {
+    if (child.isMesh) {
+      child.material = matrixMaterial;
+    }
+  });
 
-    addEdges(laptop);
-    scene.add(laptop);
-    animateObject(laptop);
-  },
-)
+  addEdges(laptop);
+  scene.add(laptop);
+  animateObject(laptop);
+});
 
-loader.load("blender-models/phone.glb", (gltf) => {
+loader.load("./models/phone.glb", (gltf) => {
   const phone = gltf.scene;
 
   phone.scale.set(3, 3, 3);
@@ -1025,7 +1036,7 @@ loader.load("blender-models/phone.glb", (gltf) => {
   animateObject(phone);
 });
 
-loader.load("blender-models/contact.glb", (gltf) => {
+loader.load("./models/contact.glb", (gltf) => {
   const contact = gltf.scene;
 
   contact.scale.set(15, 15, 15);
@@ -1043,7 +1054,7 @@ loader.load("blender-models/contact.glb", (gltf) => {
   animateObject(contact);
 });
 
-loader.load("blender-models/dumbbell.glb", (gltf) => {
+loader.load("./models/dumbbell.glb", (gltf) => {
   const dumbbell = gltf.scene;
 
   dumbbell.scale.set(2, 2, 2);
