@@ -9,6 +9,7 @@ body {
   width: 100%;
   color: #012d5c;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body::-webkit-scrollbar {
@@ -18,6 +19,8 @@ body::-webkit-scrollbar {
 #flat-site {
   margin-left: 200px;
   transition: all 0.3s;
+  width: calc(100% - 200px); /* Ensure content doesn't overflow */
+  box-sizing: border-box;
 }
 
 #top {
@@ -120,6 +123,12 @@ h1 {
   font-size: 2vw;
   transition: all 0.3s ease;
   z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+  #switch {
+    display: none !important;
+  }
 }
 
 #switch:hover {
@@ -716,4 +725,295 @@ h3 {
 .hobby img {
   max-width: 15vw;
   border-radius: 10px;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+  /* Hide sidebar on mobile by default and adjust main content */
+  #flat-site {
+    margin-left: 0;
+    width: 100%;
+    transition: all 0.3s;
+  }
+  
+  #sidebar {
+    width: 0;
+    transition: 0.5s;
+  }
+  
+  #sidebar.open {
+    width: 200px;
+  }
+  
+  #flat-site.sidebar-open {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+  
+  /* Adjust font sizes for mobile */
+  h1 {
+    font-size: 12vw;
+  }
+  
+  h2 {
+    font-size: 8vw;
+    margin-bottom: 4vw;
+  }
+  
+  h3 {
+    font-size: 6vw;
+    margin-bottom: 4vw;
+  }
+  
+  #subtitle {
+    font-size: 3vw;
+    margin-bottom: 4vw;
+  }
+  
+  /* Make about section stack vertically */
+  #about {
+    flex-direction: column;
+    padding: 4vw 2vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #about img {
+    margin-left: 0;
+    margin-top: 4vw;
+    max-width: 80vw;
+    height: auto;
+  }
+  
+  .about-text {
+    width: 100%;
+  }
+  
+  .about-text p {
+    font-size: 4vw;
+    padding: 4vw;
+  }
+  
+  /* Fix experience section layout */
+  #experiences {
+    padding: 4vw 2vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .experience {
+    flex-direction: column;
+    width: 95%;
+    margin: 2vw auto;
+    padding: 4vw;
+  }
+  
+  .experience-content::after {
+    display: none;
+  }
+  
+  .experience-image {
+    padding-left: 0;
+    padding-top: 2vw;
+  }
+  
+  .experience-image img {
+    max-width: 60vw;
+    height: auto;
+  }
+  
+  /* Fix projects section */
+  #projects {
+    padding: 4vw 2vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .projects-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .project {
+    flex: none;
+    width: 90%;
+    margin: 2vw auto;
+    max-width: none;
+  }
+  
+  .project img {
+    max-height: 20vw;
+    max-width: 20vw;
+  }
+  
+  .project-icons {
+    flex-wrap: wrap;
+  }
+  
+  .project-icons i {
+    font-size: 6vw;
+    margin: 1vw;
+    padding: 2vw;
+  }
+  
+  /* Fix skills section */
+  #skills {
+    padding: 4vw 2vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #skills-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .skill {
+    flex: none;
+    width: 90%;
+    margin: 2vw auto;
+  }
+  
+  /* Fix last sections */
+  #last-sections {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  #education, #classes, #contact {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #icons {
+    flex-wrap: wrap;
+  }
+  
+  #icons a {
+    font-size: 8vw;
+    margin: 2vw;
+    padding: 2vw;
+  }
+  
+  /* Fix hobbies section */
+  #hobbies {
+    flex-direction: column;
+    padding: 4vw 2vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .hobby {
+    margin-bottom: 4vw;
+    width: 100%;
+  }
+  
+  .hobby img {
+    max-width: 40vw;
+  }
+  
+  /* Adjust button sizes */
+  #open-sidebar {
+    font-size: 6vw;
+    top: 2vw;
+    left: 2vw;
+  }
+  
+  #switch {
+    height: 8vw;
+    width: 8vw;
+    font-size: 4vw;
+    top: 2vw;
+    right: 2vw;
+  }
+  
+  /* Fix modal for mobile */
+  .modal {
+    padding-top: 20px;
+  }
+  
+  .modal-content {
+    margin: 5% 2vw;
+    max-width: 90vw;
+    padding: 4vw;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust slide navigation */
+  .prev, .next {
+    font-size: 4vw;
+    padding: 3vw;
+  }
+  
+  /* Fix slide container */
+  .slide-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .project-period {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 2vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  h1 {
+    font-size: 15vw;
+  }
+  
+  h2 {
+    font-size: 10vw;
+  }
+  
+  h3 {
+    font-size: 8vw;
+  }
+  
+  #subtitle {
+    font-size: 4vw;
+  }
+  
+  .about-text p {
+    font-size: 5vw;
+  }
+  
+  .project img {
+    max-height: 25vw;
+    max-width: 25vw;
+  }
+  
+  .project-icons i {
+    font-size: 8vw;
+  }
+  
+  #icons a {
+    font-size: 10vw;
+  }
+  
+  .hobby img {
+    max-width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* Large desktop adjustments */
+  #flat-site {
+    width: calc(100% - 200px);
+    max-width: none;
+  }
+  
+  .about-text p {
+    font-size: 1.2vw;
+  }
+  
+  .project-icons i {
+    font-size: 1.5vw;
+  }
+  
+  #icons a {
+    font-size: 2vw;
+  }
 }

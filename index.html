@@ -180,18 +180,75 @@
           <a href="./Resume.pdf" target="_blank"><i class="fas fa-file-alt"></i> Resume</a>
         </div>
         <script>
-          let sidebarOpen = true;
-
-          document.getElementById("open-sidebar").addEventListener("click", function () {
+          // Initialize sidebar state based on screen size
+          let sidebarOpen = window.innerWidth > 768;
+          
+          // Function to handle sidebar toggle
+          function toggleSidebar() {
             const mainContent = document.getElementById("flat-site");
+            const sidebar = document.getElementById("sidebar");
+            
             if (!sidebarOpen) {
-              document.getElementById("sidebar").style.width = "200px";
+              sidebar.style.width = "200px";
+              sidebar.classList.add("open");
               mainContent.style.marginLeft = "200px";
+              mainContent.classList.add("sidebar-open");
               sidebarOpen = true;
             } else {
-              document.getElementById("sidebar").style.width = "0";
-              mainContent.style.marginLeft = "0";
+              sidebar.style.width = "0";
+              sidebar.classList.remove("open");
+              mainContent.style.marginLeft = window.innerWidth > 768 ? "200px" : "0";
+              mainContent.classList.remove("sidebar-open");
               sidebarOpen = false;
+            }
+          }
+          
+          // Initialize sidebar state on page load
+          function initializeSidebar() {
+            const mainContent = document.getElementById("flat-site");
+            const sidebar = document.getElementById("sidebar");
+            
+            if (window.innerWidth <= 768) {
+              // Mobile: start with sidebar closed
+              sidebar.style.width = "0";
+              sidebar.classList.remove("open");
+              mainContent.style.marginLeft = "0";
+              mainContent.classList.remove("sidebar-open");
+              sidebarOpen = false;
+            } else {
+              // Desktop: start with sidebar open
+              sidebar.style.width = "200px";
+              sidebar.classList.add("open");
+              mainContent.style.marginLeft = "200px";
+              mainContent.classList.add("sidebar-open");
+              sidebarOpen = true;
+            }
+          }
+          
+          // Call initialization on page load
+          initializeSidebar();
+          
+          // Handle sidebar toggle button click
+          document.getElementById("open-sidebar").addEventListener("click", toggleSidebar);
+          
+          // Handle window resize
+          window.addEventListener("resize", function() {
+            if (window.innerWidth > 768 && !sidebarOpen) {
+              // When switching to desktop view, show sidebar if it was hidden
+              const mainContent = document.getElementById("flat-site");
+              const sidebar = document.getElementById("sidebar");
+              sidebar.style.width = "200px";
+              sidebar.classList.add("open");
+              mainContent.style.marginLeft = "200px";
+              mainContent.classList.add("sidebar-open");
+              sidebarOpen = true;
+            } else if (window.innerWidth <= 768) {
+              // Ensure proper mobile layout
+              const mainContent = document.getElementById("flat-site");
+              if (!sidebarOpen) {
+                mainContent.style.marginLeft = "0";
+                mainContent.classList.remove("sidebar-open");
+              }
             }
           });
         </script>
@@ -199,8 +256,14 @@
           document.querySelectorAll('.smooth-scroll').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
               e.preventDefault();
+              
+              // Close sidebar on mobile when clicking navigation links
+              if (window.innerWidth <= 768 && sidebarOpen) {
+                toggleSidebar();
+              }
+              
               document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+                behavior: 'smooth'
               });
             });
           });
@@ -236,8 +299,21 @@
               <h4>Amazon: Software Development Engineer Intern</h4>
               <h6>May 2025 - Aug 2025</h6>
               <p>
-                Coming soon!
+                Developed an internal web tool for Buy with Prime's on-call engineers to streamline root 
+                cause analysis of system failures and operational alerts. Integrated multiple AWS services 
+                and internal APIs to aggregate real-time order and return data, enabling comprehensive 
+                cross-service timeline visualization. Built with a Vue.js frontend and Lambda backend 
+                (Java/CDK with TypeScript), the tool improved incident resolution speed and provided 
+                actionable insights into fulfillment, merchant, and consumer interactions. Also worked on
+                a GenAI-powered timeline summarizer using Amazon's internal MCP architecture to highlight 
+                anomalies and critical severities.
               </p>
+              <div class="project-icons">
+                <i class="devicon-vuejs-plain" title="Vue.js"></i>
+                <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
+                <i class="devicon-typescript-plain" title="Typescript"></i>
+                <i class="devicon-java-plain" title="Java"></i>
+              </div>
             </div>
             <div class="experience-image">
               <img src="./images/amazon.png" alt="Amazon">
@@ -263,7 +339,6 @@
                 <i class="devicon-css3-plain" title="CSS"></i>
                 <i class="devicon-terraform-plain" title="Terraform"></i>
                 <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-                <i class="devicon-googlecloud-plain" title="GCP"></i>
               </div>
             </div>
             <div class="experience-image">
@@ -344,9 +419,19 @@
                     <h4>Aether: A Peer-to-Peer Cloud Gaming Platform</h4>
                     <h6>Feb 2025 - Aug 2025</h6>
                     <p>
-                      Coming soon!
+                      Aether is a decentralized peer-to-peer (P2P) cloud gaming platform that aggregates 
+                      idle resources from user devices to form dynamic compute clusters. Unlike traditional 
+                      centralized services, Aether reduces operational costs and leverages distributed hardware. 
+                      Experiments show it delivers stable 30 fps gaming at 1080p with low CPU/GPU usage and 
+                      latency under 75 ms, demonstrating its scalability and efficiency as a cloud gaming alternative.
                     </p>
-                  </div>  
+                    <a href="https://docs.google.com/document/d/1r1wTMsmd-yngolnqWBeQ2MqI5f-bZApWB4CpKT8ommM/edit?usp=sharing" target="_blank" rel="noopener">Check out our paper here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-cplusplus-plain" title="C++"></i>
+                      <i class="devicon-python-plain" title="Python"></i>
+                      <i class="devicon-react-original" title="React"></i>
+                    </div>
+                  </div>
                 </div>
                 <div class="project" onclick="openModal('modal-summer-2025-2')">
                   <h4>CSS Z-Index Visualizer</h4>
@@ -372,6 +457,30 @@
                       <i class="devicon-threejs-original" title="THREE.js"></i>
                       <i class="devicon-d3js-plain" title="D3.js"></i>
                       <i class="devicon-html5-plain" title="HTML"></i>
+                      <i class="devicon-css3-plain" title="CSS"></i>
+                      <i class="devicon-vscode-plain" title="VS Code"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="project" onclick="openModal('modal-summer-2025-3')">
+                  <h4>LeExtension</h4>
+                  <img src="./images/lebron.png" alt="LeExtension" />
+                </div>
+                <div id="modal-summer-2025-3" class="modal">
+                  <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-summer-2025-3')">&times;</span>
+                    <h4>LeExtension</h4>
+                    <h6>May 2025 - Jun 2025</h6>
+                    <p>
+                      LeExtension is a playful Visual Studio Code extension that brings an animated LeBron James
+                      sprite onto your editor, triggered by custom key commands. The extension features a set of 
+                      color themes inspired by the NBA teams LeBron has played for (Cavaliers, Heat, Lakers, etc.), 
+                      allowing users to switch the sprite's appearance and the editor's accent colors to match each 
+                      team. It's a fun way to add some personality and basketball flair to your coding environment!
+                    </p>
+                    <a href="https://github.com/bodlasahith/LeExtensionBundle" target="_blank" rel="noopener">Check out my code here!</a>
+                    <div class="project-icons">
+                      <i class="devicon-javascript-plain" title="JavaScript"></i>
                       <i class="devicon-css3-plain" title="CSS"></i>
                       <i class="devicon-vscode-plain" title="VS Code"></i>
                     </div>
@@ -520,6 +629,7 @@
                       support a wider range of subjects and educational institutions, making high-quality 
                       education more accessible and effective for students worldwide.
                     </p>
+                    <a href="https://drive.google.com/file/d/1DRQ5ICJMEHwldMpMDZtw4U3LTM6RCScD/view?usp=sharing" target="_blank" rel="noopener">Check out our demo here!</a>
                     <div class="project-icons">
                       <i class="devicon-python-plain" title="Python"></i>
                       <i class="devicon-streamlit-plain" title="Streamlit"></i>
@@ -636,9 +746,9 @@
                       destination. Users can input their destination and the app will generate a playlist 
                       based on the duration of the trip and the user's music preferences. This project 
                       enhances the travel experience by providing personalized music recommendations 
-                      tailored to the journey. Built using React for the frontend, the Spotify API for 
-                      music data, and the Google Maps API for destination information, this app leverages 
-                      modern web technologies to deliver a seamless and enjoyable user experience.
+                      tailored to the journey. Built using React Native and Expo for the frontend, the Spotify 
+                      API for music data, and the Google Maps API for destination information, this app 
+                      leverages modern web technologies to deliver a seamless and enjoyable user experience.
                     </p>
                     <a href="https://github.com/bodlasahith/travel-playlist-app" target="_blank" rel="noopener">Check out my code here!</a>
                     <div class="project-icons">
@@ -688,16 +798,16 @@
                   </div>
                 </div>
                 <div class="project" onclick="openModal('modal-spring-2024-3')">
-                  <h4>Fitcheck</h4>
-                  <img src="./images/fitcheck.png" alt="Fitcheck" />
+                  <h4>Hanger</h4>
+                  <img src="./images/hanger.png" alt="Hanger" />
                 </div>
                 <div id="modal-spring-2024-3" class="modal">
                   <div class="modal-content">
                     <span class="close" onclick="closeModal('modal-spring-2024-3')">&times;</span>
-                    <h4>Fitcheck</h4>
+                    <h4>Hanger</h4>
                     <h6>Feb 2024 - May 2024</h6>
                     <p>
-                      Contributing to a startup creating an iOS app to create a novel and unique social 
+                      Contributed to a startup creating an iOS app to create a novel and unique social 
                       media platform to help users exchange and express their fashion and personal fits. 
                       The app allows users to upload photos of their outfits, share them with friends, and 
                       receive feedback. Built using React Native for the frontend and  for the backend, 
@@ -719,6 +829,7 @@
                       <i class="devicon-neo4j-plain" title="Neo4j"></i>
                       <i class="devicon-docker-plain" title="Docker"></i>
                     </div>
+                    <a href="https://www.instagram.com/hanger.buzz?igsh=MWp2dWZnNGUxenVnNA==" target="_blank" rel="noopener">Check out the Instagram here!</a>
                   </div>
                 </div>
                 <div class="project" onclick="openModal('modal-spring-2024-4')">
@@ -747,8 +858,7 @@
                       <i class="devicon-express-original" title="Express"></i>
                       <i class="devicon-figma-plain" title="Figma"></i>
                       <i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i>
-                      <i class="devicon-mysql-original" title="MySQL"></i>
-                      <i class="devicon-sequelize-plain" title="Sequelize"></i>
+                      <i class="devicon-sqlite-plain" title="SQLite"></i>
                     </div>
                   </div>
                 </div>
@@ -964,7 +1074,7 @@
           </div>
           <div class="skill">
             <h4>Frontend Frameworks</h4>
-            <p>React, React Native, Streamlit, THREE.js, Bootstrap, TailwindCSS</p>
+            <p>React, React Native, Streamlit, THREE.js, Bootstrap, TailwindCSS, Vue.js</p>
           </div>
           <div class="skill">
             <h4>Backend Frameworks</h4>
